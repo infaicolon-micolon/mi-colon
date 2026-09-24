@@ -50,6 +50,7 @@ async function seedCategories() {
         name: subcat.name,
         description: subcat.name,
         parentCategoryId: parentId,
+        backgroundUrl: subcat.image,
       },
       create: {
         name: subcat.name,
@@ -57,6 +58,7 @@ async function seedCategories() {
         description: subcat.name,
         groupId: 'oficios',
         parentCategoryId: parentId,
+        backgroundUrl: subcat.image,
         active: true,
       },
     });

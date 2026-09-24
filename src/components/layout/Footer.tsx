@@ -6,33 +6,15 @@ export function Footer() {
     <footer className="bg-gray-900 border-t border-gray-100 dark:border-gray-800 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Información de la municipalidad */}
+          {/* Información de la plataforma */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <Image src="/gob_iso.png" alt="Gobierno de la Ciudad de Ceres" width={32} height={32} />
-              <h5 className="font-bold text-white">Gobierno de la
-                 <br />
-                 Ciudad de Ceres</h5>
+              <Image src="/logo_colon.png" alt="Mi Colón" width={100} height={40} className="h-10 w-auto object-contain" />
+              <h5 className="font-bold text-white">Mi Colón</h5>
             </div>
             <p className="text-sm text-gray-400 dark:text-gray-400 mb-4 leading-relaxed">
-              Plataforma oficial de servicios profesionales para Ceres y la zona. Conectando talento local con necesidades reales.
+              Plataforma de servicios y profesionales para Colón y la región. Conectando talento local con necesidades reales.
             </p>
-            {/* Contacto 
-            <ul className="text-sm text-gray-400 dark:text-gray-400 space-y-2">
-              <li className="flex items-center gap-2">
-                <MapPin className="text-base" />
-                Ceres, Santa Fe, Argentina
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="text-base" />
-                +54 (03491) 421234
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="text-base" />
-                servicios@ceres.gob.ar
-              </li>
-            </ul>
-            */}
           </div>
 
           {/* Enlaces rápidos */}
@@ -88,8 +70,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
-          <p>© 2026 Gobierno de la Ciudad de Ceres. Todos los derechos reservados.</p>
-          
+          <p>© 2026 Mi Colón - Colón, Entre Ríos. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

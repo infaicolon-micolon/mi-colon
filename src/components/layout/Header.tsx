@@ -50,13 +50,13 @@ export function Header() {
           {/* Logo y marca */}
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-3">
-              <NextImage src="/gob_iso.png" alt="Logo" className="h-10 w-10 flex-shrink-0" width={40} height={40} />
+              <NextImage src="/logo_colon.png" alt="Logo Mi Colón" className="h-12 w-auto flex-shrink-0 object-contain" width={120} height={50} priority />
               <div className="leading-tight">
-                <h1 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wide">
-                  CERES EN RED
+                <h1 className="text-base font-bold text-gray-900 dark:text-white tracking-wide">
+                  Mi Colón
                 </h1>
                 <p className="hidden md:block text-xs text-gray-500 dark:text-gray-400">
-                  Gobierno de la Ciudad de Ceres
+                  Colón, Entre Ríos
                 </p>
               </div>
             </Link>

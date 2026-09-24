@@ -133,53 +133,53 @@ export const AREAS_OFICIOS: Area[] = [
 // Subcategorías de Oficios
 export const SUBCATEGORIES_OFICIOS: Subcategory[] = [
   // Construcción y mantenimiento
-  { id: "plomero", name: "Plomero/a", slug: "plomero", group: "oficios", areaSlug: "construccion-mantenimiento" },
-  { id: "electricista", name: "Electricista", slug: "electricista", group: "oficios", areaSlug: "construccion-mantenimiento" },
-  { id: "albanil", name: "Albañil", slug: "albanil", group: "oficios", areaSlug: "construccion-mantenimiento" },
-  { id: "gasista", name: "Gasista", slug: "gasista", group: "oficios", areaSlug: "construccion-mantenimiento" },
-  { id: "pintor-obra", name: "Pintor de obra", slug: "pintor-obra", group: "oficios", areaSlug: "construccion-mantenimiento" },
-  { id: "carpintero", name: "Carpintero/a", slug: "carpintero", group: "oficios", areaSlug: "construccion-mantenimiento" },
-  { id: "herrero", name: "Herrero/a", slug: "herrero", group: "oficios", areaSlug: "construccion-mantenimiento" },
-  { id: "yesero", name: "Yesero", slug: "yesero", group: "oficios", areaSlug: "construccion-mantenimiento" },
-  { id: "techista", name: "Techista", slug: "techista", group: "oficios", areaSlug: "construccion-mantenimiento" },
+  { id: "plomero", name: "Plomero/a", slug: "plomero", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/images/servicios/construccion.jpg" },
+  { id: "electricista", name: "Electricista", slug: "electricista", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/servicios/electricista.webp" },
+  { id: "albanil", name: "Albañil", slug: "albanil", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/servicios/albanileria.jpg" },
+  { id: "gasista", name: "Gasista", slug: "gasista", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/servicios/gasista.jpg" },
+  { id: "pintor-obra", name: "Pintor de obra", slug: "pintor-obra", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/images/servicios/construccion.jpg" },
+  { id: "carpintero", name: "Carpintero/a", slug: "carpintero", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/images/servicios/construccion.jpg" },
+  { id: "herrero", name: "Herrero/a", slug: "herrero", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/servicios/herrero.jpg" },
+  { id: "yesero", name: "Yesero", slug: "yesero", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/images/servicios/construccion.jpg" },
+  { id: "techista", name: "Techista", slug: "techista", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/images/servicios/construccion.jpg" },
 
   // Climatización
-  { id: "tecnico-aires", name: "Técnico en aires acondicionados", slug: "tecnico-aires", group: "oficios", areaSlug: "climatizacion" },
-  { id: "refrigeracion", name: "Refrigeración comercial y hogareña", slug: "refrigeracion", group: "oficios", areaSlug: "climatizacion" },
+  { id: "tecnico-aires", name: "Técnico en aires acondicionados", slug: "tecnico-aires", group: "oficios", areaSlug: "climatizacion", image: "/servicios/instalacion-aires.jpg" },
+  { id: "refrigeracion", name: "Refrigeración comercial y hogareña", slug: "refrigeracion", group: "oficios", areaSlug: "climatizacion", image: "/images/servicios/climatizacion.jpg" },
 
   // Servicios técnicos electrónicos
-  { id: "reparador-electrodomesticos", name: "Reparador de electrodomésticos", slug: "reparador-electrodomesticos", group: "oficios", areaSlug: "servicios-electronicos" },
-  { id: "tecnico-celulares", name: "Técnico en celulares y tablets", slug: "tecnico-celulares", group: "oficios", areaSlug: "servicios-electronicos" },
+  { id: "reparador-electrodomesticos", name: "Reparador de electrodomésticos", slug: "reparador-electrodomesticos", group: "oficios", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
+  { id: "tecnico-celulares", name: "Técnico en celulares y tablets", slug: "tecnico-celulares", group: "oficios", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
 
   // Automotores
-  { id: "mecanico-automotriz", name: "Mecánico automotriz", slug: "mecanico-automotriz", group: "oficios", areaSlug: "automotores" },
-  { id: "mecanico-motos", name: "Mecánico de motos", slug: "mecanico-motos", group: "oficios", areaSlug: "automotores" },
-  { id: "chapista", name: "Chapista", slug: "chapista", group: "oficios", areaSlug: "automotores" },
-  { id: "gomero", name: "Gomería", slug: "gomero", group: "oficios", areaSlug: "automotores" },
+  { id: "mecanico-automotriz", name: "Mecánico automotriz", slug: "mecanico-automotriz", group: "oficios", areaSlug: "automotores", image: "/images/servicios/automotores.jpg" },
+  { id: "mecanico-motos", name: "Mecánico de motos", slug: "mecanico-motos", group: "oficios", areaSlug: "automotores", image: "/images/servicios/automotores.jpg" },
+  { id: "chapista", name: "Chapista", slug: "chapista", group: "oficios", areaSlug: "automotores", image: "/images/servicios/automotores.jpg" },
+  { id: "gomero", name: "Gomería", slug: "gomero", group: "oficios", areaSlug: "automotores", image: "/images/servicios/automotores.jpg" },
 
   // Jardinería
-  { id: "jardinero", name: "Jardinero/a", slug: "jardinero", group: "oficios", areaSlug: "jardineria" },
-  { id: "paisajista", name: "Paisajista", slug: "paisajista", group: "oficios", areaSlug: "jardineria" },
+  { id: "jardinero", name: "Jardinero/a", slug: "jardinero", group: "oficios", areaSlug: "jardineria", image: "/images/servicios/jardineria.jpg" },
+  { id: "paisajista", name: "Paisajista", slug: "paisajista", group: "oficios", areaSlug: "jardineria", image: "/images/servicios/jardineria.jpg" },
 
   // Cocina
-  { id: "pasteleria", name: "Pastelería", slug: "pasteleria", group: "oficios", areaSlug: "cocina" },
-  { id: "panificados", name: "Panificados", slug: "panificados", group: "oficios", areaSlug: "cocina" },
+  { id: "pasteleria", name: "Pastelería", slug: "pasteleria", group: "oficios", areaSlug: "cocina", image: "/images/servicios/cocina.jpg" },
+  { id: "panificados", name: "Panificados", slug: "panificados", group: "oficios", areaSlug: "cocina", image: "/images/servicios/cocina.jpg" },
 
   // Cuidados
-  { id: "promotores-gerontologicos", name: "Promotores gerontológicos", slug: "promotores-gerontologicos", group: "oficios", areaSlug: "cuidados" },
-  { id: "ninera", name: "Niñera", slug: "ninera", group: "oficios", areaSlug: "cuidados" },
+  { id: "promotores-gerontologicos", name: "Promotores gerontológicos", slug: "promotores-gerontologicos", group: "oficios", areaSlug: "cuidados", image: "/images/servicios/cuidados.jpg" },
+  { id: "ninera", name: "Niñera", slug: "ninera", group: "oficios", areaSlug: "cuidados", image: "/images/servicios/cuidados.jpg" },
 
   // Fletes y mudanzas (área sin subcategorías adicionales)
-  { id: "fletes-mudanzas", name: "Fletes y mudanzas", slug: "fletes-mudanzas", group: "oficios", areaSlug: "fletes-mudanzas" },
+  { id: "fletes-mudanzas", name: "Fletes y mudanzas", slug: "fletes-mudanzas", group: "oficios", areaSlug: "fletes-mudanzas", image: "/images/servicios/fletes-mudanzas.jpg" },
 
   // Limpieza
-  { id: "limpieza", name: "Limpieza", slug: "limpieza", group: "oficios", areaSlug: "limpieza" },
+  { id: "limpieza", name: "Limpieza", slug: "limpieza", group: "oficios", areaSlug: "limpieza", image: "/images/servicios/limpieza.jpg" },
 
   // Cerrajería
-  { id: "cerrajero", name: "Cerrajeros", slug: "cerrajero", group: "oficios", areaSlug: "cerrajeria" },
+  { id: "cerrajero", name: "Cerrajeros", slug: "cerrajero", group: "oficios", areaSlug: "cerrajeria", image: "/images/servicios/cerrajeria.jpg" },
 
   // Costura
-  { id: "costurera", name: "Costurera", slug: "costurera", group: "oficios", areaSlug: "costura" },
+  { id: "costurera", name: "Costurera", slug: "costurera", group: "oficios", areaSlug: "costura", image: "/images/servicios/costura.jpg" },
 ];
 
 // Subcategorías de Profesiones
@@ -193,16 +193,12 @@ export const SUBCATEGORIES_PROFESIONES: Subcategory[] = [
 ];
 
 export const LOCATIONS: Location[] = [
-  { id: "ceres", name: "Ceres, Santa Fe, Argentina" },
-  { id: "hersilia", name: "Hersilia, Santa Fe, Argentina" },
-  { id: "ambrosetti", name: "Ambrosetti, Santa Fe, Argentina" },
-  { id: "larubia", name: "La Rubia, Santa Fe, Argentina" },
-  { id: "arrufo", name: "Arrufó, Santa Fe, Argentina", },
-  { id: "san-cristobal", name: "San Cristóbal, Santa Fe, Argentina" },
-  { id: "san-guillermo", name: "San Guillermo, Santa Fe, Argentina" },
-  { id: "suardi", name: "Suardi, Santa Fe, Argentina" }, 
-  { id: "villa-trinidad", name: "Villa Trinidad, Santa Fe, Argentina" },
-  { id: "tostado", name: "Tostado, Santa Fe, Argentina" },  
+  { id: "colon", name: "Colón, Entre Ríos, Argentina" },
+  { id: "san-jose", name: "San José, Entre Ríos, Argentina" },
+  { id: "pueblo-liebig", name: "Pueblo Liebig, Entre Ríos, Argentina" },
+  { id: "ubajay", name: "Ubajay, Entre Ríos, Argentina" },
+  { id: "concepcion-del-uruguay", name: "Concepción del Uruguay, Entre Ríos, Argentina" },
+  { id: "villa-elisa", name: "Villa Elisa, Entre Ríos, Argentina" },
   { id: "otra", name: "Otra" },
 ];
 

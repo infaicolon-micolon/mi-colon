@@ -22,44 +22,44 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ceres en Red",
-    template: "%s | Ceres en Red"
+    default: "Mi Colón - Servicios y Profesionales",
+    template: "%s | Mi Colón"
   },
-  description: "Plataforma oficial de servicios profesionales del Gobierno de Ceres. Encuentra profesionales verificados para todas tus necesidades.",
-  keywords: ["servicios", "profesionales", "Ceres", "plomería", "electricidad", "construcción", "Santa Fe", "Argentina", "Ceres en Red"],
-  authors: [{ name: "Gobierno de la Ciudad de Ceres" }],
-  creator: "Gobierno de la Ciudad de Ceres",
-  publisher: "Gobierno de la Ciudad de Ceres",
+  description: "Plataforma de servicios y profesionales de Colón, Entre Ríos. Encuentra personas verificadas para todas tus necesidades.",
+  keywords: ["servicios", "profesionales", "Colón", "Entre Ríos", "plomería", "electricidad", "construcción", "Argentina", "Mi Colón"],
+  authors: [{ name: "Mi Colón" }],
+  creator: "Mi Colón",
+  publisher: "Mi Colón",
   metadataBase: new URL(baseUrl),
   alternates: {
     canonical: baseUrl,
   },
   icons: {
-    icon: "/gob_iso.png",
-    shortcut: "/gob_iso.png",
-    apple: "/gob_iso.png",
+    icon: "/logo_colon.png",
+    shortcut: "/logo_colon.png",
+    apple: "/logo_colon.png",
   },
   openGraph: {
-    title: "Ceres en Red - Plataforma Oficial",
-    description: "Encuentra profesionales verificados en Ceres. Plataforma oficial del Gobierno de la Ciudad de Ceres.",
+    title: "Mi Colón - Plataforma de Servicios",
+    description: "Encuentra profesionales en Colón, Entre Ríos. Plataforma de servicios locales.",
     url: baseUrl,
-    siteName: "Ceres en Red",
+    siteName: "Mi Colón",
     locale: "es_AR",
     type: "website",
     images: [
       {
-        url: `${baseUrl}/gob_iso.png`,
+        url: `${baseUrl}/logo_colon.png`,
         width: 400,
         height: 400,
-        alt: "Ceres en Red - Logo",
+        alt: "Mi Colón - Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ceres en Red - Plataforma Oficial",
-    description: "Encuentra profesionales verificados en Ceres",
-    images: [`${baseUrl}/gob_iso.png`],
+    title: "Mi Colón - Servicios y Profesionales",
+    description: "Encuentra profesionales en Colón, Entre Ríos",
+    images: [`${baseUrl}/logo_colon.png`],
   },
   robots: {
     index: true,

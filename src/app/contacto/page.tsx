@@ -327,10 +327,10 @@ export default function ContactoPage() {
                         Correo Electrónico
                       </p>
                       <a
-                        href="mailto:modernizacion@ceres.gob.ar"
+                        href="mailto:infaicolon@gmail.com"
                         className="text-ms font-bold text-[#006F4B] dark:text-emerald-400 hover:underline break-all"
                       >
-                        modernizacion@ceres.gob.ar
+                        infaicolon@gmail.com
                       </a>
                     </div>
                   </div>
@@ -343,10 +343,10 @@ export default function ContactoPage() {
                         Horarios de Atención
                       </p>
                       <p className="text-ms font-bold text-[#006F4B] dark:text-emerald-400">
-                        Lun a Vie: 07:00 - 13:00
+                        Lun a Vie: 08:00 - 12:00
                       </p>
                       <p className="text-xs text-emerald-700 dark:text-emerald-500">
-                      Avenida Italia e H. Yrigoyen, Ceres, Santa Fe, Argentina
+                      Urquiza 921, Colón, Entre Ríos, Argentina
                       </p>
                     </div>
                   </div>

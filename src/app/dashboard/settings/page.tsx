@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
@@ -1456,28 +1456,56 @@ export default function SettingsPage() {
                   <SelectValue placeholder={categoriesLoading ? "Cargando categorías..." : "Seleccionar categoría"} />
                 </SelectTrigger>
                 <SelectContent>
-                  {getProfileType() === "profesiones"
-                    ? professionCategories.map((category) => (
+                  {(() => {
+                    const profileType = getProfileType();
+                    const showProfesionesOnly = profileType === "profesiones";
+                    const showOficiosOnly = profileType === "oficios";
+
+                    if (showProfesionesOnly) {
+                      return professionCategories.map((category) => (
                         <SelectItem key={category.slug} value={category.slug}>
                           {category.name}
                         </SelectItem>
-                      ))
-                    : oficioAreas.map((area) => {
-                        const subcategories = oficioCategoriesByArea.get(area.slug) ?? [];
-                        if (subcategories.length === 0) return null;
-                        return (
-                          <div key={area.slug}>
-                            <div className="px-2 py-1.5 text-xs font-semibold text-gray-500 uppercase">
+                      ));
+                    }
+
+                    const items: React.ReactNode[] = [];
+
+                    oficioAreas.forEach((area) => {
+                      const subcategories = oficioCategoriesByArea.get(area.slug) ?? [];
+                      if (subcategories.length > 0) {
+                        items.push(
+                          <SelectGroup key={area.slug}>
+                            <SelectLabel className="px-2 py-1.5 text-xs font-semibold text-gray-500 uppercase">
                               {area.name}
-                            </div>
+                            </SelectLabel>
                             {subcategories.map((category) => (
                               <SelectItem key={category.slug} value={category.slug} className="pl-6">
                                 {category.name}
                               </SelectItem>
                             ))}
-                          </div>
+                          </SelectGroup>
                         );
-                      })}
+                      }
+                    });
+
+                    if (!showOficiosOnly && professionCategories.length > 0) {
+                      items.push(
+                        <SelectGroup key="profesiones-all">
+                          <SelectLabel className="px-2 py-1.5 text-xs font-semibold text-gray-500 uppercase">
+                            Profesiones
+                          </SelectLabel>
+                          {professionCategories.map((category) => (
+                            <SelectItem key={category.slug} value={category.slug} className="pl-6">
+                              {category.name}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      );
+                    }
+
+                    return items;
+                  })()}
                 </SelectContent>
               </Select>
             </div>

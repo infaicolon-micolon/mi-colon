@@ -61,7 +61,7 @@ export default async function Home() {
             <span className="text-primary font-extrabold">¡Encontralo acá!</span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
-            Plataforma del Gobierno de la Ciudad de Ceres para conectar vecinos con profesionales verificados de manera segura y rápida.
+            Plataforma local para conectar vecinos con profesionales de Colón y la región de manera segura y rápida.
           </p>
           
           <HeroSearch />
@@ -92,7 +92,7 @@ export default async function Home() {
             <div className="flex flex-col items-center md:items-start p-4 rounded-xl cursor-default">
               <Verified className="h-10 w-10 mb-3 opacity-90" aria-hidden="true" />
               <h3 className="font-bold text-lg mb-1">Desarrollo local</h3>
-              <p className="text-sm opacity-80 text-center md:text-left">Iniciativa del Gobierno de la Ciudad de Ceres</p>
+              <p className="text-sm opacity-80 text-center md:text-left">Conectando la comunidad de Colón, Entre Ríos</p>
             </div>
             <div className="flex flex-col items-center md:items-start p-4 rounded-xl cursor-default">
               <Rocket className="h-10 w-10 mb-3 opacity-90" aria-hidden="true" />
@@ -107,7 +107,7 @@ export default async function Home() {
             <div className="flex flex-col items-center md:items-start p-4 rounded-xl cursor-default">
               <MapPin className="h-10 w-10 mb-3 opacity-90" aria-hidden="true" />
               <h3 className="font-bold text-lg mb-1">Enfocado en la región</h3>
-              <p className="text-sm opacity-80 text-center md:text-left">Profesionales de Ceres y la zona</p>
+              <p className="text-sm opacity-80 text-center md:text-left">Profesionales de Colón y zonas aledañas</p>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default async function Home() {
             <div className="p-10 lg:p-16 flex flex-col justify-center text-white z-10">
               <div className="inline-flex items-center gap-2 mb-4 bg-white/20 w-fit px-3 py-1 rounded-full backdrop-blur-sm">
                 <Rocket className="h-4 w-4" aria-hidden="true" />
-                <span className="text-xs font-semibold uppercase tracking-wide">Crece en Ceres</span>
+                <span className="text-xs font-semibold uppercase tracking-wide">Crece en Colón</span>
               </div>
               <h3 className="text-3xl md:text-4xl font-bold mb-6">¿Querés publicar tus servicios?</h3>
               <div className="space-y-6">

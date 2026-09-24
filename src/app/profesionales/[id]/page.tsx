@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       title,
       description,
       url: pageUrl,
-      siteName: "Ceres en Red",
+      siteName: "Mi Colón",
       locale: "es_AR",
       type: "profile",
       images: [
@@ -209,12 +209,12 @@ export default async function ProfessionalDetailPage({ params }: { params: Promi
 
   const mainWhatsappLink = buildWhatsAppLink(
     p.whatsapp,
-    `Hola ${p.name}, vi tu perfil en Ceres en Red y me gustaría contactarte.`
+    `Hola ${p.name}, vi tu perfil en Mi Colón y me gustaría contactarte.`
   );
 
   const servicesWhatsappLink = buildWhatsAppLink(
     p.whatsapp,
-    `Hola ${p.name}, vi tu perfil en Ceres en Red y me gustaría consultar por tus servicios.`
+    `Hola ${p.name}, vi tu perfil en Mi Colón y me gustaría consultar por tus servicios.`
   );
 
   void servicesWhatsappLink;
@@ -865,19 +865,19 @@ export default async function ProfessionalDetailPage({ params }: { params: Promi
                 {p.hasCriminalRecord && p.verified ? (
                   <div className="flex items-start gap-3">
                     <VerifiedIcon className="mt-0.5 h-5 w-5" />
-                    <p className="text-sm text-gray-700">Este perfil está verificado por el equipo de Ceres en Red.</p>
+                    <p className="text-sm text-gray-700">Este perfil está verificado por el equipo de Mi Colón.</p>
                   </div>
                 ) : p.hasCriminalRecord && !p.verified ? (
                   <div className="flex items-start gap-3">
                     <VerifiedIcon muted className="mt-0.5 h-5 w-5" />
-                    <p className="text-sm text-gray-700">Este perfil cargó sus antecedentes penales, pero aún no se encuentra verificado en Ceres en Red.</p>
+                    <p className="text-sm text-gray-700">Este perfil cargó sus antecedentes penales, pero aún no se encuentra verificado en Mi Colón.</p>
                   </div>
                 ) : (
                   <div className="flex items-start gap-3">
                     <VerifiedIcon muted className="mt-0.5 h-5 w-5" />
                     <div className="space-y-1">
                       <p className="text-sm text-gray-700">Este perfil aún no cargó sus antecedentes penales.</p>
-                      <p className="text-sm text-gray-600">Por eso no se encuentra verificado en Ceres en Red.</p>
+                      <p className="text-sm text-gray-600">Por eso no se encuentra verificado en Mi Colón.</p>
                     </div>
                   </div>
                 )}

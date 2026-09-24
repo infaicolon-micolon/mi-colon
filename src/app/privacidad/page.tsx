@@ -1,75 +1,60 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad | Ceres en Red",
-  description: "Política de privacidad del portal Ceres en Red de la Municipalidad de Ceres.",
+  title: "Política de Privacidad | Mi Colón",
+  description: "Política de privacidad de la plataforma Mi Colón de la ciudad de Colón, Entre Ríos.",
 };
 
 const sections = [
   {
     title: "1. Responsable del tratamiento",
     content:
-      "La Municipalidad de Ceres es la titular y responsable de las bases de datos del portal \"Ceres en Red\" y del tratamiento de los datos personales allí informados.",
+      "La plataforma \"Mi Colón\" es la responsable del tratamiento de los datos personales informados por los usuarios al hacer uso de los servicios del portal.",
   },
   {
     title: "2. Datos que se recopilan",
     content:
-      "A través del uso del portal pueden recopilarse datos personales, laborales, académicos, societarios, antecedentes y otra información que los usuarios carguen voluntariamente al utilizar la plataforma.",
+      "A través del uso de la plataforma pueden recopilarse datos personales, de contacto, laborales, de especialidades y otra información que los usuarios carguen voluntariamente para ofrecer o buscar servicios.",
   },
   {
     title: "3. Carácter de la información declarada",
     content:
-      "Toda la información ingresada por el usuario reviste carácter de declaración jurada. El usuario garantiza su veracidad, exactitud, integridad y vigencia. La Municipalidad no verifica ni certifica los datos ingresados por los usuarios.",
+      "Toda la información ingresada por el usuario reviste carácter de declaración jurada. El usuario garantiza su veracidad, exactitud, integridad y vigencia. La plataforma no asume responsabilidad directa por inexactitudes ingresadas por terceros.",
   },
   {
     title: "4. Finalidades del tratamiento",
     content:
-      "Los datos serán utilizados para la gestión del portal, la intermediación laboral, la administración de perfiles y publicaciones, y la elaboración de estadísticas institucionales.",
+      "Los datos serán utilizados para conectar vecinos con trabajadores y profesionales locales en Colón, Entre Ríos, facilitar el contacto directo y elaborar estadísticas de uso.",
   },
   {
     title: "5. Base legal y consentimiento",
     content:
-      "El tratamiento se realiza conforme a la Ley N° 25.326 de Protección de Datos Personales y normativa complementaria. Al utilizar el portal, el usuario presta consentimiento libre, expreso e informado para el tratamiento de sus datos con las finalidades indicadas.",
+      "El tratamiento se realiza conforme a la Ley N° 25.326 de Protección de Datos Personales de la República Argentina y su normativa reglamentaria. Al utilizar el portal, el usuario presta su consentimiento libre, expreso e informado.",
   },
   {
     title: "6. Publicación y acceso por terceros",
     content:
-      "El usuario acepta que parte de la información cargada podrá ser publicada en el portal y en canales institucionales, y podrá ser visualizada, consultada y/o utilizada por terceros, incluyendo empleadores, instituciones y público en general.",
+      "El usuario acepta que los datos de su perfil profesional (nombre, teléfono, especialidades y ciudad) sean visibles públicamente en el sitio para que los clientes puedan contactarlo.",
   },
   {
-    title: "7. Uso institucional de la información",
+    title: "7. Conservación y seguridad",
     content:
-      "El usuario autoriza a la Municipalidad de Ceres a utilizar, almacenar, procesar, reproducir y difundir la información suministrada con fines institucionales y de promoción de actividades, incluyendo su publicación en medios digitales, redes sociales y material gráfico o audiovisual, sin derecho a compensación económica.",
+      "Se aplican medidas estándar de seguridad para resguardar la información. No obstante, al tratarse de transmisiones por Internet, el usuario reconoce los riesgos inherentes al uso de plataformas digitales.",
   },
   {
-    title: "8. Conservación y seguridad",
+    title: "8. Cookies",
     content:
-      "Los datos se incorporan a bases de datos de titularidad de la Municipalidad de Ceres. Si bien se aplican medidas de resguardo, no se garantiza seguridad absoluta en transmisiones por Internet, por lo que el usuario reconoce y asume los riesgos inherentes al uso de medios digitales.",
+      "El sitio utiliza cookies exclusivamente con fines funcionales y estadísticos para mejorar la experiencia de navegación.",
   },
   {
-    title: "9. Cookies",
+    title: "9. Derechos de los usuarios",
     content:
-      "El portal puede utilizar cookies con fines operativos y estadísticos. La utilización del sitio implica la aceptación de este uso.",
+      "El titular de los datos podrá solicitar el acceso, actualización, rectificación o eliminación de sus datos en cualquier momento a través de la sección de soporte o de la configuración de su cuenta.",
   },
   {
-    title: "10. Derechos de los titulares",
+    title: "10. Ley aplicable y jurisdicción",
     content:
-      "El titular de los datos podrá ejercer los derechos de acceso, rectificación y supresión conforme a la normativa vigente. La Agencia de Acceso a la Información Pública es el órgano de control de la Ley N° 25.326.",
-  },
-  {
-    title: "11. Reclamos y vía administrativa previa",
-    content:
-      "Toda solicitud de rectificación, supresión, reclamo o cuestionamiento relacionado con datos personales deberá plantearse en forma previa ante la Municipalidad de Ceres, por Mesa de Entrada o por los canales electrónicos habilitados, hasta agotar la instancia administrativa correspondiente.",
-  },
-  {
-    title: "12. Cambios a esta política",
-    content:
-      "La Municipalidad de Ceres podrá modificar o actualizar esta política en cualquier momento. Las modificaciones se considerarán vigentes desde su publicación en el sitio web oficial.",
-  },
-  {
-    title: "13. Ley aplicable y jurisdicción",
-    content:
-      "Esta política se rige por las leyes de la República Argentina. Para cualquier controversia, las partes se someten a la jurisdicción de los Tribunales Ordinarios competentes de la Provincia de Santa Fe, con competencia territorial en la ciudad de Ceres.",
+      "Esta política se rige por las leyes de la República Argentina. Para cualquier controversia, se aplicará la jurisdicción de los Tribunales Ordinarios de la Provincia de Entre Ríos con competencia territorial en la ciudad de Colón.",
   },
 ];
 
@@ -80,7 +65,7 @@ export default function PrivacidadPage() {
         Política de Privacidad
       </h1>
       <p className="mb-8 text-sm text-gray-600 dark:text-gray-400 md:text-base">
-        Portal &quot;Ceres en Red&quot; - Municipalidad de Ceres
+        Plataforma &quot;Mi Colón&quot; - Colón, Entre Ríos
       </p>
 
       <section className="space-y-6 text-sm leading-relaxed text-gray-700 dark:text-gray-300 md:text-base">

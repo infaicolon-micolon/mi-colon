@@ -20,9 +20,11 @@ import { CategoryItem } from "@/components/features/CategoryItem";
 import { CitySelect } from "@/components/features/CitySelect";
 import { resolveCategoryIcon } from "@/lib/category-icons";
 import Link from "next/link";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function ServiciosPage() {
   const searchParams = useSearchParams();
+  const { isAuthenticated } = useAuth();
   const { data: categoryTree, loading: categoriesLoading, error: categoriesError } = usePublicCategoriesTree();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -205,10 +207,10 @@ export default function ServiciosPage() {
             <h3 className="font-bold text-lg mb-2">¿Ofreces servicios?</h3>
             <p className="text-xs text-emerald-100 mb-4 leading-relaxed">Unite a la red oficial de profesionales de la zona y conectá con más clientes.</p>
             <Link
-              href="/auth/registro"
-              className="w-full py-2 bg-white text-primary font-semibold text-sm rounded-lg hover:bg-emerald-50 transition-colors flex items-center justify-center gap-2"
+              href={isAuthenticated ? "/dashboard/settings" : "/auth/registro"}
+              className="w-full py-2 bg-white text-primary font-semibold text-sm rounded-lg hover:bg-emerald-50 transition-colors flex items-center justify-center gap-2 cursor-pointer relative z-10"
             >
-              Registrarme ahora
+              {isAuthenticated ? "Agregar mi servicio" : "Registrarme ahora"}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>

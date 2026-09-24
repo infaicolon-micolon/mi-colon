@@ -94,14 +94,14 @@ export function CategorySuggestionModal({ origin, triggerClassName, triggerLabel
       setFormState("success");
 
       toast.success("Sugerencia enviada", {
-        description: "Gracias, vamos a revisar tu propuesta de categorÃ­a.",
+        description: "Gracias, vamos a revisar tu propuesta de categoría.",
       });
 
       setOpen(false);
       resetForm();
     } catch (error) {
       setErrorMessage(
-        getErrorMessage(error, "OcurriÃ³ un error inesperado. Intenta nuevamente.")
+        getErrorMessage(error, "Ocurrió un error inesperado. Intenta nuevamente.")
       );
       setFormState("error");
     }
@@ -119,7 +119,7 @@ export function CategorySuggestionModal({ origin, triggerClassName, triggerLabel
           type="button"
           className={triggerClassName || defaultTriggerClass}
         >
-          {triggerLabel || "Sugerir CategorÃ­a"}
+          {triggerLabel || "Sugerir Categoría"}
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md max-h-[85vh] overflow-y-auto rounded-2xl">

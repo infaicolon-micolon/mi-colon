@@ -177,20 +177,18 @@ export function generateOrganizationStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Ceres en Red",
-    "alternateName": "Ceres en Red -Gobierno de la Ciudad de Ceres",
+    "name": "Mi Colón",
+    "alternateName": "Mi Colón - Plataforma de Servicios",
     "url": baseUrl,
-    "logo": `${baseUrl}/gob_iso.png`,
-    "description": "Plataforma oficial de servicios profesionales del Gobierno de la Ciudad de Ceres",
+    "logo": `${baseUrl}/logo_colon.png`,
+    "description": "Plataforma de servicios y profesionales de Colón, Entre Ríos",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Ceres",
-      "addressRegion": "Santa Fe",
+      "addressLocality": "Colón",
+      "addressRegion": "Entre Ríos",
       "addressCountry": "AR"
     },
-    "sameAs": [
-      // Agregar redes sociales si existen
-    ]
+    "sameAs": []
   };
 }
 
