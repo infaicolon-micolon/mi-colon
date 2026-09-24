@@ -285,36 +285,20 @@ export default function LoginPage() {
               </div>
 
               {/* Social Login Buttons */}
-              <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="mb-6">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => handleSocialLogin("google")}
                   disabled={loading || socialLoading !== null}
-                  className="cursor-pointer h-12 rounded-xl border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 font-medium transition-all"
+                  className="w-full cursor-pointer h-12 rounded-xl border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 font-medium transition-all flex items-center justify-center"
                 >
                   {socialLoading === "google" ? (
                     <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
                   ) : (
                     <>
                       <GoogleIcon />
-                      <span className="ml-2">Google</span>
-                    </>
-                  )}
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => handleSocialLogin("facebook")}
-                  disabled={loading || socialLoading !== null}
-                  className="cursor-pointer h-12 rounded-xl border-2 border-gray-200 hover:border-[#1877F2] hover:bg-blue-50 font-medium transition-all"
-                >
-                  {socialLoading === "facebook" ? (
-                    <div className="w-5 h-5 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin" />
-                  ) : (
-                    <>
-                      <FacebookIcon />
-                      <span className="ml-2">Facebook</span>
+                      <span className="ml-2">Continuar con Google</span>
                     </>
                   )}
                 </Button>
