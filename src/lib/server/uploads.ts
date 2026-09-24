@@ -60,7 +60,12 @@ function ensureUploadGrantType(value: unknown): PublicUploadGrantType | null {
   return null;
 }
 
+import { tmpdir } from 'os';
+
 function uploadsDirectory() {
+  if (process.env.VERCEL) {
+    return join(tmpdir(), 'public', 'uploads', 'profiles');
+  }
   return join(process.cwd(), 'public', 'uploads', 'profiles');
 }
 
@@ -91,9 +96,16 @@ function inferContentTypeFromKey(objectKey: string) {
 }
 
 function ensureUploadsDirectory() {
-  const directory = uploadsDirectory();
-  if (!existsSync(directory)) {
-    mkdirSync(directory, { recursive: true });
+  let directory = uploadsDirectory();
+  try {
+    if (!existsSync(directory)) {
+      mkdirSync(directory, { recursive: true });
+    }
+  } catch {
+    directory = join(tmpdir(), 'public', 'uploads', 'profiles');
+    if (!existsSync(directory)) {
+      mkdirSync(directory, { recursive: true });
+    }
   }
 
   return directory;

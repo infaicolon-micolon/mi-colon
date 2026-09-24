@@ -41,14 +41,26 @@ export class PrivateDocumentError extends Error {
   }
 }
 
+import { tmpdir } from "os";
+
 function privateDocumentsRoot() {
+  if (process.env.VERCEL) {
+    return join(tmpdir(), "storage", "private-documents");
+  }
   return join(process.cwd(), "storage", "private-documents");
 }
 
 function ensurePrivateDocumentsRoot() {
-  const directory = privateDocumentsRoot();
-  if (!existsSync(directory)) {
-    mkdirSync(directory, { recursive: true });
+  let directory = privateDocumentsRoot();
+  try {
+    if (!existsSync(directory)) {
+      mkdirSync(directory, { recursive: true });
+    }
+  } catch {
+    directory = join(tmpdir(), "storage", "private-documents");
+    if (!existsSync(directory)) {
+      mkdirSync(directory, { recursive: true });
+    }
   }
   return directory;
 }
@@ -64,17 +76,26 @@ function buildObjectKey(extension: string) {
 }
 
 function localFilePathForObjectKey(objectKey: string) {
-  return join(process.cwd(), "storage", ...objectKey.split("/"));
+  const base = process.env.VERCEL ? join(tmpdir(), "storage") : join(process.cwd(), "storage");
+  return join(base, ...objectKey.split("/"));
 }
 
 async function persistPrivateDocumentLocally(buffer: Buffer, objectKey: string) {
-  ensurePrivateDocumentsRoot();
-  const diskPath = localFilePathForObjectKey(objectKey);
-  const directory = dirname(diskPath);
-  if (!existsSync(directory)) {
-    mkdirSync(directory, { recursive: true });
+  let diskPath = localFilePathForObjectKey(objectKey);
+  let directory = dirname(diskPath);
+  try {
+    if (!existsSync(directory)) {
+      mkdirSync(directory, { recursive: true });
+    }
+    await writeFile(diskPath, buffer);
+  } catch {
+    diskPath = join(tmpdir(), "storage", ...objectKey.split("/"));
+    directory = dirname(diskPath);
+    if (!existsSync(directory)) {
+      mkdirSync(directory, { recursive: true });
+    }
+    await writeFile(diskPath, buffer);
   }
-  await writeFile(diskPath, buffer);
   return { objectKey, storage: "local" as const };
 }
 
@@ -230,9 +251,14 @@ export async function createPrivateDocumentDownloadResponse(input: {
     }
   }
 
-  const diskPath = localFilePathForObjectKey(input.objectKey);
+  let diskPath = localFilePathForObjectKey(input.objectKey);
   if (!existsSync(diskPath)) {
-    throw new PrivateDocumentError("not_found", "Documento no encontrado.", 404);
+    const tmpPath = join(tmpdir(), "storage", ...input.objectKey.split("/"));
+    if (existsSync(tmpPath)) {
+      diskPath = tmpPath;
+    } else {
+      throw new PrivateDocumentError("not_found", "Documento no encontrado.", 404);
+    }
   }
 
   const stream = Readable.toWeb(createReadStream(diskPath)) as ReadableStream;
