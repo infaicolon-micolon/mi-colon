@@ -1128,16 +1128,16 @@ export default function SettingsPage() {
               {/* Archivos - Sección completamente rediseñada */}
               <Separator className="my-6" />
               <div className="space-y-6">
-                <h4 className="font-semibold text-lg">Archivos del Perfil</h4>
+                <h4 className="font-semibold text-lg text-gray-900 dark:text-white">Archivos del Perfil</h4>
                 
                 {/* Foto de perfil - preview redimensionada y recorte */}
-                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
-                  <Label htmlFor="picture" className="text-base font-semibold mb-4 block">
+                <div className="bg-gray-50 dark:bg-gray-800/80 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                  <Label htmlFor="picture" className="text-base font-semibold mb-4 block text-gray-900 dark:text-white">
                     Foto de Perfil
                   </Label>
                   <div className="flex flex-col md:flex-row gap-6 items-start">
                     {/* Preview de la foto en tamaño más contenido */}
-                    <div className="relative h-28 w-28 md:h-32 md:w-32 rounded-full overflow-hidden border-4 border-white shadow-lg bg-gray-100 flex-shrink-0 mx-auto md:mx-0">
+                    <div className="relative h-28 w-28 md:h-32 md:w-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-lg bg-gray-100 dark:bg-gray-900 flex-shrink-0 mx-auto md:mx-0">
                       {formData.picture ? (
                         <>
                           <Image
@@ -1159,7 +1159,7 @@ export default function SettingsPage() {
                           </button>
                         </>
                       ) : (
-                        <div className="h-full w-full flex flex-col items-center justify-center text-sm text-gray-400">
+                        <div className="h-full w-full flex flex-col items-center justify-center text-sm text-gray-400 dark:text-gray-500">
                           <Upload className="h-12 w-12 mb-2 opacity-50" />
                           <span>Sin foto</span>
                         </div>
@@ -1189,13 +1189,13 @@ export default function SettingsPage() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <p className="text-sm text-gray-600">
-                          <strong>Formatos:</strong> PNG, JPG, JPEG, WEBP
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          <strong className="text-gray-900 dark:text-white">Formatos:</strong> PNG, JPG, JPEG, WEBP
                         </p>
-                        <p className="text-sm text-gray-600">
-                          <strong>Tamaño máximo:</strong> 10MB
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          <strong className="text-gray-900 dark:text-white">Tamaño máximo:</strong> 10MB
                         </p>
-                        <p className="text-xs text-gray-500 mt-2">
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
                           Podrás recortar y ajustar la imagen antes de subirla. La imagen se mostrará en formato circular en tu perfil.
                         </p>
                       </div>
@@ -1204,8 +1204,8 @@ export default function SettingsPage() {
                 </div>
 
                 {/* CV con preview mejorado */}
-                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
-                  <Label htmlFor="cv" className="text-base font-semibold mb-4 block">
+                <div className="bg-gray-50 dark:bg-gray-800/80 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                  <Label htmlFor="cv" className="text-base font-semibold mb-4 block text-gray-900 dark:text-white">
                     CV (Curriculum Vitae)
                   </Label>
                   <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -1218,15 +1218,15 @@ export default function SettingsPage() {
                           }
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex flex-col items-center justify-center h-32 w-32 rounded-xl border-2 border-[#006F4B] bg-white hover:bg-[#006F4B] hover:text-white transition-all shadow-md group"
+                          className="flex flex-col items-center justify-center h-32 w-32 rounded-xl border-2 border-[#006F4B] dark:border-emerald-500 bg-white dark:bg-gray-900 hover:bg-[#006F4B] dark:hover:bg-[#006F4B] hover:text-white transition-all shadow-md group"
                         >
-                          <FileText className="h-12 w-12 text-[#006F4B] group-hover:text-white mb-2" />
-                          <span className="text-xs font-medium text-center px-2">Ver CV actual</span>
+                          <FileText className="h-12 w-12 text-[#006F4B] dark:text-emerald-400 group-hover:text-white mb-2" />
+                          <span className="text-xs font-medium text-center px-2 text-gray-900 dark:text-gray-200 group-hover:text-white">Ver CV actual</span>
                         </a>
                       ) : (
-                        <div className="h-32 w-32 rounded-xl border-2 border-dashed border-gray-300 bg-white flex flex-col items-center justify-center">
-                          <FileText className="h-12 w-12 text-gray-400 mb-2" />
-                          <span className="text-xs text-gray-400 text-center px-2">Sin CV</span>
+                        <div className="h-32 w-32 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 flex flex-col items-center justify-center">
+                          <FileText className="h-12 w-12 text-gray-400 dark:text-gray-500 mb-2" />
+                          <span className="text-xs text-gray-400 dark:text-gray-500 text-center px-2">Sin CV</span>
                         </div>
                       )}
                     </div>
@@ -1259,11 +1259,11 @@ export default function SettingsPage() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <p className="text-sm text-gray-600">
-                          <strong>Formatos:</strong> PDF, DOC, DOCX, JPG, PNG
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          <strong className="text-gray-900 dark:text-white">Formatos:</strong> PDF, DOC, DOCX, JPG, PNG
                         </p>
-                        <p className="text-sm text-gray-600">
-                          <strong>Tamaño máximo:</strong> 15MB
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          <strong className="text-gray-900 dark:text-white">Tamaño máximo:</strong> 15MB
                         </p>
                       </div>
                       {formData.cv && (
@@ -1273,7 +1273,7 @@ export default function SettingsPage() {
                               handleInputChange('cv', '');
                               toast.info('CV eliminado');
                             }}
-                            className="text-sm text-red-600 hover:text-red-700 underline"
+                            className="text-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 underline"
                           >
                             Eliminar CV actual
                           </button>
@@ -1283,11 +1283,11 @@ export default function SettingsPage() {
                   </div>
                 </div>
 
-                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 space-y-4">
+                <div className="bg-gray-50 dark:bg-gray-800/80 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 space-y-4">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
-                      <h4 className="text-base font-semibold text-gray-900">Documentación para visibilidad</h4>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <h4 className="text-base font-semibold text-gray-900 dark:text-white">Documentación para visibilidad</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                         El certificado de antecedentes penales es obligatorio para aparecer en la plataforma.
                         Las referencias laborales son opcionales y se mostrarán como señal de confianza.
                       </p>
@@ -1296,7 +1296,7 @@ export default function SettingsPage() {
                       <Badge variant={formData.documentation.criminalRecord ? "default" : "secondary"}>
                         {formData.documentation.criminalRecord ? "Antecedentes cargados" : "Falta antecedentes"}
                       </Badge>
-                      <Badge variant="outline">
+                      <Badge variant="outline" className="dark:border-gray-700 dark:text-gray-300">
                         {formData.documentation.laborReferences?.length
                           ? "Con referencias laborales"
                           : "Sin referencias"}

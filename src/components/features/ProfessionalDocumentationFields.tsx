@@ -83,34 +83,34 @@ export function ProfessionalDocumentationFields({
 
   return (
     <div className="space-y-6">
-      <Card className="border border-emerald-100 shadow-sm">
+      <Card className="border border-emerald-100 dark:border-emerald-900/50 bg-white dark:bg-gray-800/80 shadow-sm">
         <CardHeader className="pb-3">
-          <CardTitle className="flex items-center gap-2 text-base text-gray-900">
-            <ShieldCheck className="h-4 w-4 text-emerald-700" />
+          <CardTitle className="flex items-center gap-2 text-base text-gray-900 dark:text-white">
+            <ShieldCheck className="h-4 w-4 text-emerald-700 dark:text-emerald-400" />
             Certificado de antecedentes penales
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+          <div className="rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 px-4 py-3 text-sm text-emerald-900 dark:text-emerald-200">
             Este documento es obligatorio para que el perfil pueda aparecer en la plataforma.
           </div>
 
           {helperText ? (
-            <p className="text-sm text-gray-600">{helperText}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">{helperText}</p>
           ) : null}
 
           {documentation.criminalRecord ? (
-            <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+            <div className="flex items-center justify-between rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 px-4 py-3">
               <div className="flex items-center gap-3">
-                <FileText className="h-4 w-4 text-emerald-700" />
+                <FileText className="h-4 w-4 text-emerald-700 dark:text-emerald-400" />
                 <div>
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">
                     {documentation.criminalRecord.fileName}
                   </p>
                   {documentation.criminalRecord.downloadPath ? (
                     <a
                       href={documentation.criminalRecord.downloadPath}
-                      className="text-xs text-emerald-700 hover:underline"
+                      className="text-xs text-emerald-700 dark:text-emerald-400 hover:underline"
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -124,7 +124,7 @@ export function ProfessionalDocumentationFields({
                 type="button"
                 variant="ghost"
                 size="sm"
-                className="text-red-600 hover:text-red-700"
+                className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
                 onClick={() =>
                   updateDocumentation({
                     ...documentation,
@@ -139,7 +139,7 @@ export function ProfessionalDocumentationFields({
           ) : null}
 
           <div>
-            <Label htmlFor="criminal-record-upload">Subir certificado</Label>
+            <Label htmlFor="criminal-record-upload" className="text-gray-900 dark:text-gray-200">Subir certificado</Label>
             <div className="relative mt-2">
               <Upload className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
               <Input
@@ -176,42 +176,42 @@ export function ProfessionalDocumentationFields({
                 }}
               />
             </div>
-            <p className="mt-1 text-xs text-gray-500">
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
               PDF, DOC, DOCX, JPG o PNG. Se guarda de forma privada.
             </p>
             {uploadingCriminalRecord ? (
-              <div className="mt-2 flex items-center gap-2 text-sm text-emerald-700">
+              <div className="mt-2 flex items-center gap-2 text-sm text-emerald-700 dark:text-emerald-400">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 Subiendo certificado...
               </div>
             ) : null}
             {errors?.criminalRecord ? (
-              <p className="mt-2 text-sm text-red-600">{errors.criminalRecord}</p>
+              <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.criminalRecord}</p>
             ) : null}
             {uploadError ? (
-              <p className="mt-2 text-sm text-red-600">{uploadError}</p>
+              <p className="mt-2 text-sm text-red-600 dark:text-red-400">{uploadError}</p>
             ) : null}
           </div>
         </CardContent>
       </Card>
 
-      <Card className="border border-gray-200 shadow-sm">
+      <Card className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm">
         <CardHeader className="pb-3">
-          <CardTitle className="flex items-center gap-2 text-base text-gray-900">
-            <FileBadge2 className="h-4 w-4 text-emerald-700" />
+          <CardTitle className="flex items-center gap-2 text-base text-gray-900 dark:text-white">
+            <FileBadge2 className="h-4 w-4 text-emerald-700 dark:text-emerald-400" />
             Referencias laborales
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-gray-300">
             Son opcionales. Si cargas al menos una, en tu perfil se mostrará que cuentas con
             referencias laborales.
           </p>
 
           {(documentation.laborReferences ?? []).map((reference, index) => (
-            <div key={reference.id ?? `reference-${index}`} className="rounded-2xl border border-gray-200 p-4">
+            <div key={reference.id ?? `reference-${index}`} className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/40 p-4">
               <div className="mb-3 flex items-center justify-between">
-                <p className="text-sm font-semibold text-gray-900">Referencia {index + 1}</p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">Referencia {index + 1}</p>
                 <Button
                   type="button"
                   variant="ghost"
@@ -277,15 +277,15 @@ export function ProfessionalDocumentationFields({
 
               <div className="mt-4 space-y-2">
                 {reference.attachment ? (
-                  <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+                  <div className="flex items-center justify-between rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 px-4 py-3">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">
                         {reference.attachment.fileName}
                       </p>
                       {reference.attachment.downloadPath ? (
                         <a
                           href={reference.attachment.downloadPath}
-                          className="text-xs text-emerald-700 hover:underline"
+                          className="text-xs text-emerald-700 dark:text-emerald-400 hover:underline"
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -297,7 +297,7 @@ export function ProfessionalDocumentationFields({
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="text-red-600 hover:text-red-700"
+                      className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
                       onClick={() => updateReference(index, { attachment: null })}
                     >
                       <Trash2 className="mr-1 h-4 w-4" />
@@ -307,7 +307,7 @@ export function ProfessionalDocumentationFields({
                 ) : null}
 
                 <div>
-                  <Label htmlFor={`reference-attachment-${index}`}>Adjunto opcional</Label>
+                  <Label htmlFor={`reference-attachment-${index}`} className="text-gray-900 dark:text-gray-200">Adjunto opcional</Label>
                   <div className="relative mt-2">
                     <Upload className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                     <Input
@@ -342,7 +342,7 @@ export function ProfessionalDocumentationFields({
                     />
                   </div>
                   {uploadingReferenceIndex === index ? (
-                    <div className="mt-2 flex items-center gap-2 text-sm text-emerald-700">
+                    <div className="mt-2 flex items-center gap-2 text-sm text-emerald-700 dark:text-emerald-400">
                       <Loader2 className="h-4 w-4 animate-spin" />
                       Subiendo adjunto...
                     </div>
@@ -355,7 +355,7 @@ export function ProfessionalDocumentationFields({
           <Button
             type="button"
             variant="outline"
-            className="w-full border-dashed"
+            className="w-full border-dashed dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-700"
             disabled={
               (documentation.laborReferences ?? []).length >=
               PROFESSIONAL_DOCUMENTATION_LIMITS.maxReferences
@@ -370,7 +370,7 @@ export function ProfessionalDocumentationFields({
             <Plus className="mr-2 h-4 w-4" />
             Agregar referencia laboral
           </Button>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
             Puedes cargar hasta {PROFESSIONAL_DOCUMENTATION_LIMITS.maxReferences} referencias.
           </p>
 
