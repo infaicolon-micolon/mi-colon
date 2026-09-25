@@ -1348,21 +1348,21 @@ export default function SettingsPage() {
               {formData.services.length > 0 ? (
                 <div className="space-y-4">
                   {formData.services.map((service) => (
-                    <div key={service.id} className="border border-gray-200 rounded-xl p-4 hover:bg-gray-50 transition-colors">
+                    <div key={service.id} className="border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <h4 className="font-medium text-lg">{service.title}</h4>
-                          <Badge variant="secondary" className="mt-1 rounded-xl">
+                          <h4 className="font-medium text-lg text-gray-900 dark:text-white">{service.title}</h4>
+                          <Badge variant="secondary" className="mt-1 rounded-xl dark:bg-gray-700 dark:text-gray-200">
                             {service.category.name}
                           </Badge>
-                          <p className="text-sm text-gray-600 mt-2">{service.description}</p>
+                          <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">{service.description}</p>
                         </div>
                         <div className="flex gap-2 ml-4">
                           <Button
                             variant="outline"
                             size="sm"
                             onClick={() => handleEditService(service.id)}
-                            className="rounded-xl"
+                            className="rounded-xl dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
                           >
                             Editar
                           </Button>
@@ -1388,7 +1388,7 @@ export default function SettingsPage() {
                                 type="button"
                                 variant="outline"
                                 size="sm"
-                                className="text-red-600 hover:text-red-700 rounded-xl"
+                                className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 rounded-xl dark:border-gray-600 dark:hover:bg-red-950/30"
                               >
                                 Eliminar
                               </Button>
