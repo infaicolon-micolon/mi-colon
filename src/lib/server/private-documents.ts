@@ -99,7 +99,7 @@ async function persistPrivateDocumentLocally(buffer: Buffer, objectKey: string) 
   return { objectKey, storage: "local" as const };
 }
 
-import { isSupabaseStorageConfigured, uploadToSupabaseStorage } from "@/lib/supabase-storage";
+import { isSupabaseStorageConfigured, uploadToSupabaseStorage, downloadFromSupabaseStorage } from "@/lib/supabase-storage";
 
 async function persistPrivateDocument(
   buffer: Buffer,
@@ -245,6 +245,22 @@ export async function createPrivateDocumentDownloadResponse(input: {
   objectKey: string;
   fileName: string;
 }) {
+  if (isSupabaseStorageConfigured()) {
+    try {
+      const { data, contentType } = await downloadFromSupabaseStorage({ path: input.objectKey });
+      const arrayBuffer = await data.arrayBuffer();
+      return new Response(arrayBuffer, {
+        headers: {
+          "Content-Type": contentType || inferContentTypeFromFileName(input.fileName),
+          "Content-Disposition": `attachment; filename="${encodeURIComponent(input.fileName)}"`,
+          "Cache-Control": "private, no-store",
+        },
+      });
+    } catch (error) {
+      console.error("Error downloading private document from Supabase Storage:", error);
+    }
+  }
+
   if (isR2StorageConfigured()) {
     try {
       const object = await getR2Object(input.objectKey);

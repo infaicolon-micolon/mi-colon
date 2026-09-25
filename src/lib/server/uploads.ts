@@ -128,7 +128,7 @@ async function persistLocally(
   };
 }
 
-import { isSupabaseStorageConfigured, uploadToSupabaseStorage } from '@/lib/supabase-storage';
+import { isSupabaseStorageConfigured, uploadToSupabaseStorage, downloadFromSupabaseStorage } from '@/lib/supabase-storage';
 
 async function persistUpload(
   buffer: Buffer,
@@ -282,6 +282,21 @@ export async function createPublicUploadResponse(input: { objectKey: string }) {
 
   if (!objectKey.startsWith('profiles/') || objectKey.includes('..')) {
     throw new UploadFlowError('invalid_key', 'Archivo invalido.', 400);
+  }
+
+  if (isSupabaseStorageConfigured()) {
+    try {
+      const { data, contentType } = await downloadFromSupabaseStorage({ path: objectKey });
+      const arrayBuffer = await data.arrayBuffer();
+      return new Response(arrayBuffer, {
+        headers: {
+          'Content-Type': contentType || inferContentTypeFromKey(objectKey),
+          'Cache-Control': 'public, max-age=3600',
+        },
+      });
+    } catch (error) {
+      console.error('Error serving from Supabase Storage:', error);
+    }
   }
 
   if (isR2StorageConfigured()) {

@@ -10,6 +10,14 @@ function buildRemotePatterns(): NonNullable<NextConfig["images"]>["remotePattern
       protocol: "https",
       hostname: "*.googleusercontent.com",
     },
+    {
+      protocol: "https",
+      hostname: "*.supabase.co",
+    },
+    {
+      protocol: "https",
+      hostname: "mqrvqmgmyjoaaqppxlfk.supabase.co",
+    },
   ];
   const publicBaseUrl = process.env.R2_PUBLIC_BASE_URL;
 
