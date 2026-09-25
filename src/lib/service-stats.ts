@@ -6,6 +6,11 @@ const CACHE_TTL_MS = 60_000;
 let cachedCounts: Record<string, number> | null = null;
 let cachedAt = 0;
 
+export function invalidateServiceStatsCache() {
+  cachedCounts = null;
+  cachedAt = 0;
+}
+
 export async function getServiceCountsByCategorySlug(): Promise<Record<string, number>> {
   const now = Date.now();
   if (cachedCounts && now - cachedAt < CACHE_TTL_MS) {

@@ -3,13 +3,27 @@ import { prisma } from '@/lib/prisma';
 import { ensureProfessionalRecord } from '@/lib/server/professional-dashboard';
 import type { ObservabilityActor } from '@/lib/observability/context';
 import { buildChanges, safeRecordAuditEvent } from '@/lib/observability/audit';
-import { getServiceCountsByCategorySlug } from '@/lib/service-stats';
+import { revalidateTag, revalidatePath } from 'next/cache';
+import { getServiceCountsByCategorySlug, invalidateServiceStatsCache } from '@/lib/service-stats';
 import { getPublicProfessionalWhere } from '@/lib/server/public-professional-visibility';
 import {
   AREAS_OFICIOS,
   SUBCATEGORIES_OFICIOS,
   SUBCATEGORIES_PROFESIONES,
 } from '@/lib/taxonomy';
+
+function triggerServicesCacheInvalidation() {
+  invalidateServiceStatsCache();
+  try {
+    revalidateTag('categories');
+    revalidateTag('public-category-tree');
+    revalidatePath('/categorias');
+    revalidatePath('/servicios');
+    revalidatePath('/');
+  } catch (error) {
+    console.error('Error revalidating category/service caches:', error);
+  }
+}
 
 export const SERVICES_LIST_RATE_LIMIT = {
   limit: 200,
@@ -38,6 +52,7 @@ type CreateServicePayload = {
 type UpdateServicePayload = {
   title?: unknown;
   description?: unknown;
+  categorySlug?: unknown;
   priceRange?: unknown;
   available?: unknown;
 };
@@ -448,6 +463,8 @@ export async function createServiceForUser(
     },
   });
 
+  triggerServicesCacheInvalidation();
+
   return created;
 }
 
@@ -465,6 +482,10 @@ export async function updateOwnedService(
   }
   if (typeof payload.description === 'string') {
     data.description = payload.description;
+  }
+  if (typeof payload.categorySlug === 'string' && payload.categorySlug.trim()) {
+    const category = await resolveServiceCategory(payload.categorySlug.trim(), observability);
+    data.categoryId = category.id;
   }
   if (typeof payload.priceRange === 'string') {
     data.priceRange = payload.priceRange;
@@ -515,6 +536,8 @@ export async function updateOwnedService(
     },
   });
 
+  triggerServicesCacheInvalidation();
+
   return updated;
 }
 
@@ -543,6 +566,8 @@ export async function deleteOwnedService(
       ownerUserId: userId,
     },
   });
+
+  triggerServicesCacheInvalidation();
 }
 
 export async function getServiceCounts() {
