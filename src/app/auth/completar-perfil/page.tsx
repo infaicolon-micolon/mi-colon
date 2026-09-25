@@ -1140,6 +1140,7 @@ export default function CompletarPerfilPage() {
                             src={resolvePublicUploadUrl(formData.picture)}
                             alt="Foto de perfil"
                             fill
+                            unoptimized={formData.picture.startsWith("http")}
                             className="object-cover"
                             onError={() => console.error("Error cargando imagen:", formData.picture)}
                           />

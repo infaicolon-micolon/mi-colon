@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 function buildRemotePatterns(): NonNullable<NextConfig["images"]>["remotePatterns"] {
-  const patterns: NonNullable<NextConfig["images"]>["remotePatterns"] = [];
+  const patterns: NonNullable<NextConfig["images"]>["remotePatterns"] = [
+    {
+      protocol: "https",
+      hostname: "lh3.googleusercontent.com",
+    },
+    {
+      protocol: "https",
+      hostname: "*.googleusercontent.com",
+    },
+  ];
   const publicBaseUrl = process.env.R2_PUBLIC_BASE_URL;
 
   if (!publicBaseUrl) {
