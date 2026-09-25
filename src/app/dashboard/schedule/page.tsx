@@ -35,10 +35,10 @@ interface ScheduleData extends DashboardScheduleDay {
 const DAYS_OF_WEEK = [
   { id: 'monday', name: 'Lunes', short: 'L' },
   { id: 'tuesday', name: 'Martes', short: 'M' },
-  { id: 'wednesday', name: 'MiÃ©rcoles', short: 'X' },
+  { id: 'wednesday', name: 'Miércoles', short: 'X' },
   { id: 'thursday', name: 'Jueves', short: 'J' },
   { id: 'friday', name: 'Viernes', short: 'V' },
-  { id: 'saturday', name: 'SÃ¡bado', short: 'S' },
+  { id: 'saturday', name: 'Sábado', short: 'S' },
   { id: 'sunday', name: 'Domingo', short: 'D' },
 ];
 
@@ -133,7 +133,7 @@ export default function SchedulePage() {
     
     setScheduleData(newSchedule);
     setHasChanges(true);
-    toast.success('Horarios copiados a todos los dÃ­as');
+    toast.success('Horarios copiados a todos los días');
   };
 
   const resetToDefault = () => {
@@ -162,7 +162,7 @@ export default function SchedulePage() {
               Horarios de Disponibilidad
             </h1>
             <p className="text-muted-foreground mt-1">
-              Configura tus horarios de trabajo para que los clientes sepan cuÃ¡ndo estÃ¡s disponible
+              Configura tus horarios de trabajo para que los clientes sepan cuándo estás disponible
             </p>
           </div>
           <div className="flex gap-2">
@@ -192,15 +192,15 @@ export default function SchedulePage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Calendar className="h-5 w-5" />
-              ConfiguraciÃ³n General
+              Configuración General
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <Label className="text-base font-medium">Trabajo en dÃ­as feriados</Label>
+                <Label className="text-base font-medium">Trabajo en días feriados</Label>
                 <p className="text-sm text-muted-foreground">
-                  Indica si trabajas durante los dÃ­as feriados
+                  Indica si trabajas durante los días feriados
                 </p>
               </div>
               <Switch
@@ -249,7 +249,7 @@ export default function SchedulePage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <Label className="text-sm font-medium">Todo el dÃ­a (24hs)</Label>
+                      <Label className="text-sm font-medium">Todo el día (24hs)</Label>
                       <p className="text-xs text-muted-foreground">
                         Disponible las 24 horas
                       </p>
@@ -272,7 +272,7 @@ export default function SchedulePage() {
                       
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <Label className="text-sm font-medium">Turno MaÃ±ana</Label>
+                          <Label className="text-sm font-medium">Turno Mañana</Label>
                           <Switch
                             checked={daySchedule.morning.enabled}
                             onCheckedChange={(checked) => handleDayScheduleChange(day.id, 'morning', { ...daySchedule.morning, enabled: checked })}

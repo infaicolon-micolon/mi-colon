@@ -24,11 +24,11 @@ export default function ResetPasswordPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!tokenFromUrl) {
-      setError("El enlace no es vÃ¡lido.");
+      setError("El enlace no es válido.");
       return;
     }
     if (password !== confirmPassword) {
-      setError("Las contraseÃ±as no coinciden.");
+      setError("Las contraseñas no coinciden.");
       return;
     }
     setLoading(true);
@@ -40,7 +40,7 @@ export default function ResetPasswordPage() {
     } catch (error) {
       console.error(error);
       setError(
-        getErrorMessage(error, "No pudimos restablecer tu contraseÃ±a. IntentÃ¡ nuevamente.")
+        getErrorMessage(error, "No pudimos restablecer tu contraseña. Intentá nuevamente.")
       );
     } finally {
       setLoading(false);
@@ -57,40 +57,40 @@ export default function ResetPasswordPage() {
             className="mb-4 inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
           >
             <ArrowLeft className="h-4 w-4 mr-1" />
-            Volver al inicio de sesiÃ³n
+            Volver al inicio de sesión
           </button>
 
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Crear nueva contraseÃ±a
+            Crear nueva contraseña
           </h1>
           <p className="text-sm text-gray-600 mb-6">
-            ElegÃ­ una nueva contraseÃ±a segura para tu cuenta.
+            Elegí una nueva contraseña segura para tu cuenta.
           </p>
 
           {!tokenFromUrl ? (
             <div className="space-y-4">
               <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2">
-                El enlace de recuperaciÃ³n no es vÃ¡lido. VolvÃ© a solicitar uno
-                desde la pantalla de inicio de sesiÃ³n.
+                El enlace de recuperación no es válido. Volvé a solicitar uno
+                desde la pantalla de inicio de sesión.
               </p>
               <Link href="/auth/recuperar">
                 <Button className="w-full rounded-xl bg-[#006F4B] hover:bg-[#005a3d] text-white">
-                  Ir a recuperar contraseÃ±a
+                  Ir a recuperar contraseña
                 </Button>
               </Link>
             </div>
           ) : done ? (
             <div className="space-y-4">
               <p className="text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2">
-                Tu contraseÃ±a se actualizÃ³ correctamente. Ahora podÃ©s iniciar
-                sesiÃ³n con la nueva contraseÃ±a.
+                Tu contraseña se actualizó correctamente. Ahora podés iniciar
+                sesión con la nueva contraseña.
               </p>
               <Button
                 type="button"
                 className="w-full rounded-xl bg-[#006F4B] hover:bg-[#005a3d] text-white"
                 onClick={() => router.push("/auth/login")}
               >
-                Ir al inicio de sesiÃ³n
+                Ir al inicio de sesión
               </Button>
             </div>
           ) : (
@@ -100,14 +100,14 @@ export default function ResetPasswordPage() {
                   htmlFor="password"
                   className="text-sm font-medium text-gray-700 mb-2 block"
                 >
-                  Nueva contraseÃ±a
+                  Nueva contraseña
                 </Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                   <Input
                     id="password"
                     type="password"
-                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                    placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -116,7 +116,7 @@ export default function ResetPasswordPage() {
                   />
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
-                  MÃ­nimo 8 caracteres. EvitÃ¡ usar contraseÃ±as fÃ¡ciles de
+                  Mínimo 8 caracteres. Evitá usar contraseñas fáciles de
                   adivinar.
                 </p>
               </div>
@@ -126,14 +126,14 @@ export default function ResetPasswordPage() {
                   htmlFor="confirmPassword"
                   className="text-sm font-medium text-gray-700 mb-2 block"
                 >
-                  Repetir contraseÃ±a
+                  Repetir contraseña
                 </Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                   <Input
                     id="confirmPassword"
                     type="password"
-                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                    placeholder="••••••••"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
@@ -160,7 +160,7 @@ export default function ResetPasswordPage() {
                     Actualizando...
                   </>
                 ) : (
-                  "Guardar nueva contraseÃ±a"
+                  "Guardar nueva contraseña"
                 )}
               </Button>
             </form>

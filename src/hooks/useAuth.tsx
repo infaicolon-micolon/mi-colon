@@ -38,7 +38,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    throw new Error('Error al iniciar sesiÃ³n');
+    throw new Error('Error al iniciar sesión');
   };
 
   const register = async (data: RegisterFormData) => {
