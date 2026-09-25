@@ -155,10 +155,12 @@ async function getPublicCategoryTreeUncached(): Promise<PublicCategoryTree> {
       const linkedSubcategories = normalizedSubcategoriesOficios.filter(
         (subcategory) => subcategory.areaSlug === area.slug
       );
-      const professionalCount = linkedSubcategories.reduce(
+      const subcategoryCount = linkedSubcategories.reduce(
         (sum, subcategory) => sum + subcategory.professionalCount,
         0
       );
+      const directAreaCount = serviceCountMap.get(area.id) || 0;
+      const professionalCount = subcategoryCount + directAreaCount;
 
       return {
         id: area.id,

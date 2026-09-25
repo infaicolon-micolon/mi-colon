@@ -27,14 +27,14 @@ export function CategoriesContent() {
   const hasResolvedCounts = !countsLoading && Object.keys(serviceCounts).length > 0;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 font-rutan mb-4">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white font-rutan mb-4">
               Categorías de Servicios
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
               Explora todas las categorías de servicios profesionales disponibles en Colón.
               Encuentra exactamente lo que necesitas.
             </p>
@@ -45,7 +45,7 @@ export function CategoriesContent() {
               {Array.from({ length: 6 }).map((_, index) => (
                 <div
                   key={index}
-                  className="h-[320px] rounded-2xl bg-white border border-gray-100 animate-pulse"
+                  className="h-[320px] rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 animate-pulse"
                 />
               ))}
             </div>
@@ -53,10 +53,12 @@ export function CategoriesContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {categories.map((category) => {
                 const Icon = resolveCategoryIcon(category.icon, category.slug);
-                const countedServices = category.services.reduce(
-                  (sum, service) => sum + (serviceCounts[service.slug] ?? 0),
-                  0
-                );
+                const countedServices =
+                  (serviceCounts[category.slug] ?? 0) +
+                  category.services.reduce(
+                    (sum, service) => sum + (serviceCounts[service.slug] ?? 0),
+                    0
+                  );
                 const totalServices = hasResolvedCounts ? countedServices : category.professionalCount;
 
                 return (
@@ -64,55 +66,55 @@ export function CategoriesContent() {
                     key={category.id}
                     href={`/servicios?grupo=${category.group}&categoria=${category.slug}`}
                   >
-                    <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer rounded-2xl border border-gray-100 h-full">
+                    <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 h-full">
                       <CardHeader className="pb-4">
                         <div className="flex items-center justify-between mb-4">
-                          <div className="p-4 rounded-2xl bg-[#006F4B]/10 group-hover:bg-[#006F4B]/20 transition-colors">
-                            <Icon className="h-6 w-6 text-[#006F4B]" aria-hidden="true" />
+                          <div className="p-4 rounded-2xl bg-[#006F4B]/10 dark:bg-[#006F4B]/20 group-hover:bg-[#006F4B]/20 transition-colors">
+                            <Icon className="h-6 w-6 text-[#006F4B] dark:text-emerald-400" aria-hidden="true" />
                           </div>
                           <div className="text-right">
-                            <Badge className="bg-green-100 text-green-800 rounded-xl">
+                            <Badge className="bg-green-100 dark:bg-emerald-950 text-green-800 dark:text-emerald-300 dark:border-emerald-800/50 rounded-xl">
                               {totalServices} {totalServices === 1 ? "servicio" : "servicios"}
                             </Badge>
                           </div>
                         </div>
-                        <CardTitle className="text-xl font-rutan group-hover:text-[#006F4B] transition-colors">
+                        <CardTitle className="text-xl font-rutan text-gray-900 dark:text-white group-hover:text-[#006F4B] dark:group-hover:text-emerald-400 transition-colors">
                           {category.name}
                         </CardTitle>
                       </CardHeader>
 
                       <CardContent>
-                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
                           Profesionales especializados en {category.name.toLowerCase()} disponibles
                           en Colón y la región.
                         </p>
 
                         <div className="mb-4">
-                          <h4 className="font-medium text-gray-900 mb-2 text-sm">
+                          <h4 className="font-medium text-gray-900 dark:text-gray-200 mb-2 text-sm">
                             Servicios incluidos:
                           </h4>
                           <div className="flex flex-wrap gap-1">
                             {category.services.slice(0, 3).map((service) => (
-                              <Badge key={service.id} variant="outline" className="text-xs rounded-xl">
+                              <Badge key={service.id} variant="outline" className="text-xs rounded-xl dark:border-gray-700 dark:text-gray-300">
                                 {service.name}
                               </Badge>
                             ))}
                             {category.services.length > 3 && (
-                              <Badge variant="outline" className="text-xs rounded-xl">
+                              <Badge variant="outline" className="text-xs rounded-xl dark:border-gray-700 dark:text-gray-300">
                                 +{category.services.length - 3} más
                               </Badge>
                             )}
                             {category.services.length === 0 && (
-                              <Badge variant="outline" className="text-xs rounded-xl">
+                              <Badge variant="outline" className="text-xs rounded-xl dark:border-gray-700 dark:text-gray-400">
                                 Sin subcategorías cargadas
                               </Badge>
                             )}
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                          <span className="text-sm text-gray-600">Ver profesionales</span>
-                          <ArrowRight className="h-4 w-4 text-[#006F4B] group-hover:translate-x-1 transition-transform" />
+                        <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                          <span className="text-sm text-gray-600 dark:text-gray-400">Ver profesionales</span>
+                          <ArrowRight className="h-4 w-4 text-[#006F4B] dark:text-emerald-400 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </CardContent>
                     </Card>
@@ -121,25 +123,25 @@ export function CategoriesContent() {
               })}
             </div>
           ) : (
-            <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-12 text-center text-sm text-gray-500">
+            <div className="rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-12 text-center text-sm text-gray-500 dark:text-gray-400">
               {error ?? "No hay categorías activas para mostrar por ahora."}
             </div>
           )}
 
           <div className="mt-16 text-center">
-            <Card className="rounded-2xl border border-gray-100 bg-gradient-to-r from-[#006F4B]/5 to-[#008F5B]/5">
+            <Card className="rounded-2xl border border-gray-100 dark:border-gray-800 bg-gradient-to-r from-[#006F4B]/5 to-[#008F5B]/5 dark:from-[#006F4B]/20 dark:to-[#008F5B]/20">
               <CardContent className="p-8">
-                <h2 className="text-2xl font-bold text-gray-900 font-rutan mb-4">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white font-rutan mb-4">
                   ¿No encuentras la categoría que necesitas?
                 </h2>
-                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
                   Estamos agregando nuevas categorías constantemente. Contáctanos para sugerir
                   nuevos servicios que te gustaría ver en la plataforma.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <CategorySuggestionModal
                     origin="como_funciona_category_suggestion"
-                    triggerClassName="cursor-pointer bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition-all"
+                    triggerClassName="cursor-pointer bg-white dark:bg-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition-all"
                     triggerLabel="Sugerir categoría"
                   />
                   <SupportContactModal
