@@ -120,6 +120,13 @@ export function Header() {
                   <DropdownMenuLabel>
                     <span className="text-xs text-muted-foreground">{user.email}</span>
                   </DropdownMenuLabel>
+                  {(user.role === 'admin' || user.email === 'admin@micolon.com') && (
+                    <DropdownMenuItem onClick={() => {
+                      window.location.href = '/dashboard/admin';
+                    }} className="font-semibold text-emerald-800 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40">
+                      Panel de Administración
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuItem onClick={async () => {
                     const profileData = await profile();
                     if (profileData) {
