@@ -1301,7 +1301,7 @@ export default function RegistroPage() {
                     value={formData.physicalStoreAddress}
                     onChange={(e) => handleInputChange('physicalStoreAddress', e.target.value)}
                     className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 border-gray-200"
-                    placeholder="Ej: Av. San Martín 123, Ceres"
+                    placeholder="Ej: Av. San Martín 123, Colón"
                   />
                 </div>
                 {errors.physicalStoreAddress && (
@@ -1794,7 +1794,7 @@ export default function RegistroPage() {
                 Registrate como Profesional
               </h1>
               <p className="text-white/80 text-lg max-w-2xl mx-auto">
-                Completá tu perfil y comenzá a ofrecer tus servicios en la plataforma oficial de Ceres en Red
+                Completá tu perfil y comenzá a ofrecer tus servicios en la plataforma oficial de Mi Colón
               </p>
             </div>
           </div>

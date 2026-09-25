@@ -35,7 +35,7 @@ export function CategoriesContent() {
               Categorías de Servicios
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Explora todas las categorías de servicios profesionales disponibles en Ceres.
+              Explora todas las categorías de servicios profesionales disponibles en Colón.
               Encuentra exactamente lo que necesitas.
             </p>
           </div>
@@ -84,7 +84,7 @@ export function CategoriesContent() {
                       <CardContent>
                         <p className="text-gray-600 text-sm leading-relaxed mb-4">
                           Profesionales especializados en {category.name.toLowerCase()} disponibles
-                          en Ceres y la región.
+                          en Colón y la región.
                         </p>
 
                         <div className="mb-4">

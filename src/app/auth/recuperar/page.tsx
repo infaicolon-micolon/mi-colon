@@ -130,7 +130,7 @@ export default function ForgotPasswordPage() {
           </p>
         </div>
         <p className="mt-4 text-center text-xs text-gray-400">
-          Â© {new Date().getFullYear()} Ceres en Red
+          © {new Date().getFullYear()} Mi Colón
         </p>
       </div>
     </div>

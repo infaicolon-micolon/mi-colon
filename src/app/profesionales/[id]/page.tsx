@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const baseUrl = getBaseUrl();
   const professionalName = `${data.user.firstName} ${data.user.lastName}`.trim();
   const category = data.services[0]?.category?.name || "Profesional";
-  const location = data.location || data.user.location || "Ceres, Santa Fe";
+  const location = data.location || data.user.location || "Colón, Entre Ríos";
   const bio = data.bio || `Profesional ${category} en ${location}`;
   const resolvedImagePath = resolvePublicUploadUrl(data.ProfilePicture || data.user.image);
   const imageUrl = resolvedImagePath
@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     : `${baseUrl}/gob_iso.png`;
   
   const pageUrl = `${baseUrl}/profesionales/${id}`;
-  const title = `${professionalName} - ${category} en Ceres`;
+  const title = `${professionalName} - ${category} en Colón`;
   const description = `${bio.substring(0, 155)}${bio.length > 155 ? '...' : ''} | ${location}`;
 
   return {
@@ -142,7 +142,7 @@ export default async function ProfessionalDetailPage({ params }: { params: Promi
   // El location puede venir como nombre completo (ej. "Ceres, Santa Fe, Argentina") o como ID
   // Intentamos usar el location del professional, si no existe usamos el del user
   const rawLocation = data.location || data.user?.location;
-  let locationName = 'Ceres, Santa Fe, Argentina'; // Default
+  let locationName = 'Colón, Entre Ríos, Argentina'; // Default
   
   if (rawLocation) {
     // Si parece ser un ID (solo letras minúsculas, sin comas), buscar en LOCATIONS
@@ -400,7 +400,7 @@ export default async function ProfessionalDetailPage({ params }: { params: Promi
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-white/14 px-3 py-1.5 text-sm text-white">
                     <MapPin className="h-3.5 w-3.5" />
-                    {p.location || "Ceres, Santa Fe, Argentina"}
+                    {p.location || "Colón, Entre Ríos, Argentina"}
                   </span>
                   {p.hasLaborReferences && (
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-400/20 px-3 py-1.5 text-sm text-emerald-50 ring-1 ring-emerald-200/30">

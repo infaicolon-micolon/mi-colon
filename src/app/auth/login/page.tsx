@@ -138,7 +138,7 @@ export default function LoginPage() {
                 Conectamos profesionales<br />con quienes los necesitan
               </h1>
               <p className="text-white/80 text-lg max-w-md">
-                La plataforma oficial de servicios profesionales para Ceres y la región
+                La plataforma oficial de servicios profesionales para Colón y la región
               </p>
             </div>
 

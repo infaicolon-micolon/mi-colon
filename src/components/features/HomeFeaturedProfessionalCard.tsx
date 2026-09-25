@@ -24,7 +24,7 @@ type HomeFeaturedProfessionalCardProps = {
 
 export function HomeFeaturedProfessionalCard({ professional }: HomeFeaturedProfessionalCardProps) {
   const formattedLocation = (() => {
-    const raw = professional.location || "Ceres, Santa Fe";
+    const raw = professional.location || "Colón, Entre Ríos";
     if (!raw.includes(",")) {
       const found = LOCATIONS.find((l) => l.id === raw);
       return found?.name || raw.charAt(0).toUpperCase() + raw.slice(1);

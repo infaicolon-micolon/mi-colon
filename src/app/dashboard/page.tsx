@@ -640,7 +640,7 @@ export default function DashboardPage() {
             </div>
             <h1 className="text-3xl font-bold mb-4">¡Convertite en Profesional!</h1>
             <p className="text-white/80 text-lg">
-              Completá tu perfil para ofrecer tus servicios en la plataforma oficial de Ceres
+              Completá tu perfil para ofrecer tus servicios en la plataforma oficial de Colón
             </p>
           </div>
         </div>

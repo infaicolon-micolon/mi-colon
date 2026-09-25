@@ -30,7 +30,7 @@ interface ProfessionalCardProps {
 export function ProfessionalCard({ professional }: ProfessionalCardProps) {
   // Mostrar el location completo. Si viene un ID (ej. "ceres"), normalizar usando LOCATIONS.
   const formattedLocation = (() => {
-    const raw = professional.location || "Ceres, Santa Fe, Argentina";
+    const raw = professional.location || "Colón, Entre Ríos, Argentina";
     if (!raw.includes(",")) {
       const found = LOCATIONS.find((l) => l.id === raw);
       return found?.name || raw.charAt(0).toUpperCase() + raw.slice(1);
@@ -40,7 +40,7 @@ export function ProfessionalCard({ professional }: ProfessionalCardProps) {
 
   const whatsappUrl = buildWhatsAppLink(
     professional.whatsapp || professional.phone,
-    "Hola, vi tu perfil en Ceres en Red y me interesa contactarte."
+    "Hola, vi tu perfil en Mi Colón y me interesa contactarte."
   );
 
   return (

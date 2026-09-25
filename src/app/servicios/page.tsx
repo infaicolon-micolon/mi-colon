@@ -537,7 +537,7 @@ export default function ServiciosPage() {
                 Encontrá tu solución, <span className="text-primary">¡con solo un clic!</span>
               </h1>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Plataforma oficial para conectar vecinos con profesionales verificados en Ceres y la zona.
+                Plataforma oficial para conectar vecinos con profesionales verificados en Colón y la zona.
               </p>
             </div>
             <div className="relative z-10 flex gap-4">

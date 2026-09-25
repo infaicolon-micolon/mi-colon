@@ -52,8 +52,9 @@ function ServiceCardComponent({ service }: ServiceCardProps) {
   const formattedLocation = useMemo(() => {
     const raw =
       professional.location ||
+      professional.location ||
       professional.user.location ||
-      "Ceres, Santa Fe, Argentina";
+      "Colón, Entre Ríos, Argentina";
 
     // Si no tiene coma, asumimos que es un ID y lo buscamos en LOCATIONS
     if (!raw.includes(",")) {
@@ -84,7 +85,7 @@ function ServiceCardComponent({ service }: ServiceCardProps) {
 
   const whatsappUrl = buildWhatsAppLink(
     professional.whatsapp || professional.phone || '',
-    "Hola, vi tu perfil en Ceres en Red y me interesa contactarte."
+    "Hola, vi tu perfil en Mi Colón y me interesa contactarte."
   );
 
   return (

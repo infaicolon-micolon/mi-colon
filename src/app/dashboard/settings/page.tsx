@@ -1008,7 +1008,7 @@ export default function SettingsPage() {
                           value={formData.physicalStoreAddress}
                           onChange={(e) => handleInputChange('physicalStoreAddress', e.target.value)}
                           className="pl-10"
-                          placeholder="Ej: Av. San Martín 123, Ceres"
+                          placeholder="Ej: Av. San Martín 123, Colón"
                         />
                       </div>
                       {errors.physicalStoreAddress && (
