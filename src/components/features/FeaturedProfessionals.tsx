@@ -40,10 +40,10 @@ export function FeaturedProfessionals({ professionals }: FeaturedProfessionalsPr
     <div>
       <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="text-center sm:text-left">
-          <h3 className="mb-3 text-3xl font-bold text-gray-900 dark:text-white">
+          <h3 className="mb-3 text-3xl font-bold text-gray-900">
             Profesionales destacados
           </h3>
-          <p className="text-gray-500 dark:text-gray-400">
+          <p className="text-gray-500">
             Verificados y listos para ayudarte
           </p>
         </div>
@@ -58,7 +58,7 @@ export function FeaturedProfessionals({ professionals }: FeaturedProfessionalsPr
       </div>
 
       {grouped.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-gray-200 bg-white/70 px-6 py-10 text-center text-sm text-muted-foreground dark:border-gray-700 dark:bg-gray-900/30">
+        <div className="rounded-2xl border border-dashed border-gray-200 bg-white/70 px-6 py-10 text-center text-sm text-muted-foreground">
           No hay profesionales destacados para esta ciudad por ahora.
         </div>
       ) : (

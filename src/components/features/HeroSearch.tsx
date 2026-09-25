@@ -109,7 +109,7 @@ export function HeroSearch() {
           <button
             type="submit"
             aria-label="Buscar"
-            className="h-14 shrink-0 rounded-full bg-primary px-5 text-sm sm:text-base font-semibold text-white transition-colors hover:bg-emerald-800 sm:ml-2 sm:px-8"
+            className="h-14 shrink-0 rounded-full bg-[#006F4B] px-5 text-sm sm:text-base font-semibold text-white transition-colors hover:bg-emerald-800 sm:ml-2 sm:px-8"
           >
             Buscar
           </button>

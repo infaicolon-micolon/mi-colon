@@ -15,7 +15,7 @@ export default async function Home() {
   });
 
   return (
-    <div className="bg-[#f8f9fa] dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <div className="bg-[#f8f9fa] text-gray-800 transition-colors duration-300">
       {/* Hero Section */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[#EBE4C0] dark:bg-gray-950">
@@ -54,7 +54,7 @@ export default async function Home() {
           <div className="absolute -bottom-20 -right-20 h-64 w-64 md:h-80 md:w-80 lg:h-[28rem] lg:w-[28rem] rounded-full blur-3xl" />
         </div>
         
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background-light dark:to-background-dark z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f8f9fa] z-0"></div>
         <div className="relative z-10 max-w-5xl mx-auto px-4 pt-20 pb-20 text-center">
           <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-6">
             ¿Buscás un técnico? ¿Profesional?<br/>
