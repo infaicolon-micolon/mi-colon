@@ -420,7 +420,7 @@ export default function AdminDashboardPage() {
                         {/* Bio */}
                         {prof.bio && (
                           <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 pt-2">
-                            "{prof.bio}"
+                            &quot;{prof.bio}&quot;
                           </p>
                         )}
 
