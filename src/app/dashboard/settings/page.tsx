@@ -498,6 +498,7 @@ export default function SettingsPage() {
         await updateService(editingServiceId, {
           title: serviceToSave.title,
           description: serviceToSave.description,
+          categorySlug: serviceToSave.categorySlug,
           priceRange: serviceToSave.priceRange || null
         });
         toast.success('Servicio actualizado correctamente');
