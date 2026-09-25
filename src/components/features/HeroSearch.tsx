@@ -76,23 +76,23 @@ export function HeroSearch() {
             value={searchQuery}
             onChange={handleSearchChange}
             onFocus={() => setShowSuggestions(searchQuery.length > 0)}
-            placeholder="¿Que servicio necesitas?"
-            aria-label="¿Que servicio necesitas?"
+            placeholder="¿Qué servicio necesitás?"
+            aria-label="¿Qué servicio necesitás?"
             autoComplete="off"
-            className="min-w-0 flex-1 border-none bg-transparent px-4 py-4 text-base text-gray-700 placeholder-gray-400 focus-visible:outline-none dark:text-gray-200"
+            className="min-w-0 flex-1 border-none bg-transparent px-2 sm:px-4 py-3 sm:py-4 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus-visible:outline-none dark:text-gray-200"
           />
         </div>
 
         <div className="hidden h-10 w-px bg-gray-200 dark:bg-gray-700 sm:block" />
 
-        <div className="flex w-full items-center gap-2 sm:w-auto sm:gap-0">
+        <div className="flex w-full items-center gap-1.5 sm:w-auto sm:gap-0">
           <div className="relative min-w-0 flex-1 sm:w-[240px]">
             <MapPin
-              className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-gray-400"
+              className="pointer-events-none absolute left-3.5 sm:left-4 top-1/2 z-10 h-4 w-4 sm:h-5 sm:w-5 -translate-y-1/2 text-gray-400"
               aria-hidden="true"
             />
             <Select value={selectedLocation} onValueChange={setSelectedLocation}>
-              <SelectTrigger className="h-14 w-full rounded-full border-0 bg-transparent pl-11 pr-4 text-left text-base font-medium text-gray-600 shadow-none focus:ring-0 focus-visible:border-transparent focus-visible:ring-0 dark:bg-transparent dark:text-gray-200">
+              <SelectTrigger className="h-14 w-full rounded-full border-0 bg-transparent pl-9 pr-2 text-xs xs:text-sm sm:pl-11 sm:pr-4 sm:text-base font-medium text-gray-600 shadow-none focus:ring-0 focus-visible:border-transparent focus-visible:ring-0 dark:bg-transparent dark:text-gray-200">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -109,7 +109,7 @@ export function HeroSearch() {
           <button
             type="submit"
             aria-label="Buscar"
-            className="h-14 shrink-0 rounded-full bg-primary px-7 text-base font-semibold text-white transition-colors hover:bg-emerald-800 sm:ml-2 sm:px-8"
+            className="h-14 shrink-0 rounded-full bg-primary px-5 text-sm sm:text-base font-semibold text-white transition-colors hover:bg-emerald-800 sm:ml-2 sm:px-8"
           >
             Buscar
           </button>
