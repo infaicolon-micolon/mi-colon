@@ -44,8 +44,17 @@ export function resolvePublicUploadUrl(value?: string | null) {
     return "";
   }
 
-  if (value.startsWith("/")) {
+  if (value.startsWith("http://") || value.startsWith("https://") || value.startsWith("data:")) {
     return value;
+  }
+
+  if (value.startsWith("/api/v1/uploads/public/")) {
+    return value;
+  }
+
+  if (value.startsWith("/uploads/profiles/")) {
+    const filename = value.replace(/^\/uploads\/profiles\//, "");
+    return `/api/v1/uploads/public/profiles/${filename}`;
   }
 
   const objectKey = extractPublicUploadKey(value);
@@ -53,9 +62,9 @@ export function resolvePublicUploadUrl(value?: string | null) {
     return `/api/v1/uploads/public/${objectKey}`;
   }
 
-  if (isAbsoluteUrl(value)) {
+  if (value.startsWith("/")) {
     return value;
   }
 
-  return `/uploads/profiles/${value}`;
+  return `/api/v1/uploads/public/profiles/${value}`;
 }
