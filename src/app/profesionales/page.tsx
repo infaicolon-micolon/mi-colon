@@ -131,25 +131,25 @@ export default function ProfesionalesIndexPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 font-rutan">Profesionales</h1>
-                <p className="text-gray-600 mt-1">
+                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white font-rutan">Profesionales</h1>
+                <p className="text-gray-600 dark:text-gray-400 mt-1">
                   {loading ? "Cargando resultados" : `${total} resultados`}
                 </p>
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-              <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 border-b border-gray-200">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+              <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-800/80 px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Filtros de búsqueda</h3>
-                    <p className="text-sm text-gray-600">Encuentra el profesional que necesitas</p>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Filtros de búsqueda</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Encuentra el profesional que necesitas</p>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Button
@@ -177,7 +177,7 @@ export default function ProfesionalesIndexPage() {
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   <div className="space-y-2 lg:col-span-2">
-                    <label htmlFor="professionals-search" className="text-sm font-medium text-gray-700">Buscar</label>
+                    <label htmlFor="professionals-search" className="text-sm font-medium text-gray-700 dark:text-gray-300">Buscar</label>
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" aria-hidden="true" />
                       <Input
@@ -194,7 +194,7 @@ export default function ProfesionalesIndexPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Categoría</label>
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Categoría</label>
                     <div className="relative">
                       <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                         <SelectTrigger className="w-full h-12 rounded-lg border-gray-300 focus:border-[#006F4B] focus:ring-2 focus:ring-[#006F4B]/20 transition-colors duration-200">
@@ -210,7 +210,7 @@ export default function ProfesionalesIndexPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Lugar de trabajo</label>
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Lugar de trabajo</label>
                     <div className="relative">
                       <Select value={selectedLocation} onValueChange={setSelectedLocation}>
                         <SelectTrigger className="w-full h-12 rounded-lg border-gray-300 focus:border-[#006F4B] focus:ring-2 focus:ring-[#006F4B]/20 transition-colors duration-200">
@@ -237,9 +237,9 @@ export default function ProfesionalesIndexPage() {
                       type="button"
                       aria-label="Desplazar izquierda"
                       onClick={() => scrollChips("left")}
-                      className="absolute left-1 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/95 shadow-lg border p-2 hover:bg-white hover:shadow-xl transition-colors transition-shadow"
+                      className="absolute left-1 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-lg border border-gray-200 dark:border-gray-700 p-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#006F4B]"
                     >
-                      <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" aria-hidden="true" />
+                      <ChevronLeft className="h-4 w-4 md:h-5 md:w-5 text-gray-900 dark:text-white stroke-[2.5]" aria-hidden="true" />
                     </button>
                   )}
 
@@ -291,9 +291,9 @@ export default function ProfesionalesIndexPage() {
                       type="button"
                       aria-label="Desplazar derecha"
                       onClick={() => scrollChips("right")}
-                      className="absolute right-1 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/95 shadow-lg border p-2 hover:bg-white hover:shadow-xl transition-colors transition-shadow"
+                      className="absolute right-1 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-lg border border-gray-200 dark:border-gray-700 p-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#006F4B]"
                     >
-                      <ChevronRight className="h-4 w-4 md:h-5 md:w-5" aria-hidden="true" />
+                      <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gray-900 dark:text-white stroke-[2.5]" aria-hidden="true" />
                     </button>
                   )}
                 </div>
@@ -302,30 +302,32 @@ export default function ProfesionalesIndexPage() {
           </div>
 
           {loading ? (
-            <Card className="rounded-2xl border border-gray-100">
+            <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
               <CardContent className="p-12 text-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-                <p className="mt-4 text-gray-600">Cargando profesionales.</p>
+                <p className="mt-4 text-gray-600 dark:text-gray-400">Cargando profesionales.</p>
               </CardContent>
             </Card>
           ) : error ? (
-            <Card className="rounded-2xl border border-gray-100">
+            <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
               <CardContent className="p-12 text-center">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">No pudimos cargar los profesionales</h3>
-                <p className="text-gray-600 mb-6">{error}</p>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No pudimos cargar los profesionales</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
                 <Button onClick={() => window.location.reload()}>
                   Reintentar
                 </Button>
               </CardContent>
             </Card>
           ) : visibleProfessionals.length === 0 ? (
-            <Card className="rounded-2xl border border-gray-100">
+            <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
               <CardContent className="p-12 text-center">
-                <div className="text-gray-400 mb-4">
-                  <Search className="h-16 w-16 mx-auto" aria-hidden="true" />
+                <div className="mb-4 flex justify-center">
+                  <div className="p-4 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-[#006F4B] dark:text-[#008F5B]">
+                    <Search className="h-12 w-12" aria-hidden="true" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">No se encontraron profesionales</h3>
-                <p className="text-gray-600 mb-6">Intenta cambiar los filtros o buscar con otros términos.</p>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No se encontraron profesionales</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-md mx-auto">Intenta cambiar los filtros o buscar con otros términos.</p>
                 <div className="flex flex-col items-center gap-4">
                   <Button
                     onClick={() => {
@@ -333,12 +335,12 @@ export default function ProfesionalesIndexPage() {
                       setSelectedCategory("all");
                       setSelectedLocation("all");
                     }}
-                    className="bg-gradient-to-r from-[#006F4B] to-[#008F5B] text-white rounded-xl hover:from-[#008F5B] hover:to-[#006F4B]"
+                    className="bg-gradient-to-r from-[#006F4B] to-[#008F5B] text-white rounded-xl hover:from-[#008F5B] hover:to-[#006F4B] shadow-md transition-all font-medium px-6"
                   >
                     Restablecer filtros
                   </Button>
                   <div className="pt-2">
-                    <p className="text-sm text-gray-500 mb-2">
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
                       ¿Creés que falta una categoría para este tipo de profesional?
                     </p>
                     <CategorySuggestionModal origin="profesionales_empty_state" />
