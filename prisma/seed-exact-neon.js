@@ -15,11 +15,7 @@ const AREAS_OFICIOS = [
   { name: "Automotores", slug: "automotores", image: "/images/servicios/automotores.jpg" },
   { name: "Jardinería", slug: "jardineria", image: "/images/servicios/jardineria.jpg" },
   { name: "Cocina", slug: "cocina", image: "/images/servicios/cocina.jpg" },
-  { name: "Cuidados", slug: "cuidados", image: "/images/servicios/cuidados.jpg" },
-  { name: "Fletes y mudanzas", slug: "fletes-mudanzas", image: "/images/servicios/fletes-mudanzas.jpg" },
-  { name: "Limpieza", slug: "limpieza", image: "/images/servicios/limpieza.jpg" },
-  { name: "Cerrajería", slug: "cerrajeria", image: "/images/servicios/cerrajeria.jpg" },
-  { name: "Costura", slug: "costura", image: "/images/servicios/costura.jpg" }
+  { name: "Otros", slug: "otros", image: "/images/servicios/construccion.jpg" }
 ];
 
 const SUBCATEGORIES_OFICIOS = [
@@ -29,9 +25,15 @@ const SUBCATEGORIES_OFICIOS = [
   { name: "Gasista", slug: "gasista", areaSlug: "construccion-mantenimiento", image: "/servicios/gasista.jpg" },
   { name: "Pintor de obra", slug: "pintor-obra", areaSlug: "construccion-mantenimiento", image: "/images/servicios/construccion.jpg" },
   { name: "Carpintero/a", slug: "carpintero", areaSlug: "construccion-mantenimiento", image: "/images/servicios/construccion.jpg" },
+  { name: "Cerrajería", slug: "cerrajeria", areaSlug: "construccion-mantenimiento", image: "/images/servicios/cerrajeria.jpg" },
+  { name: "Limpieza", slug: "limpieza", areaSlug: "construccion-mantenimiento", image: "/images/servicios/limpieza.jpg" },
   { name: "Técnico en aires acondicionados", slug: "tecnico-aires", areaSlug: "climatizacion", image: "/servicios/instalacion-aires.jpg" },
+  { name: "Servicios técnicos electrónicos", slug: "servicios-electronicos", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
   { name: "Mecánico automotriz", slug: "mecanico-automotriz", areaSlug: "automotores", image: "/images/servicios/automotores.jpg" },
-  { name: "Jardinero/a", slug: "jardinero", areaSlug: "jardineria", image: "/images/servicios/jardineria.jpg" }
+  { name: "Jardinero/a", slug: "jardinero", areaSlug: "jardineria", image: "/images/servicios/jardineria.jpg" },
+  { name: "Costura", slug: "costura", areaSlug: "otros", image: "/images/servicios/costura.jpg" },
+  { name: "Cuidados", slug: "cuidados", areaSlug: "otros", image: "/images/servicios/cuidados.jpg" },
+  { name: "Fletes y mudanzas", slug: "fletes-mudanzas", areaSlug: "otros", image: "/images/servicios/fletes-mudanzas.jpg" }
 ];
 
 const SUBCATEGORIES_PROFESIONES = [

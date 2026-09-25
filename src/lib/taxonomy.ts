@@ -89,44 +89,12 @@ export const AREAS_OFICIOS: Area[] = [
     iconKey: "chef-hat"
   },
   {
-    id: "area-cuidados",
-    name: "Cuidados",
-    slug: "cuidados",
+    id: "area-otros",
+    name: "Otros",
+    slug: "otros",
     group: "oficios",
-    image: "/images/servicios/cuidados.jpg",
-    iconKey: "heart",
-  },
-  {
-    id: "area-fletes-mudanzas",
-    name: "Fletes y mudanzas",
-    slug: "fletes-mudanzas",
-    group: "oficios",
-    image: "/images/servicios/fletes-mudanzas.jpg",
-    iconKey: "truck",
-  },
-  {
-    id: "area-limpieza",
-    name: "Limpieza",
-    slug: "limpieza",
-    group: "oficios",
-    image: "/images/servicios/limpieza.jpg",
-    iconKey: "cleaning-1",
-  },
-  {
-    id: "area-cerrajeria",
-    name: "Cerrajería",
-    slug: "cerrajeria",
-    group: "oficios",
-    image: "/images/servicios/cerrajeria.jpg",
-    iconKey: "lock",
-  },
-  {
-    id: "area-costura",
-    name: "Costura",
-    slug: "costura",
-    group: "oficios",
-    image: "/images/servicios/costura.jpg",
-    iconKey: "needle",
+    image: "/images/servicios/construccion.jpg",
+    iconKey: "shopping-bag",
   },
 ];
 
@@ -142,12 +110,15 @@ export const SUBCATEGORIES_OFICIOS: Subcategory[] = [
   { id: "herrero", name: "Herrero/a", slug: "herrero", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/servicios/herrero.jpg" },
   { id: "yesero", name: "Yesero", slug: "yesero", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/images/servicios/construccion.jpg" },
   { id: "techista", name: "Techista", slug: "techista", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/images/servicios/construccion.jpg" },
+  { id: "cerrajeria", name: "Cerrajería", slug: "cerrajeria", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/images/servicios/cerrajeria.jpg" },
+  { id: "limpieza", name: "Limpieza", slug: "limpieza", group: "oficios", areaSlug: "construccion-mantenimiento", image: "/images/servicios/limpieza.jpg" },
 
   // Climatización
   { id: "tecnico-aires", name: "Técnico en aires acondicionados", slug: "tecnico-aires", group: "oficios", areaSlug: "climatizacion", image: "/servicios/instalacion-aires.jpg" },
   { id: "refrigeracion", name: "Refrigeración comercial y hogareña", slug: "refrigeracion", group: "oficios", areaSlug: "climatizacion", image: "/images/servicios/climatizacion.jpg" },
 
   // Servicios técnicos electrónicos
+  { id: "servicios-electronicos", name: "Servicios técnicos electrónicos", slug: "servicios-electronicos", group: "oficios", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
   { id: "reparador-electrodomesticos", name: "Reparador de electrodomésticos", slug: "reparador-electrodomesticos", group: "oficios", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
   { id: "tecnico-celulares", name: "Técnico en celulares y tablets", slug: "tecnico-celulares", group: "oficios", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
 
@@ -165,21 +136,10 @@ export const SUBCATEGORIES_OFICIOS: Subcategory[] = [
   { id: "pasteleria", name: "Pastelería", slug: "pasteleria", group: "oficios", areaSlug: "cocina", image: "/images/servicios/cocina.jpg" },
   { id: "panificados", name: "Panificados", slug: "panificados", group: "oficios", areaSlug: "cocina", image: "/images/servicios/cocina.jpg" },
 
-  // Cuidados
-  { id: "promotores-gerontologicos", name: "Promotores gerontológicos", slug: "promotores-gerontologicos", group: "oficios", areaSlug: "cuidados", image: "/images/servicios/cuidados.jpg" },
-  { id: "ninera", name: "Niñera", slug: "ninera", group: "oficios", areaSlug: "cuidados", image: "/images/servicios/cuidados.jpg" },
-
-  // Fletes y mudanzas (área sin subcategorías adicionales)
-  { id: "fletes-mudanzas", name: "Fletes y mudanzas", slug: "fletes-mudanzas", group: "oficios", areaSlug: "fletes-mudanzas", image: "/images/servicios/fletes-mudanzas.jpg" },
-
-  // Limpieza
-  { id: "limpieza", name: "Limpieza", slug: "limpieza", group: "oficios", areaSlug: "limpieza", image: "/images/servicios/limpieza.jpg" },
-
-  // Cerrajería
-  { id: "cerrajero", name: "Cerrajeros", slug: "cerrajero", group: "oficios", areaSlug: "cerrajeria", image: "/images/servicios/cerrajeria.jpg" },
-
-  // Costura
-  { id: "costurera", name: "Costurera", slug: "costurera", group: "oficios", areaSlug: "costura", image: "/images/servicios/costura.jpg" },
+  // Otros
+  { id: "costura", name: "Costura", slug: "costura", group: "oficios", areaSlug: "otros", image: "/images/servicios/costura.jpg" },
+  { id: "cuidados", name: "Cuidados", slug: "cuidados", group: "oficios", areaSlug: "otros", image: "/images/servicios/cuidados.jpg" },
+  { id: "fletes-mudanzas", name: "Fletes y mudanzas", slug: "fletes-mudanzas", group: "oficios", areaSlug: "otros", image: "/images/servicios/fletes-mudanzas.jpg" },
 ];
 
 // Subcategorías de Profesiones
