@@ -18,7 +18,7 @@ export default async function Home() {
     <div className="bg-[#f8f9fa] dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
       {/* Hero Section */}
       <header className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#EBE4C0]">
+        <div className="absolute inset-0 bg-[#EBE4C0] dark:bg-gray-950">
           
           
           {/* Elementos decorativos izquierda */}

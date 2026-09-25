@@ -16,6 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Header() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -95,7 +96,10 @@ export function Header() {
           </div>
 
           {/* Navegación */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
+            {/* Botón de alternar modo nocturno / claro */}
+            <ThemeToggle />
+
             {/* Botón de búsqueda móvil */}
             <Button 
               variant="ghost" 

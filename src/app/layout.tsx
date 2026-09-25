@@ -12,6 +12,8 @@ import { getPublicCategoryTree } from "@/lib/server/categories";
 import { PublicCategoriesTreeProvider } from "@/hooks/usePublicCategoriesTree";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+
 const baseUrl = getBaseUrl();
 const inter = Inter({
   subsets: ["latin"],
@@ -72,8 +74,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // Verificación de Google Search Console
-  // Agregar variable de entorno: GOOGLE_SITE_VERIFICATION con el código de verificación
   verification: process.env.GOOGLE_SITE_VERIFICATION
     ? {
         google: process.env.GOOGLE_SITE_VERIFICATION,
@@ -97,8 +97,27 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const organizationData = generateOrganizationStructuredData();
 
   return (
-    <html lang="es" className={inter.variable}>
-      <body className="antialiased flex flex-col overflow-x-hidden">
+    <html lang="es" className={`${inter.variable} dark`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('theme');
+                  if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                  } else {
+                    document.documentElement.classList.add('dark');
+                    if (!saved) localStorage.setItem('theme', 'dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="antialiased flex flex-col overflow-x-hidden bg-background text-foreground transition-colors">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-gray-900 focus:shadow-lg dark:focus:bg-gray-900 dark:focus:text-white"
@@ -110,21 +129,23 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
         />
         {gaMeasurementId ? <GoogleAnalytics measurementId={gaMeasurementId} /> : null}
-        <AuthProviders session={session}>
-          <PublicCategoriesTreeProvider data={publicCategories}>
-            <Header />
-            <main
-              id="main-content"
-              tabIndex={-1}
-              className="flex-1 w-full overflow-x-hidden"
-              style={{ overflowY: 'auto' }}
-            >
-              {children}
-            </main>
-            <Footer />
-            <Toaster position="top-right" />
-          </PublicCategoriesTreeProvider>
-        </AuthProviders>
+        <ThemeProvider>
+          <AuthProviders session={session}>
+            <PublicCategoriesTreeProvider data={publicCategories}>
+              <Header />
+              <main
+                id="main-content"
+                tabIndex={-1}
+                className="flex-1 w-full overflow-x-hidden"
+                style={{ overflowY: 'auto' }}
+              >
+                {children}
+              </main>
+              <Footer />
+              <Toaster position="top-right" />
+            </PublicCategoriesTreeProvider>
+          </AuthProviders>
+        </ThemeProvider>
       </body>
     </html>
   );
