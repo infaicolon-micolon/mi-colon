@@ -716,21 +716,21 @@ export default function DashboardPage() {
     !isVerified && me.status !== 'pending' && !needsCriminalRecordAlert;
  
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <div className="rounded-[28px] border border-emerald-100 bg-white/95 p-4 shadow-sm sm:p-6">
+            <div className="rounded-[28px] border border-emerald-100 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 p-4 shadow-sm sm:p-6">
               <div className="flex flex-col gap-4 sm:gap-5 md:flex-row md:items-center md:justify-between">
                 <div className="min-w-0">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#006F4B]">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#006F4B] dark:text-emerald-400">
                     Espacio profesional
                   </p>
-                  <h1 className="mt-2 text-2xl font-bold text-gray-900 font-rutan sm:text-3xl">
+                  <h1 className="mt-2 text-2xl font-bold text-gray-900 dark:text-white font-rutan sm:text-3xl">
                     Panel Profesional
                   </h1>
-                  <p className="mt-2 max-w-2xl text-sm text-gray-600 sm:text-base">
+                  <p className="mt-2 max-w-2xl text-sm text-gray-600 dark:text-gray-300 sm:text-base">
                     Bienvenido, {me.user?.firstName} {me.user?.lastName}
                   </p>
                 </div>
@@ -751,20 +751,20 @@ export default function DashboardPage() {
 
             {/* Banner de estado pendiente */}
             {me.status === 'pending' && (
-            <Card className="rounded-2xl border-2 border-amber-200 bg-gradient-to-r from-amber-50 via-orange-50 to-yellow-50 mb-6">
+            <Card className="rounded-2xl border-2 border-amber-200 dark:border-amber-900/50 bg-gradient-to-r from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950/40 dark:via-orange-950/40 dark:to-yellow-950/40 mb-6">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     <AlertCircle className="h-6 w-6 text-amber-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-amber-900 mb-2">
+                    <h3 className="text-lg font-semibold text-amber-900 dark:text-amber-200 mb-2">
                       Tu perfil está en revisión
                     </h3>
-                    <p className="text-amber-800 text-sm leading-relaxed mb-3">
+                    <p className="text-amber-800 dark:text-amber-300 text-sm leading-relaxed mb-3">
                       Tu perfil está siendo revisado por nuestro equipo de administración. Una vez aprobado, será visible públicamente para todos los usuarios de la plataforma.
                     </p>
-                    <p className="text-amber-700 text-xs leading-relaxed">
+                    <p className="text-amber-700 dark:text-amber-400 text-xs leading-relaxed">
                       Mientras tanto, puedes seguir editando tu perfil y servicios desde aquí. Te notificaremos por email cuando tu perfil sea aprobado.
                     </p>
                   </div>
@@ -775,17 +775,17 @@ export default function DashboardPage() {
 
             {/* Banner de estado de verificación (solo si no está pendiente) */}
             {showVerificationPendingBanner && (
-            <Card className="rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-yellow-50 mb-6">
+            <Card className="rounded-2xl border-2 border-orange-200 dark:border-orange-900/50 bg-gradient-to-r from-orange-50 to-yellow-50 dark:from-orange-950/40 dark:to-yellow-950/40 mb-6">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4 ">
                   <div className="flex-shrink-0">
                     <AlertCircle className="h-6 w-6 text-orange-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-orange-900 mb-2">
+                    <h3 className="text-lg font-semibold text-orange-900 dark:text-orange-200 mb-2">
                       Tu perfil aún no ha sido verificado
                     </h3>
-                    <p className="text-orange-800 text-sm leading-relaxed">
+                    <p className="text-orange-800 dark:text-orange-300 text-sm leading-relaxed">
                       Tu perfil está activo y visible, pero aún no tiene la insignia de verificación.
                       La insignia se habilita cuando completes y apruebes la revisión de antecedentes.
                     </p>
@@ -799,21 +799,21 @@ export default function DashboardPage() {
 
 
           {needsCriminalRecordAlert && (
-            <Card className="mb-6 rounded-2xl border-amber-200 bg-amber-50 shadow-sm">
+            <Card className="mb-6 rounded-2xl border-amber-200 dark:border-amber-900/50 bg-amber-50 dark:bg-amber-950/40 shadow-sm">
               <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
                 <div className="flex items-start gap-3">
-                  <div className="mt-0.5 rounded-full bg-amber-100 p-2 text-amber-700">
+                  <div className="mt-0.5 rounded-full bg-amber-100 dark:bg-amber-900/60 p-2 text-amber-700 dark:text-amber-300">
                     <AlertCircle className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-amber-900">
+                    <p className="text-sm font-semibold text-amber-900 dark:text-amber-200">
                       Te falta cargar el certificado de antecedentes penales
                     </p>
-                    <p className="mt-1 text-sm text-amber-800">
+                    <p className="mt-1 text-sm text-amber-800 dark:text-amber-300">
                       Tu perfil puede seguir visible en la plataforma, pero sin insignia de verificación
                       hasta que subas y se apruebe este documento.
                     </p>
-                    <p className="mt-2 text-sm text-amber-900">
+                    <p className="mt-2 text-sm text-amber-900 dark:text-amber-200">
                       Cómo obtenerlo:{' '}
                       <a
                         href="https://www.argentina.gob.ar/justicia/reincidencia/antecedentespenales"
@@ -1041,10 +1041,10 @@ export default function DashboardPage() {
           </Dialog>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid w-full grid-cols-3 rounded-2xl">
-              <TabsTrigger value="overview" className="rounded-xl">Estadísticas</TabsTrigger>
-              <TabsTrigger value="services" className="rounded-xl">Mis Servicios</TabsTrigger>
-              <TabsTrigger value="horarios" className="rounded-xl">Horarios</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-3 rounded-2xl bg-gray-200/80 dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700 p-1">
+              <TabsTrigger value="overview" className="rounded-xl text-gray-700 dark:text-gray-300 data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900 data-[state=active]:text-gray-900 dark:data-[state=active]:text-white font-medium shadow-sm">Estadísticas</TabsTrigger>
+              <TabsTrigger value="services" className="rounded-xl text-gray-700 dark:text-gray-300 data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900 data-[state=active]:text-gray-900 dark:data-[state=active]:text-white font-medium shadow-sm">Mis Servicios</TabsTrigger>
+              <TabsTrigger value="horarios" className="rounded-xl text-gray-700 dark:text-gray-300 data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900 data-[state=active]:text-gray-900 dark:data-[state=active]:text-white font-medium shadow-sm">Horarios</TabsTrigger>
             </TabsList>
 
             {/* Tab Estadísticas */}
@@ -1058,13 +1058,13 @@ export default function DashboardPage() {
               {/* Estadísticas principales */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {/* Servicios Activos */}
-                    <Card className="rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+                    <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-all">
                   <CardContent className="p-6">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm font-medium text-gray-600 mb-1">Servicios Activos</p>
-                            <p className="text-3xl font-bold text-gray-900">{stats.services.active}</p>
-                            <p className="text-xs text-gray-500 mt-1">de {stats.services.total} totales</p>
+                            <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Servicios Activos</p>
+                            <p className="text-3xl font-bold text-gray-900 dark:text-white">{stats.services.active}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">de {stats.services.total} totales</p>
                       </div>
                           <div className="p-3 rounded-2xl bg-emerald-100">
                             <Briefcase className="h-6 w-6 text-emerald-600" />
@@ -1074,23 +1074,23 @@ export default function DashboardPage() {
                 </Card>
 
                     {/* Rating */}
-                    <Card className="rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+                    <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-all">
                   <CardContent className="p-6">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm font-medium text-gray-600 mb-1">Calificación</p>
+                            <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Calificación</p>
                             <div className="flex items-center gap-2">
-                              <p className="text-3xl font-bold text-gray-900">
+                              <p className="text-3xl font-bold text-gray-900 dark:text-white">
                                 {stats.rating.average > 0 ? stats.rating.average.toFixed(1) : 'N/A'}
                               </p>
                               {stats.rating.average > 0 && (
                                 <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                               )}
                       </div>
-                            <p className="text-xs text-gray-500 mt-1">{stats.rating.totalReviews} {stats.rating.totalReviews === 1 ? 'reseña' : 'reseñas'}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stats.rating.totalReviews} {stats.rating.totalReviews === 1 ? 'reseña' : 'reseñas'}</p>
                           </div>
-                          <div className="p-3 rounded-2xl bg-yellow-100">
-                            <Star className="h-6 w-6 text-yellow-600" />
+                          <div className="p-3 rounded-2xl bg-amber-100 dark:bg-amber-950/60">
+                            <Star className="h-6 w-6 text-amber-600 dark:text-amber-400" />
                       </div>
                     </div>
                   </CardContent>
@@ -1099,36 +1099,36 @@ export default function DashboardPage() {
                   
 
                     {/* Cobertura geográfica */}
-                    <Card className="rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+                    <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-all">
                       <CardContent className="p-6">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm font-medium text-gray-600 mb-1">Zonas donde trabajas</p>
-                            <p className="text-3xl font-bold text-gray-900">
+                            <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Zonas donde trabajas</p>
+                            <p className="text-3xl font-bold text-gray-900 dark:text-white">
                               {stats.profile.locations}
                             </p>
-                            <p className="text-xs text-gray-500 mt-1">localidades configuradas</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">localidades configuradas</p>
                           </div>
-                          <div className="p-3 rounded-2xl bg-emerald-100">
-                            <MapPin className="h-6 w-6 text-emerald-600" />
+                          <div className="p-3 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60">
+                            <MapPin className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
                           </div>
                         </div>
                       </CardContent>
                     </Card>
 
                     {/* Visitas al perfil */}
-                    <Card className="rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+                    <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-all">
                       <CardContent className="p-6">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm font-medium text-gray-600 mb-1">Visitas a tu perfil</p>
-                            <p className="text-3xl font-bold text-gray-900">
+                            <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Visitas a tu perfil</p>
+                            <p className="text-3xl font-bold text-gray-900 dark:text-white">
                               {stats.profile.views}
                             </p>
-                            <p className="text-xs text-gray-500 mt-1">clicks en tus servicios</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">clicks en tus servicios</p>
                           </div>
-                          <div className="p-3 rounded-2xl bg-purple-100">
-                            <Eye className="h-6 w-6 text-purple-600" />
+                          <div className="p-3 rounded-2xl bg-purple-100 dark:bg-purple-950/60">
+                            <Eye className="h-6 w-6 text-purple-600 dark:text-purple-400" />
                           </div>
                         </div>
                       </CardContent>
@@ -1138,15 +1138,15 @@ export default function DashboardPage() {
                   {/* Información adicional */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Estado de tu perfil */}
-                    <Card className="rounded-2xl border border-gray-100">
+                    <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
                       <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <Users className="h-5 w-5 text-[#006F4B]" />
+                        <CardTitle className="text-lg flex items-center gap-2 text-gray-900 dark:text-white">
+                          <Users className="h-5 w-5 text-[#006F4B] dark:text-emerald-400" />
                           Estado de tu perfil
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <div className="space-y-2 text-sm text-gray-700">
+                        <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                           <p>
                             <span className="font-medium">Estado: </span>
                             {stats.profile.status === 'active' ? 'Activo' : stats.profile.status === 'pending' ? 'Pendiente de revisión' : 'Suspendido'}
@@ -1165,22 +1165,22 @@ export default function DashboardPage() {
 
                     {/* Tips profesionales */}
                     {currentTip && (
-                      <Card className="rounded-2xl border border-emerald-100 bg-emerald-50/40">
+                      <Card className="rounded-2xl border border-emerald-100 dark:border-emerald-900/50 bg-emerald-50/40 dark:bg-emerald-950/30">
                         <CardHeader>
-                          <CardTitle className="text-lg flex items-center gap-2">
+                          <CardTitle className="text-lg flex items-center gap-2 text-gray-900 dark:text-white">
                             <Lightbulb className="h-5 w-5 text-amber-500" />
                             Tips profesionales
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <div className="space-y-2 text-sm text-gray-700">
-                            <p className="font-medium text-gray-900">{currentTip.title}</p>
-                            <p className="text-gray-600 text-sm">{currentTip.description}</p>
+                          <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                            <p className="font-medium text-gray-900 dark:text-white">{currentTip.title}</p>
+                            <p className="text-gray-600 dark:text-gray-400 text-sm">{currentTip.description}</p>
                           </div>
                           <Button
                             variant="outline"
                             size="sm"
-                            className="mt-4 rounded-xl border-[#006F4B] text-[#006F4B] hover:bg-[#006F4B] hover:text-white"
+                            className="mt-4 rounded-xl border-[#006F4B] dark:border-emerald-500 text-[#006F4B] dark:text-emerald-400 hover:bg-[#006F4B] hover:text-white"
                             onClick={() => currentTip.onClick({ setActiveTab, router })}
                           >
                             {currentTip.actionLabel}
@@ -1191,7 +1191,7 @@ export default function DashboardPage() {
                   </div>
                 </>
               ) : (
-                <Card className="rounded-2xl border border-gray-100">
+                <Card className="rounded-2xl border border-gray-100 dark:border-gray-800 dark:bg-gray-900">
                   <CardContent className="p-6 text-center text-gray-500">
                     No se pudieron cargar las estadísticas
                 </CardContent>
@@ -1202,7 +1202,7 @@ export default function DashboardPage() {
             {/* Tab Servicios */}
             <TabsContent value="services" className="space-y-6">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h2 className="text-2xl font-bold text-gray-900 font-rutan">Mis Servicios</h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white font-rutan">Mis Servicios</h2>
                 <Dialog open={creating} onOpenChange={setCreating}>
                   <DialogTrigger asChild>
                     <Button
@@ -1301,8 +1301,8 @@ export default function DashboardPage() {
 
               {/* Aviso si no hay servicios activos */}
               {me.services && me.services.filter((s) => s.available).length === 0 && (
-                <Card className="rounded-2xl border-2 border-yellow-200 bg-yellow-50">
-                  <CardContent className="p-4 text-sm text-yellow-900">
+                <Card className="rounded-2xl border-2 border-yellow-200 dark:border-yellow-900/50 bg-yellow-50 dark:bg-yellow-950/40">
+                  <CardContent className="p-4 text-sm text-yellow-900 dark:text-yellow-200">
                     No tenés servicios activos. Mientras no actives al menos uno, tu perfil no aparecerá en la página pública.
                   </CardContent>
                 </Card>
@@ -1313,11 +1313,11 @@ export default function DashboardPage() {
                   const certificationUi = getCertificationUi(service);
 
                   return (
-                  <Card key={service.id} className="rounded-2xl border border-gray-100">
+                  <Card key={service.id} className="rounded-2xl border border-gray-100 dark:border-gray-800 dark:bg-gray-900">
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0 flex-1">
-                          <CardTitle className="text-lg font-rutan">{service.title}</CardTitle>
+                          <CardTitle className="text-lg font-rutan text-gray-900 dark:text-white">{service.title}</CardTitle>
                           <Badge variant="outline" className="rounded-xl text-xs mt-2">
                             {service.category?.name || 'Sin categoría'}
                           </Badge>
@@ -1352,10 +1352,10 @@ export default function DashboardPage() {
                               }
                             }}
                           />
-                          <span className="text-xs text-gray-600">
+                          <span className="text-xs text-gray-600 dark:text-gray-400">
                             {service.available ? 'Activo' : 'Inactivo'}
                           </span>
-                          <span className="text-[11px] text-gray-500">
+                          <span className="text-[11px] text-gray-500 dark:text-gray-400">
                             {service.available ? 'Visible en tu perfil' : 'Oculto en tu perfil'}
                           </span>
                         </div>
@@ -1363,14 +1363,14 @@ export default function DashboardPage() {
                       </div>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">{service.description || 'Sin descripción'}</p>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">{service.description || 'Sin descripción'}</p>
                      
                       
 
-                      <div className="rounded-2xl border border-gray-100 bg-gray-50/80 p-4">
+                      <div className="rounded-2xl border border-gray-100 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-800/60 p-4">
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                           <div>
-                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
                               Certificacion
                             </p>
                             <div className="mt-2">
@@ -1381,7 +1381,7 @@ export default function DashboardPage() {
                                 {certificationUi.badgeLabel}
                               </Badge>
                             </div>
-                            <p className="mt-2 text-sm text-gray-600">
+                            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                               {certificationUi.helperText}
                             </p>
                           </div>
@@ -1565,11 +1565,11 @@ export default function DashboardPage() {
             <TabsContent value="horarios" className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 font-rutan flex items-center gap-3">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white font-rutan flex items-center gap-3">
                     <Clock className="h-6 w-6 text-[#006F4B]" />
                     Horarios de Disponibilidad
                   </h2>
-                  <p className="text-gray-600 mt-1">
+                  <p className="text-gray-600 dark:text-gray-300 mt-1">
                     Configura tus horarios de trabajo para que los clientes sepan cuándo estás disponible
                   </p>
                 </div>
@@ -1588,9 +1588,9 @@ export default function DashboardPage() {
               </div>
 
               {/* Configuración General */}
-              <Card className="rounded-2xl border border-gray-100">
+              <Card className="rounded-2xl border border-gray-100 dark:border-gray-800 dark:bg-gray-900">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-gray-900 dark:text-white">
                     <Calendar className="h-5 w-5" />
                     Configuración General
                   </CardTitle>
@@ -1598,8 +1598,8 @@ export default function DashboardPage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <Label className="text-base font-medium">Trabajo en días feriados</Label>
-                      <p className="text-sm text-gray-600">
+                      <Label className="text-base font-medium text-gray-900 dark:text-white">Trabajo en días feriados</Label>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         Indica si trabajas durante los días feriados
                       </p>
                     </div>
@@ -1628,10 +1628,10 @@ export default function DashboardPage() {
                   if (!daySchedule) return null;
 
                   return (
-                    <Card key={day.id} className="rounded-2xl border border-gray-100">
+                    <Card key={day.id} className="rounded-2xl border border-gray-100 dark:border-gray-800 dark:bg-gray-900">
                       <CardHeader>
                         <div className="flex items-center justify-between">
-                          <CardTitle className="flex items-center gap-2">
+                          <CardTitle className="flex items-center gap-2 text-gray-900 dark:text-white">
                             <Badge variant="outline" className="text-sm">
                               {day.short}
                             </Badge>
@@ -1651,7 +1651,7 @@ export default function DashboardPage() {
                         {/* 24 Horas */}
                         <div className="flex items-center justify-between">
                           <div>
-                            <Label className="text-sm font-medium">Todo el día (24hs)</Label>
+                            <Label className="text-sm font-medium text-gray-900 dark:text-white">Todo el día (24hs)</Label>
                             <p className="text-xs text-gray-600">
                               Disponible las 24 horas
                             </p>
@@ -1676,7 +1676,7 @@ export default function DashboardPage() {
                             {/* Horario Mañana */}
                             <div className="space-y-3">
                               <div className="flex items-center justify-between">
-                                <Label className="text-sm font-medium">Turno Mañana</Label>
+                                <Label className="text-sm font-medium text-gray-900 dark:text-white">Turno Mañana</Label>
                                 <Switch
                                   checked={daySchedule.morning.enabled}
                                   onCheckedChange={(checked) => handleDayScheduleChange(day.id, 'morning', { ...daySchedule.morning, enabled: checked })}
@@ -1685,21 +1685,21 @@ export default function DashboardPage() {
                               {daySchedule.morning.enabled && (
                                 <div className="grid grid-cols-2 gap-3">
                                   <div>
-                                    <Label className="text-xs text-gray-600">Inicio</Label>
+                                    <Label className="text-xs text-gray-600 dark:text-gray-400">Inicio</Label>
                                     <input
                                       type="time"
                                       value={daySchedule.morning.start}
                                       onChange={(e) => handleTimeChange(day.id, 'morning', 'start', e.target.value)}
-                                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006F4B] focus:border-[#006F4B]"
+                                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#006F4B] focus:border-[#006F4B]"
                                     />
                                   </div>
                                   <div>
-                                    <Label className="text-xs text-gray-600">Fin</Label>
+                                    <Label className="text-xs text-gray-600 dark:text-gray-400">Fin</Label>
                                     <input
                                       type="time"
                                       value={daySchedule.morning.end}
                                       onChange={(e) => handleTimeChange(day.id, 'morning', 'end', e.target.value)}
-                                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006F4B] focus:border-[#006F4B]"
+                                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#006F4B] focus:border-[#006F4B]"
                                     />
                                   </div>
                                 </div>
@@ -1711,7 +1711,7 @@ export default function DashboardPage() {
                             {/* Horario Tarde */}
                             <div className="space-y-3">
                               <div className="flex items-center justify-between">
-                                <Label className="text-sm font-medium">Turno Tarde</Label>
+                                <Label className="text-sm font-medium text-gray-900 dark:text-white">Turno Tarde</Label>
                                 <Switch
                                   checked={daySchedule.afternoon.enabled}
                                   onCheckedChange={(checked) => handleDayScheduleChange(day.id, 'afternoon', { ...daySchedule.afternoon, enabled: checked })}
@@ -1720,21 +1720,21 @@ export default function DashboardPage() {
                               {daySchedule.afternoon.enabled && (
                                 <div className="grid grid-cols-2 gap-3">
                                   <div>
-                                    <Label className="text-xs text-gray-600">Inicio</Label>
+                                    <Label className="text-xs text-gray-600 dark:text-gray-400">Inicio</Label>
                                     <input
                                       type="time"
                                       value={daySchedule.afternoon.start}
                                       onChange={(e) => handleTimeChange(day.id, 'afternoon', 'start', e.target.value)}
-                                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006F4B] focus:border-[#006F4B]"
+                                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#006F4B] focus:border-[#006F4B]"
                                     />
                                   </div>
                                   <div>
-                                    <Label className="text-xs text-gray-600">Fin</Label>
+                                    <Label className="text-xs text-gray-600 dark:text-gray-400">Fin</Label>
                                     <input
                                       type="time"
                                       value={daySchedule.afternoon.end}
                                       onChange={(e) => handleTimeChange(day.id, 'afternoon', 'end', e.target.value)}
-                                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006F4B] focus:border-[#006F4B]"
+                                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#006F4B] focus:border-[#006F4B]"
                                     />
                                   </div>
                                 </div>
@@ -1744,10 +1744,10 @@ export default function DashboardPage() {
                         )}
 
                         {/* Estado del día */}
-                        <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                        <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-800/60 rounded-lg">
                           <div className="flex items-center gap-2">
                             <CheckCircle className="h-4 w-4 text-green-600" />
-                            <span className="text-sm font-medium">
+                            <span className="text-sm font-medium text-gray-900 dark:text-white">
                               {daySchedule.fullDay 
                                 ? 'Disponible 24 horas'
                                 : daySchedule.morning.enabled || daySchedule.afternoon.enabled
@@ -1764,18 +1764,18 @@ export default function DashboardPage() {
               </div>
 
               {/* Resumen */}
-              <Card className="rounded-2xl border border-gray-100">
+              <Card className="rounded-2xl border border-gray-100 dark:border-gray-800 dark:bg-gray-900">
                 <CardHeader>
-                  <CardTitle>Resumen de Horarios</CardTitle>
+                  <CardTitle className="text-gray-900 dark:text-white">Resumen de Horarios</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
                     {DAYS_OF_WEEK.map((day) => {
                       const daySchedule = scheduleData[day.id];
                       return (
-                        <div key={day.id} className="text-center p-3 border rounded-lg">
-                          <div className="font-medium text-sm">{day.name}</div>
-                          <div className="text-xs text-gray-600 mt-1">
+                        <div key={day.id} className="text-center p-3 border dark:border-gray-700 rounded-lg">
+                          <div className="font-medium text-sm text-gray-900 dark:text-white">{day.name}</div>
+                          <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
                             {daySchedule?.fullDay 
                               ? '24hs'
                               : daySchedule?.morning.enabled || daySchedule?.afternoon.enabled
