@@ -14,10 +14,11 @@ export const CV_TYPES = [
   'image/jpeg',
   'image/jpg',
   'image/png',
+  'image/webp',
 ];
 
 export const IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'webp'];
-export const CV_EXTENSIONS = ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png'];
+export const CV_EXTENSIONS = ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png', 'webp'];
 
 export const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10 MB
 export const MAX_CV_SIZE = 15 * 1024 * 1024; // 15 MB

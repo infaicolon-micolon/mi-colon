@@ -181,7 +181,7 @@ export async function processPrivateDocumentUpload(input: {
   }
 
   const detectedType = detectFileType(file);
-  if (detectedType !== "cv") {
+  if (!detectedType) {
     throw new PrivateDocumentError(
       "unsupported_type",
       "Solo se permiten PDF, DOC, DOCX o imagenes para esta documentacion.",
