@@ -128,12 +128,34 @@ async function persistLocally(
   };
 }
 
+import { isSupabaseStorageConfigured, uploadToSupabaseStorage } from '@/lib/supabase-storage';
+
 async function persistUpload(
   buffer: Buffer,
   file: File,
   extension: string
 ): Promise<{ filename: string; url: string; storage: UploadStorage }> {
   const key = `profiles/${Date.now()}.${extension || 'bin'}`;
+
+  if (isSupabaseStorageConfigured()) {
+    try {
+      const contentType = file.type || 'application/octet-stream';
+      const result = await uploadToSupabaseStorage({
+        path: key,
+        file: buffer,
+        contentType,
+        isPublic: true,
+      });
+
+      return {
+        filename: key,
+        url: result.url,
+        storage: 'r2',
+      };
+    } catch (error) {
+      console.error('Error uploading to Supabase Storage, falling back:', error);
+    }
+  }
 
   if (isR2Configured()) {
     try {
