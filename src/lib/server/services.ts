@@ -1,5 +1,6 @@
 import { CategoryGroupId, Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
+import { ensureProfessionalRecord } from '@/lib/server/professional-dashboard';
 import type { ObservabilityActor } from '@/lib/observability/context';
 import { buildChanges, safeRecordAuditEvent } from '@/lib/observability/audit';
 import { getServiceCountsByCategorySlug } from '@/lib/service-stats';
@@ -410,13 +411,7 @@ export async function createServiceForUser(
     throw new ServiceFlowError('invalid_body', 'Faltan campos requeridos', 400);
   }
 
-  const professional = await prisma.professional.findUnique({
-    where: { userId },
-  });
-
-  if (!professional) {
-    throw new ServiceFlowError('no_professional', 'Perfil profesional no encontrado', 404);
-  }
+  const professional = await ensureProfessionalRecord(userId);
 
   const category = await resolveServiceCategory(categorySlug, observability);
 

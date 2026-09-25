@@ -226,13 +226,28 @@ function serializeProfessionalDashboard(
   };
 }
 
-async function getProfessionalIdByUserId(userId: string): Promise<string | null> {
-  const professional = await prisma.professional.findUnique({
+export async function ensureProfessionalRecord(userId: string) {
+  let professional = await prisma.professional.findUnique({
     where: { userId },
-    select: { id: true },
   });
 
-  return professional?.id ?? null;
+  if (!professional) {
+    professional = await prisma.professional.create({
+      data: {
+        userId,
+        bio: '',
+        status: 'pending',
+        professionalGroup: 'oficios',
+      },
+    });
+  }
+
+  return professional;
+}
+
+async function getProfessionalIdByUserId(userId: string): Promise<string | null> {
+  const professional = await ensureProfessionalRecord(userId);
+  return professional.id;
 }
 
 function hasField<T extends object>(value: T, key: string): boolean {
@@ -282,10 +297,18 @@ function normalizeOptionalString(value: unknown): string | null {
 export async function getProfessionalDashboardProfile(
   userId: string
 ): Promise<ProfessionalDashboardProfile | null> {
-  const professional = await prisma.professional.findUnique({
+  let professional = await prisma.professional.findUnique({
     where: { userId },
     ...professionalDashboardArgs,
   });
+
+  if (!professional) {
+    await ensureProfessionalRecord(userId);
+    professional = await prisma.professional.findUnique({
+      where: { userId },
+      ...professionalDashboardArgs,
+    });
+  }
 
   if (!professional) {
     return null;
@@ -300,6 +323,7 @@ export async function updateProfessionalDashboardProfile(
   payload: unknown
 ): Promise<ProfessionalDashboardProfile | null> {
   const body = (payload ?? {}) as Record<string, unknown>;
+  await ensureProfessionalRecord(userId);
   const professionalId = await getProfessionalIdByUserId(userId);
   const documentationInput = normalizeProfessionalDocumentationInput(body.documentation);
 
