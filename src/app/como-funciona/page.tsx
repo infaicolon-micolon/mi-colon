@@ -345,7 +345,7 @@ export default function ComoFuncionaPage() {
             <p className="text-gray-500 dark:text-gray-400">Gestioná tu perfil y servicios desde una interfaz simple e intuitiva</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-6 bg-white rounded-2xl border dark:border-gray-800 border-primary/20 dark:hover:bg-gray-800/50 transition-all">
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/30 transition-all shadow-sm hover:shadow-md">
               <div className="w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center mb-4">
                 <LayoutDashboard className="h-5 w-5" aria-hidden="true" />
               </div>
@@ -354,7 +354,7 @@ export default function ComoFuncionaPage() {
                 Estadísticas de visitas, solicitudes y actividad de tu perfil en tiempo real.
               </p>
             </div>
-            <div className="p-6 bg-white rounded-2xl border dark:border-gray-800 border-primary/20 dark:hover:bg-gray-800/50 transition-all">
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/30 transition-all shadow-sm hover:shadow-md">
               <div className="w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center mb-4">
                 <Wrench className="h-5 w-5" aria-hidden="true" />
               </div>
@@ -363,7 +363,7 @@ export default function ComoFuncionaPage() {
                 Agregá, editá o desactivá tus servicios. Definí precios y descripciones detalladas.
               </p>
             </div>
-            <div className="p-6 bg-white rounded-2xl border dark:border-gray-800 border-primary/20 dark:hover:bg-gray-800/50 transition-all">
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/30 transition-all shadow-sm hover:shadow-md">
               <div className="w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center mb-4">
                 <Award className="h-5 w-5" aria-hidden="true" />
               </div>
@@ -372,7 +372,7 @@ export default function ComoFuncionaPage() {
                 Subí tus matrículas y certificados para mostrar el sello de confianza en tu perfil.
               </p>
             </div>
-            <div className="p-6 bg-white rounded-2xl border dark:border-gray-800 border-primary/20 dark:hover:bg-gray-800/50 transition-all">
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/30 transition-all shadow-sm hover:shadow-md">
               <div className="w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center mb-4">
                 <MapPin className="h-5 w-5" aria-hidden="true" />
               </div>
@@ -381,7 +381,7 @@ export default function ComoFuncionaPage() {
                 Indicá en qué localidades o barrios trabajás para aparecer en más búsquedas.
               </p>
             </div>
-            <div className="p-6 bg-white rounded-2xl border dark:border-gray-800 border-primary/20 dark:hover:bg-gray-800/50 transition-all">
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/30 transition-all shadow-sm hover:shadow-md">
               <div className="w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center mb-4">
                 <Calendar className="h-5 w-5" aria-hidden="true" />
               </div>
@@ -390,7 +390,7 @@ export default function ComoFuncionaPage() {
                 Configurá tus días y horarios de atención para que los vecinos sepan cuándo contactarte.
               </p>
             </div>
-            <div className="p-6 bg-white rounded-2xl border dark:border-gray-800 border-primary/20 dark:hover:bg-gray-800/50 transition-all">
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/30 transition-all shadow-sm hover:shadow-md">
               <div className="w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center mb-4">
                 <Settings className="h-5 w-5" aria-hidden="true" />
               </div>
