@@ -1,3 +1,4 @@
+import { sendMail } from '@/lib/mail';
 import { prisma } from '@/lib/prisma';
 
 const BOT_MIN_ELAPSED_MS = 2000;
@@ -136,6 +137,29 @@ export async function createSupportContactSubmission(input: SupportContactInput)
     },
   });
 
+  try {
+    const notificationEmail = process.env.SUPPORT_NOTIFICATION_EMAIL || 'infaicolon@gmail.com';
+    await sendMail({
+      to: notificationEmail,
+      subject: `[Mi Colón - Soporte] ${title}`,
+      html: `
+        <div style="font-family: sans-serif; padding: 20px; color: #333;">
+          <h2 style="color: #006F4B;">Nuevo mensaje de contacto / soporte</h2>
+          <p><strong>De:</strong> ${input.name || 'Anónimo'} (${input.email})</p>
+          <p><strong>Tipo / Asunto:</strong> ${title}</p>
+          <p><strong>Origen:</strong> ${input.origin || 'N/A'}</p>
+          <p><strong>Página:</strong> ${input.url || 'N/A'}</p>
+          <hr style="border: 1px solid #eee; margin: 20px 0;" />
+          <h3 style="color: #006F4B;">Mensaje:</h3>
+          <p style="white-space: pre-wrap; background: #f9f9f9; padding: 15px; border-radius: 8px;">${input.message}</p>
+        </div>
+      `,
+      text: `Nuevo mensaje de soporte\nDe: ${input.name || 'Anónimo'} (${input.email})\nMensaje: ${input.message}`,
+    });
+  } catch (mailError) {
+    console.error('Error enviando notificación por email de soporte:', mailError);
+  }
+
   return { id: report.id };
 }
 
@@ -212,6 +236,29 @@ export async function createCategorySuggestionSubmission(
       perspective: input.perspective,
     },
   });
+
+  try {
+    const notificationEmail = process.env.SUPPORT_NOTIFICATION_EMAIL || 'infaicolon@gmail.com';
+    await sendMail({
+      to: notificationEmail,
+      subject: `[Mi Colón] Nueva sugerencia de categoría: ${input.suggestedName}`,
+      html: `
+        <div style="font-family: sans-serif; padding: 20px; color: #333;">
+          <h2 style="color: #006F4B;">Nueva sugerencia de categoría</h2>
+          <p><strong>Categoría sugerida:</strong> ${input.suggestedName}</p>
+          <p><strong>Email remitente:</strong> ${input.email || 'No proporcionado'}</p>
+          <p><strong>Perspectiva:</strong> ${input.perspective === 'provider' ? 'Ofrece el servicio (Profesional)' : input.perspective === 'seeker' ? 'Busca el servicio (Vecino)' : 'General'}</p>
+          <p><strong>Origen:</strong> ${input.origin || 'N/A'}</p>
+          <hr style="border: 1px solid #eee; margin: 20px 0;" />
+          <h3 style="color: #006F4B;">Detalles:</h3>
+          <p style="white-space: pre-wrap; background: #f9f9f9; padding: 15px; border-radius: 8px;">${input.description || 'Sin descripción adicional'}</p>
+        </div>
+      `,
+      text: `Nueva sugerencia de categoría: ${input.suggestedName}\nEmail: ${input.email || 'N/A'}\nDescripción: ${input.description || 'Sin descripción'}`,
+    });
+  } catch (mailError) {
+    console.error('Error enviando notificación por email de sugerencia:', mailError);
+  }
 
   return { id: suggestion.id };
 }
