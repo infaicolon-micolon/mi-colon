@@ -305,9 +305,9 @@ export default function ServiciosPage() {
                   className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:border-primary sm:text-sm transition-colors dark:focus-visible:ring-offset-gray-800"
                 />
               </div>
-              <div className="flex items-center gap-2 w-full md:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto">
                 <CitySelect
-                  className="flex-1 min-w-0 sm:min-w-[180px]"
+                  className="w-full sm:w-[220px]"
                   triggerClassName="h-10 rounded-xl"
                   value={selectedLocation}
                   onValueChange={(value) => {
@@ -321,13 +321,13 @@ export default function ServiciosPage() {
                     setShowVerifiedOnly(!showVerifiedOnly);
                     setPage(1);
                   }}
-                  className={`flex shrink-0 items-center justify-center gap-1.5 px-3 py-2 rounded-xl border-2 text-xs font-semibold whitespace-nowrap transition-colors duration-200 ${
+                  className={`flex items-center justify-center gap-1.5 px-4 py-2 h-10 rounded-xl border-2 text-xs font-semibold whitespace-nowrap transition-colors duration-200 w-full sm:w-auto ${
                     showVerifiedOnly
                       ? "border-[#006F4B] bg-[#006F4B] text-white focus:ring-4 focus:ring-green-100"
                       : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B]"
                   }`}
                 >
-                  <Verified className="h-4 w-4 shrink-0 text-emerald-500" aria-hidden="true" />
+                  <Verified className={`h-4 w-4 shrink-0 ${showVerifiedOnly ? "text-white" : "text-emerald-500"}`} aria-hidden="true" />
                   <span>Verificados</span>
                 </button>
               </div>
