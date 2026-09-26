@@ -19,11 +19,32 @@ import {
   MessageSquare,
   Lightbulb,
   Tag,
+  Eye,
+  FileText,
+  Download,
+  IdCard,
+  User,
+  Calendar,
+  Building,
+  Globe,
+  Instagram,
+  Facebook,
+  Linkedin,
+  FileCheck,
+  AlertCircle,
+  FolderCheck,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { toast } from "sonner";
 import Link from "next/link";
 import Image from "next/image";
@@ -34,6 +55,7 @@ type Professional = {
   userId: string;
   name: string;
   email: string;
+  dni?: string | null;
   phone: string | null;
   bio: string;
   status: "active" | "pending" | "suspended";
@@ -42,8 +64,79 @@ type Professional = {
   experienceYears: number | null;
   location: string | null;
   ProfilePicture: string | null;
+  CV?: string | null;
+  registrationType?: string;
   createdAt: string;
   services: Array<{ id: string; title: string; category: string }>;
+};
+
+type ProfessionalDetail = {
+  id: string;
+  userId: string;
+  name: string;
+  bio: string;
+  experienceYears: number | null;
+  verified: boolean;
+  status: "active" | "pending" | "suspended";
+  requiresDocumentation: boolean;
+  professionalGroup: string;
+  location: string | null;
+  whatsapp: string | null;
+  instagram: string | null;
+  facebook: string | null;
+  linkedin: string | null;
+  website: string | null;
+  portfolio: string | null;
+  ProfilePicture: string | null;
+  CV: string | null;
+  hasPhysicalStore: boolean;
+  physicalStoreAddress: string | null;
+  createdAt: string;
+  registrationType: "email" | "google" | "facebook";
+  user: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    dni: string | null;
+    phone: string | null;
+    birthDate: string | null;
+    location: string | null;
+    verified: boolean;
+    createdAt: string;
+  };
+  services: Array<{
+    id: string;
+    title: string;
+    categoryGroup?: string;
+  }>;
+  documentationRequired: boolean;
+  criminalRecordPresent: boolean;
+  hasLaborReferences: boolean;
+  documentation: {
+    required: boolean;
+    criminalRecordPresent: boolean;
+    criminalRecordStatus: "pending" | "approved" | "rejected" | null;
+    criminalRecordReviewedAt: string | null;
+    criminalRecordAdminNotes: string | null;
+    hasLaborReferences: boolean;
+    criminalRecord: {
+      objectKey: string;
+      fileName: string;
+      downloadPath: string;
+    } | null;
+    laborReferences: Array<{
+      id: string;
+      name: string;
+      company: string;
+      contact: string;
+      attachment: {
+        objectKey: string;
+        fileName: string;
+        downloadPath: string;
+      } | null;
+    }>;
+  } | null;
 };
 
 type BugReportItem = {
@@ -90,6 +183,12 @@ export default function AdminDashboardPage() {
   const [supportLoading, setSupportLoading] = useState(false);
   const [updatingSupportId, setUpdatingSupportId] = useState<string | null>(null);
   const [supportSection, setSupportSection] = useState<"messages" | "suggestions">("messages");
+
+  // Legajo / Modal de detalle agrupado
+  const [selectedProfId, setSelectedProfId] = useState<string | null>(null);
+  const [selectedProfDetail, setSelectedProfDetail] = useState<ProfessionalDetail | null>(null);
+  const [loadingDetail, setLoadingDetail] = useState<boolean>(false);
+  const [reviewingCriminalRecord, setReviewingCriminalRecord] = useState<boolean>(false);
 
   // Redirigir si no es autenticado
   useEffect(() => {
@@ -141,6 +240,69 @@ export default function AdminDashboardPage() {
       fetchSupport();
     }
   }, [authStatus, fetchProfessionals, fetchSupport]);
+
+  const openDetailModal = async (id: string) => {
+    setSelectedProfId(id);
+    setLoadingDetail(true);
+    setSelectedProfDetail(null);
+    try {
+      const res = await fetch(`/api/admin/professionals/${id}`);
+      const json = await res.json();
+      if (json.success && json.data) {
+        setSelectedProfDetail(json.data);
+      } else {
+        toast.error(json.message || "Error al cargar el legajo del profesional");
+      }
+    } catch (err) {
+      console.error("Error fetching professional detail:", err);
+      toast.error("Error al obtener información detallada");
+    } finally {
+      setLoadingDetail(false);
+    }
+  };
+
+  const handleReviewCriminalRecord = async (id: string, status: "approved" | "rejected") => {
+    setReviewingCriminalRecord(true);
+    try {
+      const res = await fetch(`/api/admin/professionals/${id}/criminal-record`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        toast.success(
+          status === "approved"
+            ? "Certificado de antecedentes APROBADO y profesional verificado"
+            : "Certificado de antecedentes RECHAZADO"
+        );
+        if (selectedProfDetail && selectedProfDetail.id === id) {
+          setSelectedProfDetail((prev) =>
+            prev
+              ? {
+                  ...prev,
+                  verified: status === "approved",
+                  documentation: prev.documentation
+                    ? {
+                        ...prev.documentation,
+                        criminalRecordStatus: status,
+                      }
+                    : null,
+                }
+              : null
+          );
+        }
+        fetchProfessionals();
+      } else {
+        toast.error(json.message || "Error al revisar antecedentes");
+      }
+    } catch (err) {
+      console.error("Error reviewing criminal record:", err);
+      toast.error("Error al actualizar estado de antecedentes");
+    } finally {
+      setReviewingCriminalRecord(false);
+    }
+  };
 
   const handleUpdateStatus = async (id: string, newStatus: "active" | "suspended", verified: boolean) => {
     setUpdatingId(id);
@@ -215,6 +377,7 @@ export default function AdminDashboardPage() {
     const matchesSearch =
       p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       p.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (p.dni && p.dni.includes(searchTerm)) ||
       (p.phone && p.phone.includes(searchTerm)) ||
       (p.location && p.location.toLowerCase().includes(searchTerm.toLowerCase()));
     return matchesTab && matchesSearch;
@@ -231,10 +394,10 @@ export default function AdminDashboardPage() {
 
   if (authStatus === "loading") {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center dark:bg-gray-950">
         <div className="flex items-center gap-3">
           <RefreshCw className="h-6 w-6 animate-spin text-[#006F4B]" />
-          <span className="font-semibold text-gray-700">Cargando Panel de Administración...</span>
+          <span className="font-semibold text-gray-700 dark:text-gray-200">Cargando Panel de Administración...</span>
         </div>
       </div>
     );
@@ -257,7 +420,7 @@ export default function AdminDashboardPage() {
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
               {activeTab === "support"
                 ? "Gestión de mensajes enviados desde el formulario de contacto y propuestas de categorías."
-                : "Revisá, aprobá o suspendé los perfiles de vecinos profesionales de Colón."}
+                : "Revisá, aprobá, o inspeccioná la documentación (DNI, CV, Antecedentes Penales, Referencias) de vecinos de Colón."}
             </p>
           </div>
 
@@ -268,7 +431,7 @@ export default function AdminDashboardPage() {
                 fetchSupport();
               }}
               variant="outline"
-              className="flex items-center gap-2 rounded-xl"
+              className="flex items-center gap-2 rounded-xl dark:border-gray-700 dark:text-gray-200"
             >
               <RefreshCw className={`h-4 w-4 ${loading || supportLoading ? "animate-spin" : ""}`} />
               Actualizar
@@ -444,11 +607,11 @@ export default function AdminDashboardPage() {
           </div>
 
           {activeTab !== "support" && (
-            <div className="relative w-full sm:w-72">
+            <div className="relative w-full sm:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
                 type="text"
-                placeholder="Buscar por nombre, email..."
+                placeholder="Buscar por nombre, DNI, email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-9 rounded-xl border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
@@ -778,6 +941,22 @@ export default function AdminDashboardPage() {
                             <Badge variant="secondary" className="capitalize text-xs">
                               {prof.professionalGroup}
                             </Badge>
+
+                            {/* Badge DNI si existe */}
+                            {prof.dni && (
+                              <Badge variant="outline" className="text-xs bg-gray-50 dark:bg-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-700 flex items-center gap-1">
+                                <IdCard className="h-3 w-3 text-[#006F4B] dark:text-emerald-400" />
+                                DNI: {prof.dni}
+                              </Badge>
+                            )}
+
+                            {/* Badge CV si existe */}
+                            {prof.CV && (
+                              <Badge variant="outline" className="text-xs bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800 flex items-center gap-1">
+                                <FileText className="h-3 w-3" />
+                                CV Cargado
+                              </Badge>
+                            )}
                           </div>
 
                           <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 flex-wrap pt-1">
@@ -807,7 +986,7 @@ export default function AdminDashboardPage() {
                             <div className="flex items-center gap-2 pt-2 flex-wrap">
                               <span className="text-xs font-semibold text-gray-400 dark:text-gray-500">Servicios:</span>
                               {prof.services.map((s) => (
-                                <Badge key={s.id} variant="outline" className="text-xs bg-gray-50 dark:bg-gray-800">
+                                <Badge key={s.id} variant="outline" className="text-xs bg-gray-50 dark:bg-gray-800 dark:text-gray-300">
                                   {s.title}
                                 </Badge>
                               ))}
@@ -817,7 +996,16 @@ export default function AdminDashboardPage() {
                       </div>
 
                       {/* Botones de acción */}
-                      <div className="flex flex-row lg:flex-col items-center lg:items-end justify-end gap-2 pt-4 lg:pt-0 border-t lg:border-t-0 border-gray-100 dark:border-gray-800">
+                      <div className="flex flex-col sm:flex-row lg:flex-col items-stretch lg:items-end justify-end gap-2 pt-4 lg:pt-0 border-t lg:border-t-0 border-gray-100 dark:border-gray-800">
+                        {/* BOTÓN VER LEGAJO Y DOCUMENTACIÓN */}
+                        <Button
+                          onClick={() => openDetailModal(prof.id)}
+                          className="bg-[#006F4B] hover:bg-[#005a3d] text-white rounded-xl text-xs font-bold w-full lg:w-auto flex items-center justify-center gap-1.5 shadow-sm"
+                        >
+                          <Eye className="h-4 w-4" />
+                          Ver Legajo & Docs
+                        </Button>
+
                         <Link
                           href={`/profesionales/${prof.id}`}
                           target="_blank"
@@ -826,7 +1014,7 @@ export default function AdminDashboardPage() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="w-full rounded-xl text-xs flex items-center gap-1"
+                            className="w-full rounded-xl text-xs flex items-center justify-center gap-1 dark:border-gray-700 dark:text-gray-300"
                           >
                             <ExternalLink className="h-3.5 w-3.5" />
                             Ver Perfil Público
@@ -838,10 +1026,10 @@ export default function AdminDashboardPage() {
                             <Button
                               onClick={() => handleUpdateStatus(prof.id, "active", true)}
                               disabled={updatingId === prof.id}
-                              className="bg-[#006F4B] hover:bg-[#005a3d] text-white rounded-xl text-xs font-semibold flex-1 lg:flex-none"
+                              className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold flex-1 lg:flex-none"
                             >
                               <CheckCircle2 className="h-4 w-4 mr-1" />
-                              Aprobar y Verificar
+                              Aprobar
                             </Button>
                             <Button
                               onClick={() => handleUpdateStatus(prof.id, "suspended", false)}
@@ -862,7 +1050,7 @@ export default function AdminDashboardPage() {
                             className="border-red-200 text-red-600 hover:bg-red-50 dark:border-red-900/50 dark:hover:bg-red-950/30 rounded-xl text-xs w-full lg:w-auto"
                           >
                             <XCircle className="h-3.5 w-3.5 mr-1" />
-                            Suspender Perfil
+                            Suspender
                           </Button>
                         )}
 
@@ -884,6 +1072,423 @@ export default function AdminDashboardPage() {
             </div>
           )
         )}
+
+        {/* MODAL / DIALOG DE LEGAJO Y DOCUMENTACIÓN AGRUPADA */}
+        <Dialog
+          open={!!selectedProfId}
+          onOpenChange={(open) => {
+            if (!open) {
+              setSelectedProfId(null);
+              setSelectedProfDetail(null);
+            }
+          }}
+        >
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl dark:bg-gray-900 dark:border-gray-800 p-6 sm:p-8">
+            <DialogHeader className="border-b border-gray-100 dark:border-gray-800 pb-4">
+              <DialogTitle className="text-2xl font-black text-gray-900 dark:text-white flex items-center gap-2">
+                <FolderCheck className="h-6 w-6 text-[#006F4B] dark:text-emerald-400" />
+                Legajo & Documentación Completa
+              </DialogTitle>
+              <DialogDescription className="text-sm text-gray-500 dark:text-gray-400">
+                Información agrupada del usuario, DNI, foto, CV, certificado de antecedentes penales y referencias laborales.
+              </DialogDescription>
+            </DialogHeader>
+
+            {loadingDetail ? (
+              <div className="py-16 text-center">
+                <RefreshCw className="h-10 w-10 animate-spin mx-auto text-[#006F4B] dark:text-emerald-400 mb-3" />
+                <p className="text-base font-semibold text-gray-700 dark:text-gray-300">
+                  Cargando expediente del profesional...
+                </p>
+              </div>
+            ) : selectedProfDetail ? (
+              <div className="space-y-6 pt-2">
+                
+                {/* ENCABEZADO RESUMEN DEL USUARIO */}
+                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/20 p-5 rounded-2xl border border-emerald-100 dark:border-emerald-900/40 flex flex-col sm:flex-row items-center gap-4">
+                  <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 border-2 border-emerald-500 shadow-sm shrink-0">
+                    {selectedProfDetail.ProfilePicture ? (
+                      <Image
+                        src={resolvePublicUploadUrl(selectedProfDetail.ProfilePicture)}
+                        alt={selectedProfDetail.name}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-emerald-700 dark:text-emerald-300 text-2xl font-black">
+                        {selectedProfDetail.name.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="space-y-1 text-center sm:text-left flex-1">
+                    <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                      <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                        {selectedProfDetail.user.firstName} {selectedProfDetail.user.lastName}
+                      </h2>
+                      <Badge
+                        variant="outline"
+                        className={
+                          selectedProfDetail.status === "active"
+                            ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-300"
+                            : selectedProfDetail.status === "pending"
+                            ? "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border-amber-300"
+                            : "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 border-red-300"
+                        }
+                      >
+                        {selectedProfDetail.status === "active"
+                          ? "✅ Perfil Aprobado"
+                          : selectedProfDetail.status === "pending"
+                          ? "⏳ Pendiente"
+                          : "🚫 Suspendido"}
+                      </Badge>
+                      {selectedProfDetail.verified && (
+                        <Badge className="bg-[#006F4B] text-white">Verificado</Badge>
+                      )}
+                    </div>
+
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                      {selectedProfDetail.user.email}
+                    </p>
+                    
+                    <div className="flex items-center justify-center sm:justify-start gap-3 text-xs text-gray-500 dark:text-gray-400 pt-1 flex-wrap">
+                      <span className="flex items-center gap-1">
+                        <Tag className="h-3.5 w-3.5 text-[#006F4B]" />
+                        Grupo: <strong className="capitalize">{selectedProfDetail.professionalGroup}</strong>
+                      </span>
+                      <span>•</span>
+                      <span className="flex items-center gap-1">
+                        <User className="h-3.5 w-3.5 text-blue-500" />
+                        Registro: <strong className="capitalize">{selectedProfDetail.registrationType}</strong>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SECCIÓN 1: INFORMACIÓN PERSONAL Y DNI */}
+                <Card className="rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xs bg-white dark:bg-gray-900">
+                  <CardHeader className="pb-3 border-b border-gray-100 dark:border-gray-800">
+                    <CardTitle className="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                      <IdCard className="h-5 w-5 text-[#006F4B] dark:text-emerald-400" />
+                      1. Información Personal & DNI
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+                    <div className="space-y-1">
+                      <span className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">Nombre Completo:</span>
+                      <p className="font-semibold text-gray-900 dark:text-white">
+                        {selectedProfDetail.user.firstName} {selectedProfDetail.user.lastName}
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <span className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">DNI (Documento):</span>
+                      <div>
+                        {selectedProfDetail.user.dni ? (
+                          <span className="inline-block px-3 py-1 bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 border border-amber-200 dark:border-amber-800 rounded-lg font-mono font-bold text-base">
+                            {selectedProfDetail.user.dni}
+                          </span>
+                        ) : (
+                          <span className="text-gray-400 italic">No especificado</span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <span className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email de Cuenta:</span>
+                      <p className="font-medium text-gray-900 dark:text-white break-all">
+                        {selectedProfDetail.user.email}
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <span className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">Teléfono de Contacto:</span>
+                      <p className="font-medium text-gray-900 dark:text-white">
+                        {selectedProfDetail.user.phone || selectedProfDetail.whatsapp || "No registrado"}
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <span className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">Fecha de Nacimiento:</span>
+                      <p className="font-medium text-gray-900 dark:text-white flex items-center gap-1.5">
+                        <Calendar className="h-4 w-4 text-gray-400" />
+                        {selectedProfDetail.user.birthDate
+                          ? new Date(selectedProfDetail.user.birthDate).toLocaleDateString("es-AR")
+                          : "No especificada"}
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <span className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">Ubicación / Barrio:</span>
+                      <p className="font-medium text-gray-900 dark:text-white flex items-center gap-1.5">
+                        <MapPin className="h-4 w-4 text-gray-400" />
+                        {selectedProfDetail.user.location || selectedProfDetail.location || "Colón, Entre Ríos"}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* SECCIÓN 2: FOTO DE PERFIL, CV Y DATOS PROFESIONALES */}
+                <Card className="rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xs bg-white dark:bg-gray-900">
+                  <CardHeader className="pb-3 border-b border-gray-100 dark:border-gray-800">
+                    <CardTitle className="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                      <FileText className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                      2. Foto de Perfil, CV y Datos Profesionales
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4 space-y-4 text-sm">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {/* Foto de Perfil */}
+                      <div className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-100 dark:border-gray-700 flex items-center justify-between">
+                        <div className="space-y-1">
+                          <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">Foto de Perfil:</span>
+                          <p className="text-xs text-gray-500">
+                            {selectedProfDetail.ProfilePicture ? "Archivo subido correctamente" : "Sin foto subida"}
+                          </p>
+                        </div>
+                        {selectedProfDetail.ProfilePicture ? (
+                          <a
+                            href={resolvePublicUploadUrl(selectedProfDetail.ProfilePicture)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Button size="sm" variant="outline" className="text-xs rounded-xl flex items-center gap-1">
+                              <ExternalLink className="h-3.5 w-3.5" />
+                              Ver Foto Original
+                            </Button>
+                          </a>
+                        ) : (
+                          <Badge variant="secondary">Sin foto</Badge>
+                        )}
+                      </div>
+
+                      {/* Curriculum Vitae (CV) */}
+                      <div className="p-4 bg-blue-50/50 dark:bg-blue-950/20 rounded-xl border border-blue-100 dark:border-blue-900/50 flex items-center justify-between">
+                        <div className="space-y-1">
+                          <span className="text-xs font-semibold text-blue-900 dark:text-blue-300">Curriculum Vitae (CV):</span>
+                          <p className="text-xs text-blue-700 dark:text-blue-400">
+                            {selectedProfDetail.CV ? "Documento de CV adjunto" : "El profesional no subió su CV"}
+                          </p>
+                        </div>
+                        {selectedProfDetail.CV ? (
+                          <a
+                            href={resolvePublicUploadUrl(selectedProfDetail.CV)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-xl flex items-center gap-1.5 font-bold">
+                              <Download className="h-3.5 w-3.5" />
+                              Descargar / Ver CV
+                            </Button>
+                          </a>
+                        ) : (
+                          <Badge variant="outline" className="text-xs text-gray-500">No disponible</Badge>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Biografía */}
+                    <div className="bg-gray-50 dark:bg-gray-800/40 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
+                      <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1">
+                        Biografía / Experiencia Declarada:
+                      </span>
+                      <p className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap leading-relaxed">
+                        {selectedProfDetail.bio || "Sin biografía especificada."}
+                      </p>
+                      {selectedProfDetail.experienceYears !== null && (
+                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mt-2">
+                          Años de experiencia declarados: <strong>{selectedProfDetail.experienceYears} años</strong>
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Local Físico y Redes */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-2">
+                      <div className="space-y-1">
+                        <span className="font-semibold text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                          <Building className="h-3.5 w-3.5" /> Local Físico o Comercio:
+                        </span>
+                        <p className="text-gray-800 dark:text-gray-200 font-medium">
+                          {selectedProfDetail.hasPhysicalStore
+                            ? `Sí: ${selectedProfDetail.physicalStoreAddress || "Dirección no especificada"}`
+                            : "Atiende a domicilio / No tiene local abierto al público"}
+                        </p>
+                      </div>
+
+                      <div className="space-y-1">
+                        <span className="font-semibold text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                          <Globe className="h-3.5 w-3.5" /> Redes y Contacto:
+                        </span>
+                        <div className="flex items-center gap-2 flex-wrap text-gray-700 dark:text-gray-300">
+                          {selectedProfDetail.whatsapp && <span className="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 rounded font-mono">WhatsApp: {selectedProfDetail.whatsapp}</span>}
+                          {selectedProfDetail.instagram && <span>IG: @{selectedProfDetail.instagram}</span>}
+                          {selectedProfDetail.facebook && <span>FB: {selectedProfDetail.facebook}</span>}
+                          {selectedProfDetail.linkedin && <span>LinkedIn: {selectedProfDetail.linkedin}</span>}
+                          {selectedProfDetail.website && <a href={selectedProfDetail.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Web</a>}
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* SECCIÓN 3: CERTIFICADO DE ANTECEDENTES PENALES */}
+                <Card className="rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xs bg-white dark:bg-gray-900">
+                  <CardHeader className="pb-3 border-b border-gray-100 dark:border-gray-800">
+                    <CardTitle className="text-base font-bold text-gray-900 dark:text-white flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <FileCheck className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                        3. Certificado de Antecedentes Penales
+                      </div>
+                      <Badge
+                        variant="outline"
+                        className={
+                          selectedProfDetail.documentation?.criminalRecordStatus === "approved"
+                            ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-300"
+                            : selectedProfDetail.documentation?.criminalRecordStatus === "rejected"
+                            ? "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 border-red-300"
+                            : selectedProfDetail.documentation?.criminalRecordStatus === "pending"
+                            ? "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border-amber-300"
+                            : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-400"
+                        }
+                      >
+                        {selectedProfDetail.documentation?.criminalRecordStatus === "approved"
+                          ? "✅ Antecedentes Aprobados"
+                          : selectedProfDetail.documentation?.criminalRecordStatus === "rejected"
+                          ? "❌ Antecedentes Rechazados"
+                          : selectedProfDetail.documentation?.criminalRecordStatus === "pending"
+                          ? "⏳ Pendiente de Revisión"
+                          : "Sin Antecedentes Cargados"}
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4 space-y-4 text-sm">
+                    {selectedProfDetail.documentation?.criminalRecord ? (
+                      <div className="bg-amber-50/50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-200 dark:border-amber-900/50 space-y-3">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                          <div>
+                            <p className="font-bold text-gray-900 dark:text-white text-sm">
+                              Archivo cargado: <span className="font-mono text-amber-900 dark:text-amber-200">{selectedProfDetail.documentation.criminalRecord.fileName}</span>
+                            </p>
+                            {selectedProfDetail.documentation.criminalRecordReviewedAt && (
+                              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                                Revisado el: {new Date(selectedProfDetail.documentation.criminalRecordReviewedAt).toLocaleString("es-AR")}
+                              </p>
+                            )}
+                          </div>
+
+                          <a
+                            href={selectedProfDetail.documentation.criminalRecord.downloadPath}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Button className="bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 w-full sm:w-auto">
+                              <Download className="h-4 w-4" />
+                              Descargar / Ver Certificado
+                            </Button>
+                          </a>
+                        </div>
+
+                        {/* Botones para aprobar o rechazar antecedentes */}
+                        <div className="flex items-center gap-2 pt-2 border-t border-amber-200 dark:border-amber-900/50">
+                          <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">Revisión de Antecedentes:</span>
+                          <Button
+                            size="sm"
+                            disabled={reviewingCriminalRecord}
+                            onClick={() => handleReviewCriminalRecord(selectedProfDetail.id, "approved")}
+                            className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs rounded-xl font-bold"
+                          >
+                            <CheckCircle2 className="h-3.5 w-3.5 mr-1" />
+                            Aprobar Antecedentes
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            disabled={reviewingCriminalRecord}
+                            onClick={() => handleReviewCriminalRecord(selectedProfDetail.id, "rejected")}
+                            className="border-red-300 text-red-600 hover:bg-red-50 dark:border-red-800 dark:hover:bg-red-950/40 text-xs rounded-xl"
+                          >
+                            <XCircle className="h-3.5 w-3.5 mr-1" />
+                            Rechazar Antecedentes
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-center py-6 bg-gray-50 dark:bg-gray-800/40 rounded-xl border border-gray-100 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                        <AlertCircle className="h-8 w-8 mx-auto text-gray-400 mb-2" />
+                        <p className="text-sm">El profesional no ha subido su certificado de antecedentes penales.</p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+
+                {/* SECCIÓN 4: REFERENCIAS LABORALES ENVIADAS */}
+                <Card className="rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xs bg-white dark:bg-gray-900">
+                  <CardHeader className="pb-3 border-b border-gray-100 dark:border-gray-800">
+                    <CardTitle className="text-base font-bold text-gray-900 dark:text-white flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Briefcase className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                        4. Referencias Laborales Enviadas
+                      </div>
+                      <Badge variant="secondary" className="text-xs">
+                        {selectedProfDetail.documentation?.laborReferences?.length || 0} Referencia(s)
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4 space-y-3 text-sm">
+                    {selectedProfDetail.documentation?.laborReferences &&
+                    selectedProfDetail.documentation.laborReferences.length > 0 ? (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {selectedProfDetail.documentation.laborReferences.map((ref) => (
+                          <div
+                            key={ref.id}
+                            className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/60 space-y-2"
+                          >
+                            <div className="flex items-center justify-between">
+                              <h4 className="font-bold text-gray-900 dark:text-white text-sm">
+                                {ref.name}
+                              </h4>
+                              <span className="text-xs bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 font-semibold px-2 py-0.5 rounded">
+                                {ref.company}
+                              </span>
+                            </div>
+
+                            <p className="text-xs text-gray-600 dark:text-gray-300 flex items-center gap-1">
+                              <Phone className="h-3.5 w-3.5 text-gray-400" />
+                              Contacto: <strong>{ref.contact}</strong>
+                            </p>
+
+                            {ref.attachment ? (
+                              <div className="pt-2">
+                                <a
+                                  href={ref.attachment.downloadPath}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <Button size="sm" variant="outline" className="w-full text-xs rounded-xl flex items-center justify-center gap-1.5 dark:border-gray-600 dark:text-gray-200">
+                                    <Download className="h-3.5 w-3.5" />
+                                    Descargar Adjunto ({ref.attachment.fileName})
+                                  </Button>
+                                </a>
+                              </div>
+                            ) : (
+                              <p className="text-xs text-gray-400 italic pt-1">Sin archivo adjunto</p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-center py-6 bg-gray-50 dark:bg-gray-800/40 rounded-xl border border-gray-100 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                        <p className="text-sm">El profesional no ha enviado referencias laborales.</p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+
+              </div>
+            ) : null}
+          </DialogContent>
+        </Dialog>
+
       </div>
     </div>
   );

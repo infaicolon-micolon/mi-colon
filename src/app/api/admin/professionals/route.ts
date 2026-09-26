@@ -90,6 +90,7 @@ export async function GET(request: NextRequest) {
         userId: p.userId,
         name: `${p.user.firstName} ${p.user.lastName}`.trim(),
         email: p.user.email,
+        dni: p.user.dni,
         phone: p.user.phone,
         bio: p.bio,
         status: p.status,
