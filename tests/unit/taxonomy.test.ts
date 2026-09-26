@@ -84,10 +84,10 @@ describe('taxonomy', () => {
       expect(locations.length).toBeGreaterThan(0);
     });
 
-    it('incluye Ceres como primera locación', () => {
+    it('incluye Colón como primera locación', () => {
       const locations = getLocations();
-      expect(locations[0].id).toBe('ceres');
-      expect(locations[0].name).toContain('Ceres');
+      expect(locations[0].id).toBe('colon');
+      expect(locations[0].name).toContain('Colón');
     });
 
     it('todas las locaciones tienen id y name', () => {
