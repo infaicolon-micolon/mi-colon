@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -22,6 +22,13 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#0f172a",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   title: {
     default: "Mi Colón - Servicios y Profesionales",
@@ -33,13 +40,19 @@ export const metadata: Metadata = {
   creator: "Mi Colón",
   publisher: "Mi Colón",
   metadataBase: new URL(baseUrl),
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Mi Colón",
+  },
   alternates: {
     canonical: baseUrl,
   },
   icons: {
-    icon: "/logo_colon.png",
-    shortcut: "/logo_colon.png",
-    apple: "/logo_colon.png",
+    icon: "/icons/icon-192.png",
+    shortcut: "/icons/icon-192.png",
+    apple: "/icons/icon-192.png",
   },
   openGraph: {
     title: "Mi Colón - Plataforma de Servicios",
@@ -112,6 +125,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     if (!saved) localStorage.setItem('theme', 'dark');
                   }
                 } catch (e) {}
+                if ('serviceWorker' in navigator) {
+                  window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js').catch(function() {});
+                  });
+                }
               })();
             `,
           }}
