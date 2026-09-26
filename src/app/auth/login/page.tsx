@@ -171,22 +171,22 @@ export default function LoginPage() {
         
 
         {/* Formulario centrado */}
-        <div className="flex-1 flex items-start md:items-center justify-center pt-6 pb-5 px-4 md:p-12 bg-gray-50">
+        <div className="flex-1 flex items-start md:items-center justify-center pt-6 pb-5 px-4 md:p-12 bg-gray-50 dark:bg-gray-950">
           <div className="w-full max-w-md">
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-800">
               {/* Header */}
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                   Bienvenido de nuevo
                 </h2>
-                <p className="text-gray-500">
+                <p className="text-gray-500 dark:text-gray-400">
                   Ingresá a tu cuenta para continuar
                 </p>
               </div>
 
               {/* OAuth Error */}
               {oauthError && (
-                <div className="bg-amber-50 border border-amber-200 text-amber-800 px-4 py-3 rounded-xl text-sm mb-6 flex items-start gap-3">
+                <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50 text-amber-800 dark:text-amber-200 px-4 py-3 rounded-xl text-sm mb-6 flex items-start gap-3">
                   <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-medium">Login con redes sociales</p>
@@ -197,7 +197,7 @@ export default function LoginPage() {
 
               {/* Error */}
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm mb-6 flex items-center gap-2">
+                <div className="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 text-red-700 dark:text-red-300 px-4 py-3 rounded-xl text-sm mb-6 flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-red-500"></div>
                   {error}
                 </div>
@@ -206,7 +206,7 @@ export default function LoginPage() {
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <Label htmlFor="email" className="text-sm font-medium text-gray-700 mb-2 block">
+                  <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 block">
                     Correo electrónico
                   </Label>
                   <div className="relative">
@@ -219,19 +219,19 @@ export default function LoginPage() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       disabled={loading}
-                      className="pl-10 h-12 rounded-xl border-2 border-gray-200 focus:border-[#006F4B] focus:ring-[#006F4B]/20 transition-all"
+                      className="pl-10 h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500 focus:border-[#006F4B] dark:focus:border-emerald-500 focus:ring-[#006F4B]/20 transition-all"
                     />
                   </div>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+                    <Label htmlFor="password" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Contraseña
                     </Label>
                     <Link
                       href="/auth/recuperar"
-                      className="text-sm text-[#006F4B] hover:underline"
+                      className="text-sm text-[#006F4B] dark:text-emerald-400 hover:underline"
                     >
                       ¿Olvidaste tu contraseña?
                     </Link>
@@ -246,12 +246,12 @@ export default function LoginPage() {
                       onChange={(e) => setPassword(e.target.value)}
                       required
                       disabled={loading}
-                      className="pl-10 pr-10 h-12 rounded-xl border-2 border-gray-200 focus:border-[#006F4B] focus:ring-[#006F4B]/20 transition-all"
+                      className="pl-10 pr-10 h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500 focus:border-[#006F4B] dark:focus:border-emerald-500 focus:ring-[#006F4B]/20 transition-all"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
                     >
                       {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
@@ -279,9 +279,9 @@ export default function LoginPage() {
 
               {/* Divider */}
               <div className="my-6 flex items-center gap-4">
-                <div className="flex-1 h-px bg-gray-200"></div>
-                <span className="text-gray-400 text-sm">o ingresa con</span>
-                <div className="flex-1 h-px bg-gray-200"></div>
+                <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800"></div>
+                <span className="text-gray-400 dark:text-gray-500 text-sm">o ingresa con</span>
+                <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800"></div>
               </div>
 
               {/* Social Login Buttons */}
@@ -291,7 +291,7 @@ export default function LoginPage() {
                   variant="outline"
                   onClick={() => handleSocialLogin("google")}
                   disabled={loading || socialLoading !== null}
-                  className="w-full cursor-pointer h-12 rounded-xl border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 font-medium transition-all flex items-center justify-center"
+                  className="w-full cursor-pointer h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800/80 dark:hover:bg-gray-800 dark:text-white dark:hover:border-gray-600 font-medium transition-all flex items-center justify-center"
                 >
                   {socialLoading === "google" ? (
                     <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -306,9 +306,9 @@ export default function LoginPage() {
 
               {/* Divider 2 */}
               <div className="my-6 flex items-center gap-4">
-                <div className="flex-1 h-px bg-gray-200"></div>
-                <span className="text-gray-400 text-xs">¿Sos profesional?</span>
-                <div className="flex-1 h-px bg-gray-200"></div>
+                <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800"></div>
+                <span className="text-gray-400 dark:text-gray-500 text-xs">¿Sos profesional?</span>
+                <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800"></div>
               </div>
 
               {/* Register CTA */}
@@ -316,7 +316,7 @@ export default function LoginPage() {
                 <Link href="/auth/registro">
                   <Button
                     variant="outline"
-                    className="cursor-pointer w-full h-12 rounded-xl border-2 border-[#006F4B] text-[#006F4B] hover:bg-[#006F4B]/2 font-semibold"
+                    className="cursor-pointer w-full h-12 rounded-xl border-2 border-[#006F4B] dark:border-emerald-500 text-[#006F4B] dark:text-emerald-400 hover:bg-[#006F4B]/5 dark:hover:bg-emerald-500/10 font-semibold"
                   >
                     Registrarme como profesional
                   </Button>
@@ -325,13 +325,13 @@ export default function LoginPage() {
             </div>
 
             {/* Footer */}
-            <p className="text-center text-gray-400 text-xs mt-6">
+            <p className="text-center text-gray-400 dark:text-gray-500 text-xs mt-6">
               Al continuar, aceptás nuestros{" "}
-              <Link href="/terminos" className="underline hover:text-gray-600">
+              <Link href="/terminos" className="underline hover:text-gray-600 dark:hover:text-gray-300">
                 Términos de Servicio
               </Link>{" "}
               y{" "}
-              <Link href="/privacidad" className="underline hover:text-gray-600">
+              <Link href="/privacidad" className="underline hover:text-gray-600 dark:hover:text-gray-300">
                 Política de Privacidad
               </Link>
             </p>

@@ -39,22 +39,22 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 px-4">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-800">
           <button
             type="button"
             onClick={() => router.back()}
-            className="mb-4 inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
+            className="mb-4 inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           >
             <ArrowLeft className="h-4 w-4 mr-1" />
             Volver
           </button>
 
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
             Recuperar contraseña
           </h1>
-          <p className="text-sm text-gray-600 mb-6">
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
             Ingresá el correo electrónico con el que te registraste. Si existe
             una cuenta asociada, te enviaremos un enlace para restablecer tu
             contraseña.
@@ -62,7 +62,7 @@ export default function ForgotPasswordPage() {
 
           {sent ? (
             <div className="space-y-4">
-              <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm text-emerald-800">
+              <div className="rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 px-4 py-3 text-sm text-emerald-800 dark:text-emerald-200">
                 Te enviamos un correo con instrucciones para restablecer tu
                 contraseña. Revisá tu bandeja de entrada (y correo no deseado).
               </div>
@@ -79,7 +79,7 @@ export default function ForgotPasswordPage() {
               <div>
                 <Label
                   htmlFor="email"
-                  className="text-sm font-medium text-gray-700 mb-2 block"
+                  className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 block"
                 >
                   Correo electrónico
                 </Label>
@@ -93,7 +93,7 @@ export default function ForgotPasswordPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     disabled={loading}
-                    className="pl-10 h-12 rounded-xl border-2 border-gray-200 focus:border-[#006F4B] focus:ring-[#006F4B]/20 transition-all"
+                    className="pl-10 h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500 focus:border-[#006F4B] dark:focus:border-emerald-500 focus:ring-[#006F4B]/20 transition-all"
                   />
                 </div>
               </div>
@@ -124,12 +124,12 @@ export default function ForgotPasswordPage() {
             </form>
           )}
 
-          <p className="mt-6 text-xs text-gray-500 text-center">
+          <p className="mt-6 text-xs text-gray-500 dark:text-gray-400 text-center">
             Si no tenés acceso a tu correo, podés crear una cuenta nueva o
             comunicarte con el soporte del municipio.
           </p>
         </div>
-        <p className="mt-4 text-center text-xs text-gray-400">
+        <p className="mt-4 text-center text-xs text-gray-400 dark:text-gray-500">
           © {new Date().getFullYear()} Mi Colón
         </p>
       </div>
