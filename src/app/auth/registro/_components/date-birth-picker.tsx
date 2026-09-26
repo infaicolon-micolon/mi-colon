@@ -47,7 +47,7 @@ export function DateBirthPicker({ onChange, value, error }: DateBirthPickerProps
           <Button
             variant="outline"
             id="date"
-            className={`w-full pl-4 pr-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 relative justify-start ${error ? 'border-red-500' : 'border-gray-200'}`}
+            className={`w-full pl-4 pr-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] transition-all duration-200 relative justify-start dark:bg-gray-800 dark:text-white ${error ? 'border-red-500' : 'border-gray-200 dark:border-gray-700'}`}
           >
             <span className="text-left flex-1 min-w-0">{date ? date.toLocaleDateString() : "Selecciona una fecha"}</span>
             <ChevronDownIcon className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 pointer-events-none z-10" />

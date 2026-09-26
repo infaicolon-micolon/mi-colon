@@ -619,16 +619,16 @@ export default function RegistroPage() {
 
   const renderStepIndicator = () => (
     <div className="mb-8">
-      <div className="rounded-2xl border border-gray-100 bg-gray-50 p-4 sm:hidden">
+      <div className="rounded-2xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/80 p-4 sm:hidden">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#006F4B]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#006F4B] dark:text-emerald-400">
               Paso {currentStep} de {steps.length}
             </p>
-            <p className="mt-1 text-sm font-semibold text-gray-900">
+            <p className="mt-1 text-sm font-semibold text-gray-900 dark:text-white">
               {steps[currentStep - 1]?.title}
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               {steps[currentStep - 1]?.description}
             </p>
           </div>
@@ -638,10 +638,10 @@ export default function RegistroPage() {
                 key={step.id}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
                   currentStep === step.id
-                    ? "w-8 bg-[#006F4B]"
+                    ? "w-8 bg-[#006F4B] dark:bg-emerald-500"
                     : currentStep > step.id
-                      ? "w-2.5 bg-[#006F4B]/70"
-                      : "w-2.5 bg-gray-300"
+                      ? "w-2.5 bg-[#006F4B]/70 dark:bg-emerald-500/70"
+                      : "w-2.5 bg-gray-300 dark:bg-gray-700"
                 }`}
               />
             ))}
@@ -656,7 +656,7 @@ export default function RegistroPage() {
               <div className={`h-12 w-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
                 currentStep >= step.id
                   ? 'bg-[#006F4B] border-[#006F4B] text-white'
-                  : 'bg-white border-gray-300 text-gray-400'
+                  : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-400 dark:text-gray-500'
               }`}>
                 {currentStep > step.id ? (
                   <CheckCircle className="w-6 h-6" />
@@ -666,12 +666,12 @@ export default function RegistroPage() {
               </div>
               <div className="mt-2 text-center max-w-[112px]">
                 <p className={`text-xs font-medium ${
-                  currentStep >= step.id ? 'text-[#006F4B]' : 'text-gray-500'
+                  currentStep >= step.id ? 'text-[#006F4B] dark:text-emerald-400' : 'text-gray-500 dark:text-gray-400'
                 }`}>
                   {step.title}
                 </p>
                 <p className={`text-xs ${
-                  currentStep >= step.id ? 'text-[#006F4B]' : 'text-gray-400'
+                  currentStep >= step.id ? 'text-[#006F4B]/80 dark:text-emerald-400/80' : 'text-gray-400 dark:text-gray-500'
                 }`}>
                   {step.description}
                 </p>
@@ -680,7 +680,7 @@ export default function RegistroPage() {
             {index < steps.length - 1 && (
               <div className="mx-4 h-0.5 w-10 self-center md:w-16">
                 <div className={`w-full h-full transition-all duration-300 ${
-                  currentStep > step.id ? 'bg-[#006F4B]' : 'bg-gray-300'
+                  currentStep > step.id ? 'bg-[#006F4B] dark:bg-emerald-500' : 'bg-gray-300 dark:bg-gray-700'
                 }`} />
               </div>
             )}
@@ -693,18 +693,18 @@ export default function RegistroPage() {
   const renderStep1 = () => (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
           Información Personal
         </h2>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-300">
           Completa tus datos básicos
         </p>
       </div>
 
       {/* Registro rápido con redes sociales */}
-      <div className="bg-gray-50 rounded-xl p-5 border border-gray-100">
-        <p className="text-sm text-center text-gray-600 mb-4">
-          <span className="font-medium text-gray-900">Registro rápido:</span> Usá tu cuenta de Google
+      <div className="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-5 border border-gray-100 dark:border-gray-700">
+        <p className="text-sm text-center text-gray-600 dark:text-gray-300 mb-4">
+          <span className="font-medium text-gray-900 dark:text-white">Registro rápido:</span> Usá tu cuenta de Google
         </p>
         <div>
           <Button
@@ -712,7 +712,7 @@ export default function RegistroPage() {
             variant="outline"
             onClick={() => handleSocialRegister("google")}
             disabled={isLoading || socialLoading !== null}
-            className="w-full h-11 rounded-xl border-2 border-gray-200 hover:border-gray-300 hover:bg-white font-medium transition-all flex items-center justify-center"
+            className="w-full h-11 rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-white dark:hover:bg-gray-700 font-medium transition-all flex items-center justify-center cursor-pointer"
           >
             {socialLoading === "google" ? (
               <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -724,123 +724,123 @@ export default function RegistroPage() {
             )}
           </Button>
         </div>
-        <p className="text-xs text-center text-gray-500 mt-3">
+        <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-3">
           Después de autenticarte, completarás tu perfil profesional
         </p>
       </div>
 
       {/* Divider */}
       <div className="flex items-center gap-4">
-        <div className="flex-1 h-px bg-gray-200"></div>
-        <span className="text-gray-400 text-sm">o completá el formulario</span>
-        <div className="flex-1 h-px bg-gray-200"></div>
+        <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800"></div>
+        <span className="text-gray-400 dark:text-gray-500 text-sm">o completá el formulario</span>
+        <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800"></div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">
+          <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             Nombre
           </Label>
           <div className="relative mt-1">
-            <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
             <Input
               id="firstName"
               value={formData.firstName}
               onChange={(e) => handleInputChange('firstName', e.target.value)}
-              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                errors.firstName ? 'border-red-300' : 'border-gray-200'
+              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+                errors.firstName ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
               }`}
               placeholder="Tu nombre"
             />
           </div>
-          {errors.firstName && <p className="text-red-600 text-sm mt-1">{errors.firstName}</p>}
+          {errors.firstName && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.firstName}</p>}
         </div>
 
         <div>
-          <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">
+          <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             Apellido
           </Label>
           <div className="relative mt-1">
-            <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
             <Input
               id="lastName"
               value={formData.lastName}
               onChange={(e) => handleInputChange('lastName', e.target.value)}
-              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                errors.lastName ? 'border-red-300' : 'border-gray-200'
+              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+                errors.lastName ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
               }`}
               placeholder="Tu apellido"
             />
           </div>
-          {errors.lastName && <p className="text-red-600 text-sm mt-1">{errors.lastName}</p>}
+          {errors.lastName && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.lastName}</p>}
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="email" className="text-sm font-semibold text-gray-700">
+          <Label htmlFor="email" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             Email
           </Label>
           <div className="relative mt-1">
-            <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
             <Input
               id="email"
               type="email"
               value={formData.email}
               onChange={(e) => handleInputChange('email', e.target.value)}
-              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                errors.email ? 'border-red-300' : 'border-gray-200'
+              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+                errors.email ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
               }`}
               placeholder="tucorreo@correo.com"
             />
           </div>
-          {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
+          {errors.email && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.email}</p>}
         </div>
 
         <div>
-          <Label htmlFor="confirmEmail" className="text-sm font-semibold text-gray-700">
+          <Label htmlFor="confirmEmail" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             Confirmar Email
           </Label>
           <div className="relative mt-1">
-            <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
             <Input
               id="confirmEmail"
               type="email"
               value={formData.confirmEmail}
               onChange={(e) => handleInputChange('confirmEmail', e.target.value)}
-              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                errors.confirmEmail ? 'border-red-300' : 'border-gray-200'
+              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+                errors.confirmEmail ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
               }`}
               placeholder="tucorreo@correo.com"
             />
           </div>
-          {errors.confirmEmail && <p className="text-red-600 text-sm mt-1">{errors.confirmEmail}</p>}
+          {errors.confirmEmail && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.confirmEmail}</p>}
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="birthDate" className="text-sm font-semibold text-gray-700">
+          <Label htmlFor="birthDate" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             Fecha de nacimiento
           </Label>
           <div className="relative mt-1">
             <DateBirthPicker value={formData.birthDate} onChange={(date) => handleInputChange('birthDate', date)} error={errors.birthDate} />
           </div>
-          {errors.birthDate && <p className="text-red-600 text-sm mt-1">{errors.birthDate}</p>}
+          {errors.birthDate && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.birthDate}</p>}
         </div>
 
         <div>
-          <Label htmlFor="gender" className="text-sm font-semibold text-gray-700">
+          <Label htmlFor="gender" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             Género
           </Label>
           <div className="relative mt-1">
-          <CircleUser className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <CircleUser className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
             <Select
               value={formData.gender}
               onValueChange={(value) => handleInputChange('gender', value)}
               
             >
-              <SelectTrigger className="w-full pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200">
+              <SelectTrigger className="w-full pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white border-gray-200 dark:border-gray-700 transition-all duration-200">
                 <SelectValue placeholder="Selecciona un género" />
               </SelectTrigger>
                 <SelectContent>
@@ -850,17 +850,17 @@ export default function RegistroPage() {
                 </SelectContent>
             </Select>
           </div>
-          {errors.gender && <p className="text-red-600 text-sm mt-1">{errors.gender}</p>}
+          {errors.gender && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.gender}</p>}
         </div>
       </div>    
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="dni" className="text-sm font-semibold text-gray-700">
+          <Label htmlFor="dni" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             DNI *
           </Label>
           <div className="relative mt-1">
-            <IdCard className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <IdCard className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
             <Input
               id="dni"
               type="text"
@@ -870,30 +870,30 @@ export default function RegistroPage() {
                 const value = e.target.value.replace(/\D/g, '');
                 handleInputChange('dni', value);
               }}
-              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                errors.dni ? 'border-red-300' : 'border-gray-200'
+              className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+                errors.dni ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
               }`}
               placeholder="12345678"
               maxLength={8}
             />
           </div>
-          {errors.dni && <p className="text-red-600 text-sm mt-1">{errors.dni}</p>}
-          <p className="text-xs text-gray-500 mt-1">
+          {errors.dni && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.dni}</p>}
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
             Documento Nacional de Identidad (sin puntos ni espacios)
           </p>
         </div>
         <div>
-        <Label htmlFor="location" className="text-sm font-semibold text-gray-700">
+        <Label htmlFor="location" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
           Localidad *
         </Label>
         <div className="relative mt-1">
-          <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 z-10" />
+          <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500 z-10" />
           <Select
             value={formData.location}
             onValueChange={(value) => handleInputChange('location', value)}
           >
-            <SelectTrigger className={`w-full pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-              errors.location ? 'border-red-300' : 'border-gray-200'
+            <SelectTrigger className={`w-full pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+              errors.location ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
             }`}>
               <SelectValue placeholder="Selecciona tu localidad principal" />
             </SelectTrigger>
@@ -904,65 +904,65 @@ export default function RegistroPage() {
             </SelectContent>
           </Select>
         </div>
-        {errors.location && <p className="text-red-600 text-sm mt-1">{errors.location}</p>}
-        <p className="text-xs text-gray-500 mt-1">
+        {errors.location && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.location}</p>}
+        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
           Selecciona la localidad donde resides. Podrás agregar más localidades donde ofreces servicios en el siguiente paso.
         </p>
       </div>
         </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="password" className="text-sm font-semibold text-gray-700">
+          <Label htmlFor="password" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             Contraseña
           </Label>
           <div className="relative mt-1">
-            <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
             <Input
               id="password"
               type={showPassword ? "text" : "password"}
               value={formData.password}
               onChange={(e) => handleInputChange('password', e.target.value)}
-              className={`pl-10 pr-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                errors.password ? 'border-red-300' : 'border-gray-200'
+              className={`pl-10 pr-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+                errors.password ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
               }`}
               placeholder="••••••••"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 cursor-pointer"
             >
               {showPassword ? <EyeOff /> : <Eye />}
             </button>
           </div>
-          {errors.password && <p className="text-red-600 text-sm mt-1">{errors.password}</p>}
+          {errors.password && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.password}</p>}
         </div>
 
         <div>
-          <Label htmlFor="confirmPassword" className="text-sm font-semibold text-gray-700">
+          <Label htmlFor="confirmPassword" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             Confirmar contraseña
           </Label>
           <div className="relative mt-1">
-            <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
             <Input
               id="confirmPassword"
               type={showConfirmPassword ? "text" : "password"}
               value={formData.confirmPassword}
               onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-              className={`pl-10 pr-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                errors.confirmPassword ? 'border-red-300' : 'border-gray-200'
+              className={`pl-10 pr-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+                errors.confirmPassword ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
               }`}
               placeholder="••••••••"
             />
             <button
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 cursor-pointer"
             >
               {showConfirmPassword ? <EyeOff /> : <Eye />}
             </button>
           </div>
-          {errors.confirmPassword && <p className="text-red-600 text-sm mt-1">{errors.confirmPassword}</p>}
+          {errors.confirmPassword && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.confirmPassword}</p>}
         </div>
       </div>
 
@@ -976,21 +976,21 @@ export default function RegistroPage() {
             className="mt-1"
           />
           <div className="space-y-1">
-            <Label htmlFor="acceptTerms" className="text-sm font-medium text-gray-700">
+            <Label htmlFor="acceptTerms" className="text-sm font-medium text-gray-700 dark:text-gray-200">
               Acepto los términos y condiciones
             </Label>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               He leído y acepto los{" "}
-              <Link href="/terminos" className="text-[#006F4B] hover:text-[#008F5B] underline">
+              <Link href="/terminos" className="text-[#006F4B] dark:text-emerald-400 hover:text-[#008F5B] underline">
                 términos y condiciones
               </Link>{" "}
               y la{" "}
-              <Link href="/privacidad" className="text-[#006F4B] hover:text-[#008F5B] underline">
+              <Link href="/privacidad" className="text-[#006F4B] dark:text-emerald-400 hover:text-[#008F5B] underline">
                 política de privacidad
               </Link>{" "}
               de la plataforma.
             </p>
-            {errors.acceptTerms && <p className="text-red-600 text-sm">{errors.acceptTerms}</p>}
+            {errors.acceptTerms && <p className="text-red-600 dark:text-red-400 text-sm">{errors.acceptTerms}</p>}
           </div>
         </div>
       </div>
@@ -1000,41 +1000,41 @@ export default function RegistroPage() {
   const renderStep2 = () => (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
           Información Profesional
         </h2>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-300">
           Cuéntanos sobre tu experiencia
         </p>
       </div>
 
       <div>
-        <Label htmlFor="bio" className="text-sm font-semibold text-gray-700">
+        <Label htmlFor="bio" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
           Descripción profesional *
         </Label>
         <Textarea
           id="bio"
           value={formData.bio}
           onChange={(e) => handleInputChange('bio', e.target.value)}
-          className={`mt-1 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 resize-none ${
-            errors.bio ? 'border-red-300' : 'border-gray-200'
+          className={`mt-1 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 resize-none ${
+            errors.bio ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
           }`}
           placeholder="Describe tu experiencia, especialidades y qué te diferencia..."
           rows={4}
         />
-        {errors.bio && <p className="text-red-600 text-sm mt-1">{errors.bio}</p>}
-        <p className="text-sm text-gray-500 mt-1">
+        {errors.bio && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.bio}</p>}
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
           {formData.bio.length}/3000 caracteres
         </p>
       </div>
 
 
       <div>
-        <Label htmlFor="experience" className="text-sm font-semibold text-gray-700">
+        <Label htmlFor="experience" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
           Años de experiencia
         </Label>
         <div className="relative mt-1">
-          <Award className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <Award className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
           <Input
             id="experience"
             type="number"
@@ -1042,21 +1042,21 @@ export default function RegistroPage() {
             max="50"
             value={formData.experienceYears}
             onChange={(e) => handleInputChange('experienceYears', e.target.value)}
-            className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-              errors.experienceYears ? 'border-red-300' : 'border-gray-200'
+            className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+              errors.experienceYears ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
             }`}
             placeholder="15"
           />
         </div>
-        {errors.experienceYears && <p className="text-red-600 text-sm mt-1">{errors.experienceYears}</p>}
+        {errors.experienceYears && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.experienceYears}</p>}
       </div>
 
       {/* Lugares donde ofrece servicios */}
       <div>
-        <Label htmlFor="serviceLocations" className="text-sm font-semibold text-gray-700">
+        <Label htmlFor="serviceLocations" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
           Lugares donde ofreces tus servicios *
         </Label>
-        <p className="text-sm text-gray-600 mt-1 mb-3">
+        <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-3">
           Selecciona las localidades donde trabajas. La primera será tu localidad principal.
         </p>
         
@@ -1079,8 +1079,8 @@ export default function RegistroPage() {
                 }
               }}
             >
-              <SelectTrigger className={`w-full rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                errors.serviceLocations ? 'border-red-300' : 'border-gray-200'
+              <SelectTrigger className={`w-full rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+                errors.serviceLocations ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
               }`}>
                 <SelectValue placeholder="Agregar localidades..." />
               </SelectTrigger>
@@ -1111,16 +1111,16 @@ export default function RegistroPage() {
                       key={locationId}
                       className={`flex items-center space-x-2 rounded-lg px-3 py-2 ${
                         isPrincipal 
-                          ? 'bg-green-50 border border-green-200' 
-                          : 'bg-blue-50 border border-blue-200'
+                          ? 'bg-green-50 dark:bg-emerald-950/50 border border-green-200 dark:border-emerald-800' 
+                          : 'bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800'
                       }`}
                     >
-                      <MapPin className={`h-3 w-3 ${isPrincipal ? 'text-green-600' : 'text-blue-600'}`} />
-                      <span className={`text-sm ${isPrincipal ? 'text-green-800' : 'text-blue-800'}`}>
+                      <MapPin className={`h-3 w-3 ${isPrincipal ? 'text-green-600 dark:text-emerald-400' : 'text-blue-600 dark:text-blue-400'}`} />
+                      <span className={`text-sm ${isPrincipal ? 'text-green-800 dark:text-emerald-200' : 'text-blue-800 dark:text-blue-200'}`}>
                         {locationId === 'all-region' ? 'Toda la región' : location?.name}
                       </span>
                       {isPrincipal && (
-                        <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
+                        <span className="text-xs bg-green-100 dark:bg-emerald-900/80 text-green-700 dark:text-emerald-300 px-2 py-0.5 rounded-full">
                           Principal
                         </span>
                       )}
@@ -1130,7 +1130,7 @@ export default function RegistroPage() {
                           handleInputChange('serviceLocations', formData.serviceLocations.filter(id => id !== locationId));
                         }}
                         className={`ml-1 hover:opacity-70 transition-opacity ${
-                          isPrincipal ? 'text-green-600 hover:text-green-800' : 'text-blue-600 hover:text-blue-800'
+                          isPrincipal ? 'text-green-600 dark:text-emerald-400 hover:text-green-800' : 'text-blue-600 dark:text-blue-400 hover:text-blue-800'
                         }`}
                         aria-label="Eliminar localidad"
                       >
@@ -1144,122 +1144,122 @@ export default function RegistroPage() {
           ) : null}
         </div>
         
-        {errors.serviceLocations && <p className="text-red-600 text-sm mt-1">{errors.serviceLocations}</p>}
+        {errors.serviceLocations && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.serviceLocations}</p>}
       </div>
 
       {/* Sección de Perfil Profesional de Redes Sociales */}
-      <div className="pt-6 border-t border-gray-200">
+      <div className="pt-6 border-t border-gray-200 dark:border-gray-800">
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
             Perfil Profesional de Redes Sociales
           </h3>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-gray-300">
             Agrega tus perfiles profesionales para que los clientes puedan conocerte mejor (opcional)
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <Label htmlFor="whatsapp" className="text-sm font-semibold text-gray-700">
+            <Label htmlFor="whatsapp" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               WhatsApp (Teléfono de contacto) *
             </Label>
             <div className="relative mt-1">
-              <WhatsAppIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 z-10" />
+              <WhatsAppIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500 z-10" />
               <Input
                 id="whatsapp"
                 type="tel"
                 value={formData.whatsapp}
                 onChange={(e) => handleInputChange('whatsapp', e.target.value)}
-                className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                  errors.whatsapp ? 'border-red-300' : 'border-gray-200'
+                className={`pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 ${
+                  errors.whatsapp ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
                 }`}
                 placeholder="Sin 0 y sin 15 (ej: 349112345678)"
               />
             </div>
-            {errors.whatsapp && <p className="text-red-600 text-sm mt-1">{errors.whatsapp}</p>}
-            <p className="text-xs text-gray-500 mt-1">
+            {errors.whatsapp && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.whatsapp}</p>}
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
               Este número se usará como tu teléfono de contacto
             </p>
           </div>
 
           <div>
-            <Label htmlFor="instagram" className="text-sm font-semibold text-gray-700">
+            <Label htmlFor="instagram" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               Instagram
             </Label>
             <div className="relative mt-1">
-              <Instagram className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Instagram className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <Input
                 id="instagram"
                 value={formData.instagram}
                 onChange={(e) => handleInputChange('instagram', e.target.value)}
-                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 border-gray-200"
+                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 border-gray-200 dark:border-gray-700"
                 placeholder="tuusuario"
               />
             </div>
-            {errors.instagram && <p className="text-red-600 text-sm mt-1">{errors.instagram}</p>}
+            {errors.instagram && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.instagram}</p>}
           </div>
 
           <div>
-            <Label htmlFor="facebook" className="text-sm font-semibold text-gray-700">
+            <Label htmlFor="facebook" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               Facebook
             </Label>
             <div className="relative mt-1">
-              <Facebook className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Facebook className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <Input
                 id="facebook"
                 value={formData.facebook}
                 onChange={(e) => handleInputChange('facebook', e.target.value)}
-                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 border-gray-200"
+                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 border-gray-200 dark:border-gray-700"
                 placeholder="tuusuario"
               />
             </div>
-            {errors.facebook && <p className="text-red-600 text-sm mt-1">{errors.facebook}</p>}
+            {errors.facebook && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.facebook}</p>}
           </div>
 
           <div>
-            <Label htmlFor="linkedin" className="text-sm font-semibold text-gray-700">
+            <Label htmlFor="linkedin" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               LinkedIn
             </Label>
             <div className="relative mt-1">
-              <Linkedin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Linkedin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <Input
                 id="linkedin"
                 value={formData.linkedin}
                 onChange={(e) => handleInputChange('linkedin', e.target.value)}
-                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 border-gray-200"
+                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 border-gray-200 dark:border-gray-700"
                 placeholder="tuusuario"
               />
             </div>
-            {errors.linkedin && <p className="text-red-600 text-sm mt-1">{errors.linkedin}</p>}
+            {errors.linkedin && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.linkedin}</p>}
           </div>
 
           <div>
-            <Label htmlFor="website" className="text-sm font-semibold text-gray-700">
+            <Label htmlFor="website" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               Sitio Web
             </Label>
             <div className="relative mt-1">
-              <Globe className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Globe className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <Input
                 id="website"
                 value={formData.website}
                 onChange={(e) => handleInputChange('website', e.target.value)}
-                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 border-gray-200"
+                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 border-gray-200 dark:border-gray-700"
                 placeholder="https://tusitio.com"
               />
             </div>
           </div>
 
           <div>
-            <Label htmlFor="portfolio" className="text-sm font-semibold text-gray-700">
+            <Label htmlFor="portfolio" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               Portfolio
             </Label>
             <div className="relative mt-1">
-              <Globe className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Globe className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <Input
                 id="portfolio"
                 value={formData.portfolio}
                 onChange={(e) => handleInputChange('portfolio', e.target.value)}
-                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 border-gray-200"
+                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 border-gray-200 dark:border-gray-700"
                 placeholder="https://tuportfolio.com"
               />
             </div>
@@ -1267,12 +1267,12 @@ export default function RegistroPage() {
         </div>
 
         {/* Local Físico */}
-        <div className="mt-6 pt-6 border-t border-gray-200">
+        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
           <div className="mb-4">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
               Local Físico
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               Si tenés un local físico, podés agregar la dirección (opcional)
             </p>
           </div>
@@ -1284,28 +1284,28 @@ export default function RegistroPage() {
                 checked={formData.hasPhysicalStore}
                 onCheckedChange={(checked) => handleInputChange('hasPhysicalStore', checked)}
               />
-              <Label htmlFor="hasPhysicalStore" className="text-sm font-semibold text-gray-700 cursor-pointer">
+              <Label htmlFor="hasPhysicalStore" className="text-sm font-semibold text-gray-700 dark:text-gray-200 cursor-pointer">
                 Tengo un local físico
               </Label>
             </div>
 
             {formData.hasPhysicalStore && (
               <div>
-                <Label htmlFor="physicalStoreAddress" className="text-sm font-semibold text-gray-700">
+                <Label htmlFor="physicalStoreAddress" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                   Dirección del local *
                 </Label>
                 <div className="relative mt-1">
-                  <Store className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                  <Store className="absolute left-3 top-3 h-4 w-4 text-gray-400 dark:text-gray-500" />
                   <Input
                     id="physicalStoreAddress"
                     value={formData.physicalStoreAddress}
                     onChange={(e) => handleInputChange('physicalStoreAddress', e.target.value)}
-                    className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 border-gray-200"
+                    className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 border-gray-200 dark:border-gray-700"
                     placeholder="Ej: Av. San Martín 123, Colón"
                   />
                 </div>
                 {errors.physicalStoreAddress && (
-                  <p className="text-red-600 text-sm mt-1">{errors.physicalStoreAddress}</p>
+                  <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.physicalStoreAddress}</p>
                 )}
               </div>
             )}
@@ -1314,11 +1314,11 @@ export default function RegistroPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <div>
-            <Label htmlFor="picture" className="text-sm font-semibold text-gray-700">
+            <Label htmlFor="picture" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               Foto de Perfil *
             </Label>
             <div className="relative mt-1">
-              <Upload className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Upload className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <Input
                 id="picture"
                 type="file"
@@ -1334,14 +1334,6 @@ export default function RegistroPage() {
                     setIsUploadingPicture(true);
                     try {
                       const result = await uploadPublicFile(file, "image");
-                      /*
-                      formData.append('type', 'image'); // Indicar explícitamente que es una imagen
-                      
-                        method: 'POST',
-                        body: formData,
-                      });
-                      
-                      */
                       const pictureValue = resolveStoredUploadValue(result);
                       handleInputChange('picture', pictureValue);
                     } catch (error) {
@@ -1352,20 +1344,20 @@ export default function RegistroPage() {
                     }
                   }
                 }}
-                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 border-gray-200"
+                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 border-gray-200 dark:border-gray-700"
               />
             </div>
-            <p className="text-xs text-gray-500 mt-1">Obligatoria. PNG, JPG, JPEG, WEBP (máx. 10MB)</p>
-            {isUploadingPicture && <p className="text-xs text-gray-500 mt-1">Subiendo foto...</p>}
-            {errors.picture && <p className="text-xs text-red-600 mt-1">{errors.picture}</p>}
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Obligatoria. PNG, JPG, JPEG, WEBP (máx. 10MB)</p>
+            {isUploadingPicture && <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Subiendo foto...</p>}
+            {errors.picture && <p className="text-xs text-red-600 dark:text-red-400 mt-1">{errors.picture}</p>}
           </div>
 
           <div>
-            <Label htmlFor="cv" className="text-sm font-semibold text-gray-700">
+            <Label htmlFor="cv" className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               CV (Curriculum Vitae)
             </Label>
             <div className="relative mt-1">
-              <FileText className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <FileText className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <Input
                 id="cv"
                 type="file"
@@ -1375,15 +1367,6 @@ export default function RegistroPage() {
                   if (file) {
                     try {
                       const result = await uploadPublicFile(file, "cv");
-                      /*
-                      formData.append('file', file);
-                      formData.append('type', 'cv'); // Indicar explícitamente que es un CV
-                      
-                        method: 'POST',
-                        body: formData,
-                      });
-                      
-                      */
                       handleInputChange(
                         'cv',
                         resolveStoredUploadValue(result)
@@ -1399,34 +1382,34 @@ export default function RegistroPage() {
                     }
                   }
                 }}
-                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 border-gray-200"
+                className="pl-10 rounded-lg border-2 focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 focus:border-[#006F4B] dark:bg-gray-800 dark:text-white transition-all duration-200 border-gray-200 dark:border-gray-700"
               />
             </div>
-            <p className="text-xs text-gray-500 mt-1">PDF, DOC, DOCX, JPG, PNG (máx. 15MB)</p>
-            {errors.cv && <p className="text-xs text-red-600 mt-1">{errors.cv}</p>}
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">PDF, DOC, DOCX, JPG, PNG (máx. 15MB)</p>
+            {errors.cv && <p className="text-xs text-red-600 dark:text-red-400 mt-1">{errors.cv}</p>}
           </div>
         </div>
       </div>
 
       <div>
-        <Label className="text-sm font-semibold text-gray-700">Tipo de registro *</Label>
+        <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300">Tipo de registro *</Label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
           {GROUPS.map((g) => (
             <button
               key={g.id}
               type="button"
               onClick={() => handleInputChange('professionalGroup', g.id)}
-              className={`w-full rounded-2xl border p-5 text-left transition-all duration-200 ${
+              className={`w-full rounded-2xl border p-5 text-left transition-all duration-200 cursor-pointer ${
                 formData.professionalGroup === g.id
-                  ? 'border-[#006F4B] bg-green-50'
-                  : 'border-gray-200 hover:bg-gray-50'
+                  ? 'border-[#006F4B] dark:border-emerald-500 bg-green-50 dark:bg-emerald-950/40'
+                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/60 hover:bg-gray-50 dark:hover:bg-gray-800'
               }`}
             >
               <div className="flex items-center justify-between">
-                <div className="text-lg font-semibold">{g.name}</div>
-                <div className={`h-3 w-3 rounded-full ${formData.professionalGroup === g.id ? 'bg-[#006F4B]' : 'bg-gray-300'}`} />
+                <div className="text-lg font-semibold text-gray-900 dark:text-white">{g.name}</div>
+                <div className={`h-3 w-3 rounded-full ${formData.professionalGroup === g.id ? 'bg-[#006F4B] dark:bg-emerald-400' : 'bg-gray-300 dark:bg-gray-600'}`} />
               </div>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
                 {g.id === 'oficios'
                   ? 'Trabajos manuales y técnicos por oficio (ej: plomería, electricidad, mantenimiento).'
                   : 'Profesiones colegiadas o formales (ej: enfermería, arquitectura, abogacía).'}
@@ -1439,7 +1422,7 @@ export default function RegistroPage() {
                       event.stopPropagation();
                       setIsOficiosPreviewOpen(true);
                     }}
-                    className="inline-flex items-center text-sm font-semibold text-[#006F4B] hover:underline"
+                    className="inline-flex items-center text-sm font-semibold text-[#006F4B] dark:text-emerald-400 hover:underline cursor-pointer"
                   >
                     Ver categorías de oficios <ArrowRight className="ml-1 h-4 w-4" />
                   </button>
@@ -1450,7 +1433,7 @@ export default function RegistroPage() {
                       event.stopPropagation();
                       setIsProfesionesPreviewOpen(true);
                     }}
-                    className="inline-flex items-center text-sm font-semibold text-[#006F4B] hover:underline"
+                    className="inline-flex items-center text-sm font-semibold text-[#006F4B] dark:text-emerald-400 hover:underline cursor-pointer"
                   >
                     Ver categorías de profesiones <ArrowRight className="ml-1 h-4 w-4" />
                   </button>
@@ -1459,7 +1442,7 @@ export default function RegistroPage() {
             </button>
           ))}
         </div>
-        {errors.professionalGroup && <p className="text-red-600 text-sm mt-1">{errors.professionalGroup}</p>}
+        {errors.professionalGroup && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.professionalGroup}</p>}
 
         <Dialog open={isOficiosPreviewOpen} onOpenChange={setIsOficiosPreviewOpen}>
           <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
@@ -1555,10 +1538,10 @@ export default function RegistroPage() {
   const renderStep3 = () => (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
           {formData.professionalGroup === 'profesiones' ? 'Tu profesión' : 'Servicios que Ofreces'}
         </h2>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-300">
           {formData.professionalGroup === 'profesiones' 
             ? 'Seleccioná tu profesión y describí tu oferta'
             : 'Agregá los servicios que brindás'}
@@ -1566,7 +1549,7 @@ export default function RegistroPage() {
       </div>
 
       {categoriesError && (
-        <p className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+        <p className="rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50 dark:bg-amber-950/40 px-4 py-3 text-sm text-amber-800 dark:text-amber-300">
           No se pudieron cargar las categorias actualizadas. Intenta nuevamente en unos segundos.
         </p>
       )}
@@ -1593,120 +1576,11 @@ export default function RegistroPage() {
         />
       ))}
 
-      {false && formData.services.map((service, index) => (
-        <Card key={index} className="rounded-2xl border border-gray-100 shadow-sm">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900">
-                {formData.professionalGroup === 'profesiones' ? 'Profesión' : `Servicio ${index + 1}`}
-              </h3>
-              {formData.professionalGroup !== 'profesiones' && formData.services.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => removeService(index)}
-                  className="text-red-600 hover:text-red-800 text-sm font-medium hover:bg-red-50 px-2 py-1 rounded-lg transition-colors"
-                >
-                  Eliminar
-                </button>
-              )}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-              {formData.professionalGroup === 'oficios' && (
-                <div>
-                  <Label className="text-sm font-semibold text-gray-700">Área</Label>
-                  <Select
-                    value={service.areaSlug}
-                    onValueChange={(value) => handleServiceChange(index, 'areaSlug', value)}
-                    disabled={categoriesLoading || areas.length === 0}
-                  >
-                    <SelectTrigger className="mt-1 w-full rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200">
-                      <SelectValue placeholder={categoriesLoading ? "Cargando áreas..." : "Selecciona un área"} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {areas.map((a) => (
-                        <SelectItem key={a.slug} value={a.slug}>{a.name}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              )}
-              <div className={`${formData.professionalGroup === 'oficios' ? '' : 'md:col-span-2'}`}>
-                <Label className="text-sm font-semibold text-gray-700">{formData.professionalGroup === 'profesiones' ? 'Profesión' : 'Categoría	'}</Label>
-                <Select
-                  value={service.categoryId}
-                  onValueChange={(value) => handleServiceChange(index, 'categoryId', value)}
-                >
-                  <SelectTrigger
-                    disabled={
-                      categoriesLoading ||
-                      (formData.professionalGroup === 'oficios' && !service.areaSlug)
-                    }
-                    className={`mt-1 w-full rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                      errors[`service_${index}_category`] ? 'border-red-300' : 'border-gray-200'
-                    } ${categoriesLoading || (formData.professionalGroup === 'oficios' && !service.areaSlug) ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  >
-                    <SelectValue placeholder={
-                      categoriesLoading
-                        ? 'Cargando categorías...'
-                        : formData.professionalGroup === 'profesiones'
-                        ? 'Selecciona tu profesión'
-                        : (service.areaSlug ? 'Selecciona una categoría' : 'Selecciona un área primero')
-                    } />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {getAvailableCategories(formData.professionalGroup, service.areaSlug).map((sub) => (
-                      <SelectItem key={sub.slug} value={sub.slug}>{sub.name}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {errors[`service_${index}_category`] && (
-                  <p className="text-red-600 text-sm mt-1">{errors[`service_${index}_category`]}</p>
-                )}
-                {formData.professionalGroup === 'oficios' && (
-                  <p className="text-xs text-gray-500 mt-2">Podés agregar más servicios abajo.</p>
-                )}
-              </div>
-            </div>
-
-            <div className="mb-4 rounded-lg border border-dashed border-gray-200 p-4 bg-white/60">
-              <Label className="text-sm font-semibold text-gray-700">Título del servicio</Label>
-              <Input
-                value={service.title}
-                onChange={(e) => handleServiceChange(index, 'title', e.target.value)}
-                disabled
-                readOnly
-                className={`mt-1 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 ${
-                  errors[`service_${index}_title`] ? 'border-red-300' : 'border-gray-200'
-                }`}
-                placeholder="Selecciona un servicio"
-              />
-            </div>
-
-            <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
-              <Label className="text-sm font-semibold text-gray-700">Descripción</Label>
-              <Textarea
-                value={service.description}
-                onChange={(e) => handleServiceChange(index, 'description', e.target.value)}
-                className={`mt-1 rounded-lg border-2 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B] transition-all duration-200 resize-none bg-white ${
-                  errors[`service_${index}_description`] ? 'border-red-300' : 'border-gray-200'
-                }`}
-                placeholder={formData.professionalGroup === 'profesiones' ? 'Contanos tu formación, matrícula (si aplica) y áreas de práctica...' : 'Describe detalladamente qué incluye este servicio...'}
-                rows={3}
-              />
-              {errors[`service_${index}_description`] && (
-                <p className="text-red-600 text-sm mt-1">{errors[`service_${index}_description`]}</p>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      ))}
-
       {formData.professionalGroup !== 'profesiones' && (
         <button
           type="button"
           onClick={addService}
-          className="w-full bg-gray-50 text-gray-700 py-4 px-6 rounded-lg hover:bg-gray-100 font-medium transition-all duration-200 border-2 border-dashed border-gray-300 hover:border-gray-400"
+          className="w-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-200 py-4 px-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 font-medium transition-all duration-200 border-2 border-dashed border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 cursor-pointer"
         >
           + Agregar otro servicio
         </button>
@@ -1717,23 +1591,23 @@ export default function RegistroPage() {
   const renderStep4 = () => (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="w-16 h-16 bg-[#006F4B]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <IdCard className="w-8 h-8 text-[#006F4B]" />
+        <div className="w-16 h-16 bg-[#006F4B]/10 dark:bg-emerald-950/60 rounded-full flex items-center justify-center mx-auto mb-4">
+          <IdCard className="w-8 h-8 text-[#006F4B] dark:text-emerald-400" />
         </div>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Documentación
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           El certificado de antecedentes penales es obligatorio para que tu perfil pueda aparecer en la plataforma.
           Las referencias laborales son opcionales y se mostrarán como señal de confianza en tu perfil.
         </p>
-        <p className="text-sm text-gray-700 mt-3">
+        <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">
           Para obtener el certificado de antecedentes penales:{' '}
           <a
             href="https://www.argentina.gob.ar/justicia/reincidencia/antecedentespenales"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#006F4B] underline break-all"
+            className="text-[#006F4B] dark:text-emerald-400 underline break-all"
             onClick={(event) => {
               event.preventDefault();
               window.open(
@@ -1765,14 +1639,14 @@ export default function RegistroPage() {
         helperText="Si todavía no lo tienes, puedes terminar el registro ahora y cargarlo más tarde desde tu perfil."
       />
 
-      <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-4 text-sm text-amber-800">
+      <div className="rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50 dark:bg-amber-950/40 px-4 py-4 text-sm text-amber-800 dark:text-amber-300">
         Podrás completar o reemplazar estos documentos más adelante desde la configuración de tu perfil.
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       {/* Hero Header */}
       <div className="bg-gradient-to-br from-[#006F4B] via-[#008255] to-[#004d35] relative overflow-hidden">
         {/* Patrón de fondo */}
@@ -1803,15 +1677,15 @@ export default function RegistroPage() {
 
       {/* Form Content */}
       <div className="max-w-4xl mx-auto px-4 -mt-8 md:-mt-10 pb-12 relative z-10">
-        <Card className="overflow-hidden shadow-xl border-0">
+        <Card className="overflow-hidden shadow-xl border-0 dark:border dark:border-gray-800 dark:bg-gray-900">
           <CardContent className="p-6 md:p-8">
             {/* Stepper visual */}
             {renderStepIndicator()}
 
             {errors.general && (
-              <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6 flex items-center gap-3">
+              <div className="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 rounded-xl p-4 mb-6 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0"></div>
-                <p className="text-red-800 text-sm">{errors.general}</p>
+                <p className="text-red-800 dark:text-red-300 text-sm">{errors.general}</p>
               </div>
             )}
 
@@ -1824,7 +1698,7 @@ export default function RegistroPage() {
               {currentStep > 1 && (
                 <button
                   onClick={() => setCurrentStep(currentStep - 1)}
-                  className="flex-1 bg-gray-100 text-gray-700 py-4 px-6 rounded-xl hover:bg-gray-200 font-semibold transition-all duration-200 flex items-center justify-center"
+                  className="flex-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 py-4 px-6 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 font-semibold transition-all duration-200 flex items-center justify-center cursor-pointer"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Anterior
@@ -1843,7 +1717,7 @@ export default function RegistroPage() {
                 <button
                   onClick={handleSubmit}
                   disabled={isLoading}
-                  className="flex-1 bg-[#006F4B] hover:bg-[#005a3d] text-white py-4 px-6 rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-[#006F4B]/20 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-[#006F4B] hover:bg-[#005a3d] text-white py-4 px-6 rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-[#006F4B]/20 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {isLoading ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -1859,11 +1733,11 @@ export default function RegistroPage() {
 
             {currentStep === 1 && (
               <div className="mt-8 text-center">
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
                   ¿Ya tienes cuenta?{" "}
                   <Link 
                     href="/auth/login" 
-                    className="text-[#006F4B] hover:text-[#008F5B] font-semibold transition-colors"
+                    className="text-[#006F4B] dark:text-emerald-400 hover:text-[#008F5B] font-semibold transition-colors"
                   >
                     Inicia sesión aquí
                   </Link>
@@ -1871,14 +1745,14 @@ export default function RegistroPage() {
               </div>
             )}
 
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mt-6">
+            <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50 rounded-xl p-4 mt-6">
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
-                  <Building2 className="w-4 h-4 text-amber-600" />
+                <div className="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/60 flex items-center justify-center flex-shrink-0">
+                  <Building2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-amber-800">Verificación requerida</p>
-                  <p className="text-sm text-amber-700 mt-0.5">
+                  <p className="text-sm font-medium text-amber-800 dark:text-amber-200">Verificación requerida</p>
+                  <p className="text-sm text-amber-700 dark:text-amber-300 mt-0.5">
                     Tu registro será revisado por nuestro equipo. Te notificaremos por email cuando sea aprobado.
                   </p>
                 </div>

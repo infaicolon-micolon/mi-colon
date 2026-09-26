@@ -88,22 +88,22 @@ export function ServiceSelectionCard({
           key={option.slug}
           type="button"
           onClick={() => onSelect(option.slug)}
-          className={`flex items-center justify-between gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-200 ${
+          className={`flex items-center justify-between gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-200 cursor-pointer ${
             option.selected
               ? "border-[#006F4B] bg-[#006F4B] text-white shadow-sm"
-              : "border-gray-200 bg-white text-gray-700 hover:border-[#006F4B]/40 hover:bg-[#006F4B]/[0.04]"
+              : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:border-[#006F4B]/40 hover:bg-[#006F4B]/[0.04] dark:hover:bg-gray-700"
           }`}
         >
           <span className="text-sm font-medium leading-snug">{option.name}</span>
           <span
             className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border ${
-              option.selected ? "border-white/40 bg-white/10" : "border-gray-200 bg-gray-50"
+              option.selected ? "border-white/40 bg-white/10" : "border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700"
             }`}
           >
             {option.selected ? (
-              <Check className="h-3.5 w-3.5" />
+              <Check className="h-3.5 w-3.5 text-white" />
             ) : (
-              <Circle className="h-3.5 w-3.5 text-gray-300" />
+              <Circle className="h-3.5 w-3.5 text-gray-300 dark:text-gray-500" />
             )}
           </span>
         </button>
@@ -112,14 +112,14 @@ export function ServiceSelectionCard({
   );
 
   return (
-    <Card className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm">
+    <Card className="overflow-hidden rounded-3xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
       <CardContent className="space-y-5 p-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#006F4B]/70">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#006F4B] dark:text-emerald-400">
               {isProfession ? "Perfil profesional" : `Servicio ${index + 1}`}
             </p>
-            <h3 className="mt-1 text-lg font-semibold text-gray-900">
+            <h3 className="mt-1 text-lg font-semibold text-gray-900 dark:text-white">
               {isProfession ? "Elegi tu profesion" : "Elegi el servicio que queres publicar"}
             </h3>
           </div>
@@ -129,7 +129,7 @@ export function ServiceSelectionCard({
               variant="ghost"
               size="sm"
               onClick={onRemove}
-              className="shrink-0 rounded-full px-3 text-red-600 hover:bg-red-50 hover:text-red-700"
+              className="shrink-0 rounded-full px-3 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-700"
             >
               <X className="mr-1 h-4 w-4" />
               Quitar
@@ -139,16 +139,16 @@ export function ServiceSelectionCard({
 
         {!isProfession ? (
           <div className="space-y-2">
-            <Label className="text-sm font-semibold text-gray-700">Area principal</Label>
+            <Label className="text-sm font-semibold text-gray-700 dark:text-gray-200">Area principal</Label>
             {categoriesLoading ? (
-              <div className="rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-5 text-sm text-gray-500">
+              <div className="rounded-2xl border border-dashed border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-5 text-sm text-gray-500 dark:text-gray-400">
                 Cargando areas...
               </div>
             ) : (
               <Select value={service.areaSlug} onValueChange={onAreaChange}>
                 <SelectTrigger
-                  className={`min-h-12 rounded-2xl border-2 bg-white transition-all duration-200 focus:border-[#006F4B] focus:ring-4 focus:ring-green-100 ${
-                    areaError ? "border-red-300" : "border-gray-200"
+                  className={`min-h-12 rounded-2xl border-2 bg-white dark:bg-gray-800 dark:text-white transition-all duration-200 focus:border-[#006F4B] focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 ${
+                    areaError ? "border-red-300" : "border-gray-200 dark:border-gray-700"
                   }`}
                 >
                   <SelectValue placeholder="Selecciona un area" />
@@ -162,37 +162,37 @@ export function ServiceSelectionCard({
                 </SelectContent>
               </Select>
             )}
-            {areaError ? <p className="text-sm text-red-600">{areaError}</p> : null}
+            {areaError ? <p className="text-sm text-red-600 dark:text-red-400">{areaError}</p> : null}
           </div>
         ) : null}
 
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-3">
-            <Label className="text-sm font-semibold text-gray-700">
+            <Label className="text-sm font-semibold text-gray-700 dark:text-gray-200">
               {isProfession ? "Profesiones disponibles" : "Servicios disponibles"}
             </Label>
           </div>
 
           {categoriesLoading ? (
-            <div className="rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-5 text-sm text-gray-500">
+            <div className="rounded-2xl border border-dashed border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-5 text-sm text-gray-500 dark:text-gray-400">
               Cargando categorias...
             </div>
           ) : waitingForArea ? (
-            <div className="rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-5 text-sm text-gray-500">
+            <div className="rounded-2xl border border-dashed border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-5 text-sm text-gray-500 dark:text-gray-400">
               Selecciona un area.
             </div>
           ) : (
             renderOptionGrid(serviceOptions, onCategoryChange)
           )}
 
-          {categoryError ? <p className="text-sm text-red-600">{categoryError}</p> : null}
+          {categoryError ? <p className="text-sm text-red-600 dark:text-red-400">{categoryError}</p> : null}
         </div>
 
-        <div className="rounded-2xl border border-gray-200 bg-[linear-gradient(135deg,rgba(0,111,75,0.06),rgba(0,111,75,0.01))] p-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#006F4B]/70">
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-emerald-50/50 dark:bg-emerald-950/20 p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#006F4B] dark:text-emerald-400">
             Seleccion actual
           </p>
-          <p className="mt-2 text-base font-semibold text-gray-900">
+          <p className="mt-2 text-base font-semibold text-gray-900 dark:text-white">
             {resolvedServiceName ||
               (isProfession
                 ? "Todavia no elegiste una profesion."
@@ -200,13 +200,13 @@ export function ServiceSelectionCard({
           </p>
         </div>
 
-        <div className="rounded-2xl border border-gray-100 bg-gray-50 p-4">
-          <Label className="text-sm font-semibold text-gray-700">Descripcion</Label>
+        <div className="rounded-2xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-4">
+          <Label className="text-sm font-semibold text-gray-700 dark:text-gray-200">Descripcion</Label>
           <Textarea
             value={service.description}
             onChange={(event) => onDescriptionChange(event.target.value)}
-            className={`mt-2 min-h-[104px] resize-none rounded-2xl border-2 bg-white transition-all duration-200 focus:border-[#006F4B] focus:ring-4 focus:ring-green-100 ${
-              descriptionError ? "border-red-300" : "border-gray-200"
+            className={`mt-2 min-h-[104px] resize-none rounded-2xl border-2 bg-white dark:bg-gray-900 dark:text-white transition-all duration-200 focus:border-[#006F4B] focus:ring-4 focus:ring-green-100 dark:focus:ring-emerald-950 ${
+              descriptionError ? "border-red-300" : "border-gray-200 dark:border-gray-700"
             }`}
             placeholder={
               isProfession
@@ -214,7 +214,7 @@ export function ServiceSelectionCard({
                 : "Describe con claridad que incluye este servicio, que tipo de trabajos haces y cualquier detalle util."
             }
           />
-          {descriptionError ? <p className="mt-2 text-sm text-red-600">{descriptionError}</p> : null}
+          {descriptionError ? <p className="mt-2 text-sm text-red-600 dark:text-red-400">{descriptionError}</p> : null}
         </div>
       </CardContent>
     </Card>
