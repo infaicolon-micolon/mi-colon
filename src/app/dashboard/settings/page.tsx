@@ -1634,17 +1634,17 @@ export default function SettingsPage() {
       )}
 
       {/* Diálogo para confirmar salir de la página con cambios sin guardar */}
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-white/85 supports-[backdrop-filter]:dark:bg-gray-900/85 shadow-lg">
         <div className="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
-            <div className={`mt-0.5 flex h-9 w-9 items-center justify-center rounded-full ${hasChanges ? "bg-amber-100 text-amber-700" : "bg-emerald-100 text-emerald-700"}`}>
+            <div className={`mt-0.5 flex h-9 w-9 items-center justify-center rounded-full ${hasChanges ? "bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300" : "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300"}`}>
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <AlertCircle className="h-4 w-4" />}
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-900">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white">
                 {hasChanges ? "Tenes cambios sin guardar" : "Todo guardado"}
               </p>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-gray-600 dark:text-gray-300">
                 {hasChanges
                   ? "Revisa los cambios y guardalos cuando estes listo."
                   : "Los cambios del perfil estan sincronizados."}
@@ -1655,7 +1655,7 @@ export default function SettingsPage() {
             <Button
               type="button"
               variant="outline"
-              className="rounded-xl"
+              className="rounded-xl border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:disabled:bg-gray-800/40 dark:disabled:text-gray-500 dark:disabled:border-gray-800"
               disabled={!hasChanges || saving}
               onClick={async () => {
                 await loadProfessionalData();
@@ -1667,7 +1667,7 @@ export default function SettingsPage() {
             </Button>
             <Button
               type="button"
-              className="rounded-xl bg-[#006F4B] text-white hover:bg-[#005a3d]"
+              className="rounded-xl bg-[#006F4B] text-white hover:bg-[#005a3d] disabled:opacity-50 dark:disabled:bg-[#006F4B]/40 dark:disabled:text-white/50"
               onClick={handleSave}
               disabled={!hasChanges || saving}
             >
@@ -1688,18 +1688,18 @@ export default function SettingsPage() {
       </div>
 
       <Dialog open={showLeaveDialog} onOpenChange={setShowLeaveDialog}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md dark:bg-gray-900 dark:border-gray-800">
           <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
+            <DialogTitle className="flex items-center gap-2 dark:text-white">
               <AlertCircle className="h-5 w-5 text-amber-500" />
               Cambios sin guardar
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-3 py-2">
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-gray-700 dark:text-gray-200">
               Tenés cambios sin guardar en tu perfil.
             </p>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               Si salís de la página ahora, vas a perder los cambios que todavía no se guardaron.
             </p>
           </div>
@@ -1707,7 +1707,7 @@ export default function SettingsPage() {
             <Button
               type="button"
               variant="outline"
-              className="rounded-xl"
+              className="rounded-xl dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
               onClick={() => setShowLeaveDialog(false)}
             >
               Seguir editando

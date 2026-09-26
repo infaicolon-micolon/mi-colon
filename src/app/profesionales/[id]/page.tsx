@@ -971,7 +971,7 @@ export default async function ProfessionalDetailPage({ params }: { params: Promi
       </div>
 
       {(hasWhatsapp || hasPhone) && (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur lg:hidden shadow-lg">
           <div className="mx-auto flex max-w-md gap-3">
             {hasWhatsapp && (
               <a
@@ -986,7 +986,7 @@ export default async function ProfessionalDetailPage({ params }: { params: Promi
             {hasPhone && (
               <a
                 href={`tel:${p.phone}`}
-                className="flex-1 rounded-full border border-gray-200 bg-white px-4 py-3 text-center text-sm font-semibold text-gray-700 transition-colors hover:border-[#006F4B]/30 hover:text-[#006F4B]"
+                className="flex-1 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3 text-center text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors hover:border-[#006F4B]/30 hover:text-[#006F4B]"
               >
                 Llamar
               </a>
