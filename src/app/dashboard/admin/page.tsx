@@ -16,13 +16,9 @@ import {
   Phone,
   Mail,
   MapPin,
-  Award,
   MessageSquare,
   Lightbulb,
   Tag,
-  AlertCircle,
-  Calendar,
-  Send,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -79,7 +75,7 @@ type CategorySuggestionItem = {
 };
 
 export default function AdminDashboardPage() {
-  const { data: session, status: authStatus } = useSession();
+  const { status: authStatus } = useSession();
   const router = useRouter();
 
   const [professionals, setProfessionals] = useState<Professional[]>([]);
@@ -195,11 +191,11 @@ export default function AdminDashboardPage() {
         toast.success("Estado actualizado correctamente");
         if (type === "contact") {
           setBugReports((prev) =>
-            prev.map((item) => (item.id === id ? { ...item, status: newStatus as any } : item))
+            prev.map((item) => (item.id === id ? { ...item, status: newStatus as BugReportItem["status"] } : item))
           );
         } else {
           setCategorySuggestions((prev) =>
-            prev.map((item) => (item.id === id ? { ...item, status: newStatus as any } : item))
+            prev.map((item) => (item.id === id ? { ...item, status: newStatus as CategorySuggestionItem["status"] } : item))
           );
         }
       } else {
