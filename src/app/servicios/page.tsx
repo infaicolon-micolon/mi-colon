@@ -142,13 +142,18 @@ export default function ServiciosPage() {
   ]);
 
   useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchTerm(barSearchQuery);
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [barSearchQuery]);
+
+  useEffect(() => {
     setPage(1);
   }, [selectedArea, selectedCategory, selectedLocation, searchTerm]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setBarSearchQuery(value);
-    setSearchTerm(value);
+    setBarSearchQuery(e.target.value);
   };
 
   const resetFilters = () => {

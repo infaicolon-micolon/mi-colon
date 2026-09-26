@@ -49,7 +49,7 @@ export function useServices(filters: Filters = {}) {
           setError(result.message || 'No se pudieron cargar los servicios');
         }
       } catch (e) {
-        if (controller.signal.aborted) return;
+        if (controller.signal.aborted || (e instanceof Error && (e.name === 'AbortError' || e.message.toLowerCase().includes('aborted')))) return;
         setError(e instanceof Error ? e.message : 'Error al obtener servicios');
       } finally {
         if (!controller.signal.aborted) {

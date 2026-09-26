@@ -54,6 +54,9 @@ export async function loadServices(
       totalPages: pagination.totalPages,
     };
   } catch (error) {
+    if (error instanceof Error && (error.name === 'AbortError' || error.message.toLowerCase().includes('aborted'))) {
+      throw error;
+    }
     return {
       success: false,
       data: [],

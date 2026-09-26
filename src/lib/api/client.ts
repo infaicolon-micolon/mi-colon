@@ -131,6 +131,9 @@ export async function apiRequest<T>(
       body: requestBody,
     });
   } catch (error) {
+    if (error instanceof Error && (error.name === 'AbortError' || error.message.toLowerCase().includes('aborted'))) {
+      throw error;
+    }
     throw new ApiClientError('No se pudo conectar con el servidor.', {
       status: 0,
       code: 'network_error',
