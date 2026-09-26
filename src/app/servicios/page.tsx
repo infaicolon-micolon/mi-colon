@@ -287,7 +287,7 @@ export default function ServiciosPage() {
         </aside>
 
         <div className="col-span-1 lg:col-span-9 space-y-8">
-          <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+          <section className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
               <div className="relative w-full md:w-1/2">
                 <label htmlFor="services-search" className="sr-only">Buscar servicios.</label>
@@ -305,9 +305,10 @@ export default function ServiciosPage() {
                   className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg leading-5 bg-gray-50 dark:bg-gray-800 placeholder-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:border-primary sm:text-sm transition-colors dark:focus-visible:ring-offset-gray-800"
                 />
               </div>
-              <div className="flex gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 no-scrollbar items-center">
+              <div className="flex items-center gap-2 w-full md:w-auto">
                 <CitySelect
-                  className="min-w-[220px]"
+                  className="flex-1 min-w-0 sm:min-w-[180px]"
+                  triggerClassName="h-10 rounded-xl"
                   value={selectedLocation}
                   onValueChange={(value) => {
                     setSelectedLocation(value);
@@ -315,18 +316,19 @@ export default function ServiciosPage() {
                   }}
                 />
                 <button
+                  type="button"
                   onClick={() => {
                     setShowVerifiedOnly(!showVerifiedOnly);
                     setPage(1);
                   }}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg border-2 text-xs font-medium whitespace-nowrap transition-colors duration-200 ${
+                  className={`flex shrink-0 items-center justify-center gap-1.5 px-3 py-2 rounded-xl border-2 text-xs font-semibold whitespace-nowrap transition-colors duration-200 ${
                     showVerifiedOnly
                       ? "border-[#006F4B] bg-[#006F4B] text-white focus:ring-4 focus:ring-green-100"
                       : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 focus:ring-4 focus:ring-green-100 focus:border-[#006F4B]"
                   }`}
                 >
-                  <Verified className="h-4 w-4" aria-hidden="true" />
-                  Verificados
+                  <Verified className="h-4 w-4 shrink-0 text-emerald-500" aria-hidden="true" />
+                  <span>Verificados</span>
                 </button>
               </div>
             </div>
