@@ -12,9 +12,16 @@ export function Footer() {
               <Image src="/logo_colon.png" alt="Mi Colón" width={100} height={40} className="h-10 w-auto object-contain" />
               <h5 className="font-bold text-white">Mi Colón</h5>
             </div>
-            <p className="text-sm text-gray-400 dark:text-gray-400 mb-4 leading-relaxed">
+            <p className="text-sm text-gray-400 dark:text-gray-400 mb-5 leading-relaxed">
               Plataforma de servicios y profesionales para Colón y la región. Conectando talento local con necesidades reales.
             </p>
+            {/* Botón instalar app */}
+            <Link
+              href="/instalar"
+              className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-colors"
+            >
+              <span>📲</span> Instalar la App
+            </Link>
           </div>
 
           {/* Enlaces rápidos */}
@@ -39,6 +46,11 @@ export function Footer() {
               <li>
                 <Link href="/como-funciona" className="hover:text-primary transition-colors">
                   Cómo Funciona
+                </Link>
+              </li>
+              <li>
+                <Link href="/instalar" className="hover:text-amber-500 text-amber-600 transition-colors font-medium">
+                  📲 Instalar la App
                 </Link>
               </li>
             </ul>
@@ -71,6 +83,9 @@ export function Footer() {
 
         <div className="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
           <p>© 2026 Mi Colón - Colón, Entre Ríos. Todos los derechos reservados.</p>
+          <Link href="/instalar" className="hover:text-amber-500 text-amber-600 transition-colors">
+            📲 Instalar la App gratis
+          </Link>
         </div>
       </div>
     </footer>
