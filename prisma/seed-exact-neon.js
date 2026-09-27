@@ -29,9 +29,10 @@ const SUBCATEGORIES_OFICIOS = [
   { name: "Limpieza", slug: "limpieza", areaSlug: "construccion-mantenimiento", image: "/images/servicios/limpieza.jpg" },
   { name: "Técnico en aires acondicionados", slug: "tecnico-aires", areaSlug: "climatizacion", image: "/servicios/instalacion-aires.jpg" },
   { name: "Servicios técnicos electrónicos", slug: "servicios-electronicos", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
+  { name: "Técnico en computadoras", slug: "tecnico-computadoras", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
   { name: "Mecánico automotriz", slug: "mecanico-automotriz", areaSlug: "automotores", image: "/images/servicios/automotores.jpg" },
   { name: "Jardinero/a", slug: "jardinero", areaSlug: "jardineria", image: "/images/servicios/jardineria.jpg" },
-  { name: "Costura", slug: "costura", areaSlug: "otros", image: "/images/servicios/costura.jpg" },
+  { name: "Tapicería", slug: "tapiceria", areaSlug: "otros", image: "/images/servicios/costura.jpg" },
   { name: "Cuidados", slug: "cuidados", areaSlug: "otros", image: "/images/servicios/cuidados.jpg" },
   { name: "Fletes y mudanzas", slug: "fletes-mudanzas", areaSlug: "otros", image: "/images/servicios/fletes-mudanzas.jpg" }
 ];

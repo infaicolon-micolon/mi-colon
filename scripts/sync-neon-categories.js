@@ -40,6 +40,7 @@ const SUBCATEGORIES = [
   // Servicios técnicos electrónicos
   { name: "Reparador de electrodomésticos", slug: "reparador-electrodomesticos", areaSlug: "servicios-electronicos" },
   { name: "Técnico en celulares y tablets", slug: "tecnico-celulares", areaSlug: "servicios-electronicos" },
+  { name: "Técnico en computadoras", slug: "tecnico-computadoras", areaSlug: "servicios-electronicos" },
 
   // Automotores
   { name: "Mecánico automotriz", slug: "mecanico-automotriz", areaSlug: "automotores" },
@@ -56,8 +57,7 @@ const SUBCATEGORIES = [
   { name: "Panificados", slug: "panificados", areaSlug: "cocina" },
 
   // Otros
-  { name: "Costura", slug: "costura", areaSlug: "otros" },
-  { name: "Costurera", slug: "costurera", areaSlug: "otros" },
+  { name: "Tapicería", slug: "tapiceria", areaSlug: "otros" },
   { name: "Cuidados", slug: "cuidados", areaSlug: "otros" },
   { name: "Promotores gerontológicos", slug: "promotores-gerontologicos", areaSlug: "otros" },
   { name: "Niñera", slug: "ninera", areaSlug: "otros" },

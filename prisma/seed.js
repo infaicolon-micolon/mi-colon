@@ -26,6 +26,7 @@ const SUBCATEGORIES_OFICIOS = [
   // Servicios técnicos electrónicos
   { name: 'Reparador de electrodomésticos', slug: 'reparador-electrodomesticos', group: 'oficios' },
   { name: 'Técnico en celulares y tablets', slug: 'tecnico-celulares', group: 'oficios' },
+  { name: 'Técnico en computadoras', slug: 'tecnico-computadoras', group: 'oficios' },
   // Automotores
   { name: 'Mecánico automotriz', slug: 'mecanico-automotriz', group: 'oficios' },
   { name: 'Mecánico de motos', slug: 'mecanico-motos', group: 'oficios' },
@@ -46,8 +47,8 @@ const SUBCATEGORIES_OFICIOS = [
   { name: 'Limpieza', slug: 'limpieza', group: 'oficios' },
   // Cerrajería
   { name: 'Cerrajeros', slug: 'cerrajero', group: 'oficios' },
-  // Costura
-  { name: 'Costurera', slug: 'costurera', group: 'oficios' },
+  // Tapicería
+  { name: 'Tapicería', slug: 'tapiceria', group: 'oficios' },
 ];
 
 // Subcategorías de Profesiones (copiadas de src/lib/taxonomy.ts)

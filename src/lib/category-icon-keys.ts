@@ -59,6 +59,7 @@ export const FALLBACK_CATEGORY_ICON_BY_SLUG: Partial<Record<string, CategoryIcon
   cerrajeria: 'lock',
   seguridad: 'shield',
   costura: 'shirt',
+  tapiceria: 'shirt',
   limpieza: 'sparkles',
   abogacia: 'scale',
   arquitectura: 'ruler',
@@ -90,6 +91,7 @@ export const FALLBACK_CATEGORY_ICON_BY_SLUG: Partial<Record<string, CategoryIcon
   techista: 'home',
   'tecnico-aires': 'snowflake',
   'tecnico-celulares': 'smartphone',
+  'tecnico-computadoras': 'laptop',
   yesero: 'construction',
 };
 

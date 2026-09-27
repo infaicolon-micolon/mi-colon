@@ -121,6 +121,7 @@ export const SUBCATEGORIES_OFICIOS: Subcategory[] = [
   { id: "servicios-electronicos", name: "Servicios técnicos electrónicos", slug: "servicios-electronicos", group: "oficios", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
   { id: "reparador-electrodomesticos", name: "Reparador de electrodomésticos", slug: "reparador-electrodomesticos", group: "oficios", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
   { id: "tecnico-celulares", name: "Técnico en celulares y tablets", slug: "tecnico-celulares", group: "oficios", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
+  { id: "tecnico-computadoras", name: "Técnico en computadoras", slug: "tecnico-computadoras", group: "oficios", areaSlug: "servicios-electronicos", image: "/images/servicios/electricista.webp" },
 
   // Automotores
   { id: "mecanico-automotriz", name: "Mecánico automotriz", slug: "mecanico-automotriz", group: "oficios", areaSlug: "automotores", image: "/images/servicios/automotores.jpg" },
@@ -137,7 +138,7 @@ export const SUBCATEGORIES_OFICIOS: Subcategory[] = [
   { id: "panificados", name: "Panificados", slug: "panificados", group: "oficios", areaSlug: "cocina", image: "/images/servicios/cocina.jpg" },
 
   // Otros
-  { id: "costura", name: "Costura", slug: "costura", group: "oficios", areaSlug: "otros", image: "/images/servicios/costura.jpg" },
+  { id: "tapiceria", name: "Tapicería", slug: "tapiceria", group: "oficios", areaSlug: "otros", image: "/images/servicios/costura.jpg" },
   { id: "cuidados", name: "Cuidados", slug: "cuidados", group: "oficios", areaSlug: "otros", image: "/images/servicios/cuidados.jpg" },
   { id: "fletes-mudanzas", name: "Fletes y mudanzas", slug: "fletes-mudanzas", group: "oficios", areaSlug: "otros", image: "/images/servicios/fletes-mudanzas.jpg" },
 ];
