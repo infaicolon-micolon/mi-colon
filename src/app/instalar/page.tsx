@@ -98,7 +98,7 @@ export default function InstalarPage() {
           Instalá Mi Colón en tu celular
         </h1>
         <p className="text-sm text-muted-foreground text-center max-w-sm">
-          Sin pasar por la tienda. Funciona en Android e iOS, gratis y en segundos.
+          Funciona en Android e iOS, gratis y en segundos.
         </p>
       </div>
 
