@@ -11,6 +11,21 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
+// Logo oficial de Android (SVG inline)
+function AndroidLogo({ size = 40 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.523 15.341a.908.908 0 0 1-.908-.908.908.908 0 0 1 .908-.908.908.908 0 0 1 .908.908.908.908 0 0 1-.908.908m-11.046 0a.908.908 0 0 1-.908-.908.908.908 0 0 1 .908-.908.908.908 0 0 1 .908.908.908.908 0 0 1-.908.908M17.78 10.18l1.826-3.164a.38.38 0 0 0-.139-.519.38.38 0 0 0-.519.138l-1.85 3.205A11.13 11.13 0 0 0 12 9a11.13 11.13 0 0 0-5.098 1.84L5.052 7.635a.38.38 0 0 0-.519-.138.38.38 0 0 0-.138.519L6.22 11.18C3.592 12.793 1.853 15.538 1.5 18.75h21c-.353-3.212-2.092-5.957-4.72-7.57"
+        fill="#3DDC84"
+      />
+    </svg>
+  );
+}
+
+const shareUrl = "https://mi-colon-er.vercel.app/instalar";
+const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(shareUrl)}&bgcolor=ffffff&color=0f172a&margin=12`;
+
 export default function InstalarPage() {
   const [platform, setPlatform] = useState<Platform>("unknown");
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
@@ -18,27 +33,20 @@ export default function InstalarPage() {
   const [installing, setInstalling] = useState(false);
 
   useEffect(() => {
-    // Detectar si ya está instalada como PWA (modo standalone)
     if (window.matchMedia("(display-mode: standalone)").matches) {
       setPlatform("installed");
       setInstalled(true);
       return;
     }
 
-    // Detectar plataforma
     const ua = navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipad|ipod/.test(ua);
     const isAndroid = /android/.test(ua);
 
-    if (isIOS) {
-      setPlatform("ios");
-    } else if (isAndroid) {
-      setPlatform("android");
-    } else {
-      setPlatform("desktop");
-    }
+    if (isIOS) setPlatform("ios");
+    else if (isAndroid) setPlatform("android");
+    else setPlatform("desktop");
 
-    // Capturar el evento de instalación de Chrome (Android)
     const handler = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
@@ -60,8 +68,6 @@ export default function InstalarPage() {
     setInstalling(false);
     setDeferredPrompt(null);
   };
-
-  const shareUrl = "https://mi-colon-er.vercel.app/instalar";
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -92,13 +98,11 @@ export default function InstalarPage() {
           Instalá Mi Colón en tu celular
         </h1>
         <p className="text-sm text-muted-foreground text-center max-w-sm">
-          Sin pasar por la tienda. Funciona en Android e iOS, gratis y en
-          segundos.
+          Sin pasar por la tienda. Funciona en Android e iOS, gratis y en segundos.
         </p>
       </div>
 
-      {/* Tarjeta principal según plataforma */}
-      <div className="w-full max-w-sm">
+      <div className="w-full max-w-sm space-y-4">
 
         {/* ✅ Ya instalada */}
         {platform === "installed" && (
@@ -106,8 +110,7 @@ export default function InstalarPage() {
             <div className="text-5xl">🎉</div>
             <h2 className="text-lg font-bold text-emerald-400">¡Ya tenés la app instalada!</h2>
             <p className="text-sm text-gray-400">
-              Mi Colón ya está en tu pantalla de inicio. Podés usarla sin
-              necesidad de abrir el navegador.
+              Mi Colón ya está en tu pantalla de inicio. Podés usarla sin abrir el navegador.
             </p>
             <Link
               href="/"
@@ -118,18 +121,18 @@ export default function InstalarPage() {
           </div>
         )}
 
-        {/* 🤖 Android - Chrome con prompt disponible */}
+        {/* Android - Chrome con prompt disponible */}
         {platform === "android" && deferredPrompt && (
           <div className="rounded-2xl bg-card border border-border p-6 space-y-4">
             <div className="flex items-center gap-3">
-              <span className="text-4xl">🤖</span>
+              <AndroidLogo size={40} />
               <div>
                 <h2 className="font-bold text-foreground">Android detectado</h2>
                 <p className="text-xs text-muted-foreground">Chrome listo para instalar</p>
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Tocá el botón para agregar <strong>Mi Colón</strong> directamente a tu pantalla de inicio. Sin publicidad, sin tiendas.
+              Tocá el botón para agregar <strong>Mi Colón</strong> directamente a tu pantalla de inicio.
             </p>
             <button
               onClick={handleInstall}
@@ -141,11 +144,11 @@ export default function InstalarPage() {
           </div>
         )}
 
-        {/* 🤖 Android - sin prompt (deben abrir en Chrome o ya instalada) */}
+        {/* Android - sin prompt (deben abrir en Chrome) */}
         {platform === "android" && !deferredPrompt && !installed && (
           <div className="rounded-2xl bg-card border border-border p-6 space-y-4">
             <div className="flex items-center gap-3">
-              <span className="text-4xl">🤖</span>
+              <AndroidLogo size={40} />
               <div>
                 <h2 className="font-bold text-foreground">Android detectado</h2>
                 <p className="text-xs text-muted-foreground">Seguí estos pasos en Chrome</p>
@@ -153,8 +156,8 @@ export default function InstalarPage() {
             </div>
             <ol className="space-y-3 text-sm text-muted-foreground list-none">
               {[
-                { n: "1", text: 'Abrí esta página en el navegador Chrome de tu celular.' },
-                { n: "2", text: 'Tocá los 3 puntitos ⋮ en la esquina superior derecha.' },
+                { n: "1", text: "Abrí esta página en el navegador Chrome de tu celular." },
+                { n: "2", text: "Tocá los 3 puntitos ⋮ en la esquina superior derecha." },
                 { n: "3", text: 'Seleccioná "Agregar a pantalla de inicio" o "Instalar app".' },
                 { n: "4", text: 'Confirmá tocando "Agregar" o "Instalar".' },
               ].map((step) => (
@@ -169,7 +172,7 @@ export default function InstalarPage() {
           </div>
         )}
 
-        {/* 🍎 iOS */}
+        {/* iOS */}
         {platform === "ios" && (
           <div className="rounded-2xl bg-card border border-border p-6 space-y-4">
             <div className="flex items-center gap-3">
@@ -184,8 +187,8 @@ export default function InstalarPage() {
             </p>
             <ol className="space-y-3 text-sm text-muted-foreground list-none">
               {[
-                { n: "1", text: 'Abrí esta página en Safari (no Chrome ni otro navegador).' },
-                { n: "2", text: 'Tocá el ícono de compartir 􀈂 en la barra inferior.' },
+                { n: "1", text: "Abrí esta página en Safari (no Chrome ni otro navegador)." },
+                { n: "2", text: "Tocá el ícono de compartir en la barra inferior (cuadrado con flecha ↑)." },
                 { n: "3", text: 'Desplazate y tocá "Agregar a pantalla de inicio".' },
                 { n: "4", text: 'Confirmá tocando "Agregar" arriba a la derecha.' },
               ].map((step) => (
@@ -200,26 +203,24 @@ export default function InstalarPage() {
           </div>
         )}
 
-        {/* 💻 Desktop */}
+        {/* Desktop - QR */}
         {platform === "desktop" && (
           <div className="rounded-2xl bg-card border border-border p-6 space-y-4">
             <div className="flex items-center gap-3">
               <span className="text-4xl">💻</span>
               <div>
-                <h2 className="font-bold text-foreground">Compartí con tu celular</h2>
-                <p className="text-xs text-muted-foreground">Esta página es para instalar en móviles</p>
+                <h2 className="font-bold text-foreground">Escaneá con tu celular</h2>
+                <p className="text-xs text-muted-foreground">Apuntá la cámara al código QR</p>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Escaneá este código QR con tu celular o compartí el link para
-              instalar Mi Colón directamente en tu teléfono.
-            </p>
-            {/* QR generado con una API pública de Google */}
+            {/* QR usando api.qrserver.com - más confiable */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(shareUrl)}&choe=UTF-8`}
+              src={QR_URL}
               alt="Código QR para instalar Mi Colón"
-              className="w-48 h-48 mx-auto rounded-xl border border-border bg-white p-2"
+              width={200}
+              height={200}
+              className="mx-auto rounded-xl border border-border"
             />
             <p className="text-xs text-center text-muted-foreground break-all">{shareUrl}</p>
           </div>
@@ -229,23 +230,12 @@ export default function InstalarPage() {
         {platform !== "installed" && (
           <button
             onClick={handleShare}
-            className="mt-4 w-full border border-border text-foreground hover:bg-muted font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
+            className="w-full border border-border text-foreground hover:bg-muted font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
           >
             📤 Compartir link de instalación
           </button>
         )}
 
-        {/* Beneficios */}
-        <div className="mt-6 rounded-2xl bg-muted/40 border border-border p-5 space-y-2">
-          <h3 className="text-sm font-bold text-foreground">¿Por qué instalarla?</h3>
-          <ul className="text-sm text-muted-foreground space-y-1">
-            <li>✅ Se abre como app nativa, sin barra del navegador</li>
-            <li>✅ Acceso rápido desde tu pantalla de inicio</li>
-            <li>✅ Funciona mejor con conexión lenta</li>
-            <li>✅ Sin pasar por Play Store ni App Store</li>
-            <li>✅ Gratuita y siempre actualizada</li>
-          </ul>
-        </div>
       </div>
     </div>
   );
