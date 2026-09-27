@@ -118,15 +118,9 @@ export default function InstalarPage() {
           <div className="rounded-2xl bg-emerald-900/30 border border-emerald-700 p-6 text-center space-y-3">
             <div className="text-5xl">🎉</div>
             <h2 className="text-lg font-bold text-emerald-400">¡Ya tenés la app instalada!</h2>
-            <p className="text-sm text-gray-400">
-              Mi Colón ya está en tu pantalla de inicio. Podés usarla sin abrir el navegador.
+            <p className="text-sm text-gray-300">
+              Mi Colón ya está en tu pantalla de inicio y puedes abrirla ahora haciendo clic en ella.
             </p>
-            <Link
-              href="/"
-              className="inline-block mt-2 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
-            >
-              Ir a Mi Colón
-            </Link>
           </div>
         )}
 
