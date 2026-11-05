@@ -1,5 +1,5 @@
-// Custom PWA Service Worker with Offline Support for MiColón
-const CACHE_NAME = 'micolon-pwa-v2';
+// Custom PWA Service Worker with Offline Support for Colón Conecta
+const CACHE_NAME = 'colon-conecta-pwa-v3';
 const OFFLINE_URL = '/offline.html';
 const ASSETS_TO_CACHE = [
   OFFLINE_URL,

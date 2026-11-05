@@ -32,7 +32,7 @@ function AppleLogo({ size = 40 }: { size?: number }) {
   );
 }
 
-const shareUrl = "https://mi-colon-er.vercel.app/instalar";
+const shareUrl = "https://mi-colon.vercel.app/instalar";
 const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(shareUrl)}&bgcolor=ffffff&color=0f172a&margin=12`;
 
 export default function InstalarPage() {

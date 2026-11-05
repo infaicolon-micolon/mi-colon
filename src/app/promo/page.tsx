@@ -3,7 +3,7 @@
 import NextImage from "next/image";
 import Link from "next/link";
 
-const shareUrl = "https://mi-colon-er.vercel.app/instalar";
+const shareUrl = "https://mi-colon.vercel.app/instalar";
 const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(shareUrl)}&bgcolor=ffffff&color=006F4B&margin=15`;
 
 export default function PromoFlyerPage() {
@@ -100,7 +100,7 @@ export default function PromoFlyerPage() {
               target="_blank"
               className="text-base sm:text-lg font-black text-[#006F4B] hover:text-amber-600 transition-colors tracking-wide underline decoration-amber-500 decoration-2 underline-offset-4 block break-all"
             >
-              mi-colon-er.vercel.app/instalar
+              mi-colon.vercel.app/instalar
             </Link>
           </div>
         </div>
