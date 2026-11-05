@@ -97,7 +97,10 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
   const [session, publicCategories] = await Promise.all([
-    getServerSession(authOptions),
+    getServerSession(authOptions).catch((error) => {
+      console.error("Error obteniendo sesion en layout:", error);
+      return null;
+    }),
     getPublicCategoryTree().catch((error) => {
       console.error("Error cargando categorias publicas en layout:", error);
       return {
