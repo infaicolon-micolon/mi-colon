@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Flyer Promocional - Mi Colón",
-  description: "Flyer promocional para descargar la app Mi Colón",
+  title: "Flyer Promocional - Colón Conecta",
+  description: "Flyer promocional para descargar la app Colón Conecta",
   robots: {
     index: false,
     follow: false,

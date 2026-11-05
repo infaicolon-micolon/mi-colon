@@ -125,7 +125,7 @@ export default function ComoFuncionaPage() {
             <span className="text-white">con vecinos</span>
           </h1>
           <p className="text-lg md:text-xl text-white dark:text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Mi Colón es la plataforma oficial para encontrar profesionales confiables y técnicos calificados en Colón y región. Rápido, seguro y local.
+            Colón Conecta es la plataforma oficial para encontrar profesionales confiables y técnicos calificados en Colón y región. Rápido, seguro y local.
           </p>
         </div>
       </section>
@@ -187,7 +187,7 @@ export default function ComoFuncionaPage() {
           {/* Beneficios para vecinos */}
           <div className="mt-20">
             <div className="text-center mb-12">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">¿Por qué elegir Mi Colón?</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">¿Por qué elegir Colón Conecta?</h3>
               <p className="text-gray-500 dark:text-gray-400">Ventajas de usar la plataforma oficial</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -242,7 +242,7 @@ export default function ComoFuncionaPage() {
             <span className="text-xs font-bold tracking-widest text-primary uppercase mb-2 block">Para profesionales</span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">¿Cómo funciona la plataforma?</h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Mi Colón conecta tu talento con vecinos que necesitan tus servicios. Totalmente gratis y sin comisiones.
+              Colón Conecta acerca tu talento con vecinos que necesitan tus servicios. Totalmente gratis y sin comisiones.
             </p>
           </div>
 
@@ -462,7 +462,7 @@ export default function ComoFuncionaPage() {
           </div>
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">¿Listo para empezar?</h2>
-            <p className="text-gray-300 mb-8 max-w-xl mx-auto">Unite a la comunidad de Mi Colón y encontrá lo que necesitás o hacé crecer tu oficio hoy mismo.</p>
+            <p className="text-gray-300 mb-8 max-w-xl mx-auto">Unite a la comunidad de Colón Conecta y encontrá lo que necesitás o hacé crecer tu oficio hoy mismo.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/servicios"

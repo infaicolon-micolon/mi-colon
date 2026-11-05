@@ -22,7 +22,7 @@ export default function PromoFlyerPage() {
           <div className="bg-white px-6 py-4 rounded-2xl shadow-xl mb-6 inline-flex items-center justify-center">
             <NextImage
               src="/logo_colon.png"
-              alt="Logo Mi Colón"
+              alt="Logo Colón Conecta"
               width={200}
               height={80}
               className="object-contain h-14 w-auto"

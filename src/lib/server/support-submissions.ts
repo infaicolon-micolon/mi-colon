@@ -141,7 +141,7 @@ export async function createSupportContactSubmission(input: SupportContactInput)
     const notificationEmail = process.env.SUPPORT_NOTIFICATION_EMAIL || 'infaicolon@gmail.com';
     await sendMail({
       to: notificationEmail,
-      subject: `[Mi Colón - Soporte] ${title}`,
+      subject: `[Colón Conecta - Soporte] ${title}`,
       html: `
         <div style="font-family: sans-serif; padding: 20px; color: #333;">
           <h2 style="color: #006F4B;">Nuevo mensaje de contacto / soporte</h2>
@@ -241,7 +241,7 @@ export async function createCategorySuggestionSubmission(
     const notificationEmail = process.env.SUPPORT_NOTIFICATION_EMAIL || 'infaicolon@gmail.com';
     await sendMail({
       to: notificationEmail,
-      subject: `[Mi Colón] Nueva sugerencia de categoría: ${input.suggestedName}`,
+      subject: `[Colón Conecta] Nueva sugerencia de categoría: ${input.suggestedName}`,
       html: `
         <div style="font-family: sans-serif; padding: 20px; color: #333;">
           <h2 style="color: #006F4B;">Nueva sugerencia de categoría</h2>

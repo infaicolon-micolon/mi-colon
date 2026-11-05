@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Mi Colón - Servicios y Profesionales',
-    short_name: 'MiColón',
+    name: 'Colón Conecta - Servicios y Profesionales',
+    short_name: 'Colón Conecta',
     description: 'Plataforma de servicios y profesionales de Colón, Entre Ríos.',
     start_url: '/',
     display: 'standalone',

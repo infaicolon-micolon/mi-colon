@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad | Mi Colón",
-  description: "Política de privacidad de la plataforma Mi Colón de la ciudad de Colón, Entre Ríos.",
+  title: "Política de Privacidad | Colón Conecta",
+  description: "Política de privacidad de la plataforma Colón Conecta de la ciudad de Colón, Entre Ríos.",
 };
 
 const sections = [
   {
     title: "1. Responsable del tratamiento",
     content:
-      "La plataforma \"Mi Colón\" es la responsable del tratamiento de los datos personales informados por los usuarios al hacer uso de los servicios del portal.",
+      "La plataforma \"Colón Conecta\" es la responsable del tratamiento de los datos personales informados por los usuarios al hacer uso de los servicios del portal.",
   },
   {
     title: "2. Datos que se recopilan",
@@ -65,7 +65,7 @@ export default function PrivacidadPage() {
         Política de Privacidad
       </h1>
       <p className="mb-8 text-sm text-gray-600 dark:text-gray-400 md:text-base">
-        Plataforma &quot;Mi Colón&quot; - Colón, Entre Ríos
+        Plataforma &quot;Colón Conecta&quot; - Colón, Entre Ríos
       </p>
 
       <section className="space-y-6 text-sm leading-relaxed text-gray-700 dark:text-gray-300 md:text-base">

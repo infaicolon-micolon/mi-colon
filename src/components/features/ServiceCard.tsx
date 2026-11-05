@@ -85,7 +85,7 @@ function ServiceCardComponent({ service }: ServiceCardProps) {
 
   const whatsappUrl = buildWhatsAppLink(
     professional.whatsapp || professional.phone || '',
-    "Hola, vi tu perfil en Mi Colón y me interesa contactarte."
+    "Hola, vi tu perfil en Colón Conecta y me interesa contactarte."
   );
 
   return (

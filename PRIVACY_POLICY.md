@@ -1,13 +1,13 @@
-# Política de Privacidad de Mi Colón
+# Política de Privacidad de Colón Conecta
 
 **Última actualización:** 26 de Septiembre de 2026
 
-La plataforma y aplicación móvil **Mi Colón** (en adelante, "la Aplicación") está comprometida con la protección de la privacidad y el tratamiento transparente de los datos personales de sus usuarios. Esta Política de Privacidad describe cómo recopilamos, utilizamos, almacenamos y protegemos la información personal en cumplimiento con la **Ley N° 25.326 de Protección de Datos Personales de la República Argentina** y las políticas de la **Google Play Store**.
+La plataforma y aplicación móvil **Colón Conecta** (en adelante, "la Aplicación") está comprometida con la protección de la privacidad y el tratamiento transparente de los datos personales de sus usuarios. Esta Política de Privacidad describe cómo recopilamos, utilizamos, almacenamos y protegemos la información personal en cumplimiento con la **Ley N° 25.326 de Protección de Datos Personales de la República Argentina** y las políticas de la **Google Play Store**.
 
 ---
 
 ## 1. Responsable del Tratamiento
-* **Nombre de la Aplicación:** Mi Colón
+* **Nombre de la Aplicación:** Colón Conecta
 * **Ubicación:** Ciudad de Colón, Entre Ríos, República Argentina
 * **Contacto:** soporte@mi-colon.gob.ar / https://mi-colon-er.vercel.app/contacto
 
@@ -36,7 +36,7 @@ Los datos personales recopilados se utilizan únicamente para:
 
 ## 4. Consentimiento y Visibilidad Pública
 
-Al registrarte como profesional o prestador de servicios en **Mi Colón**, aceptas de manera libre, explícita e informada que tus datos de contacto público (nombre, teléfono, especialidad y zona) sean visibles en la aplicación y sitio web para que los vecinos interesados puedan contactarte directamente.
+Al registrarte como profesional o prestador de servicios en **Colón Conecta**, aceptas de manera libre, explícita e informada que tus datos de contacto público (nombre, teléfono, especialidad y zona) sean visibles en la aplicación y sitio web para que los vecinos interesados puedan contactarte directamente.
 
 ---
 

@@ -19,9 +19,9 @@ async function main() {
     update: { password: hashedPassword },
     create: {
       email,
-      name: "Admin Mi Colón",
+      name: "Admin Colón Conecta",
       firstName: "Admin",
-      lastName: "Mi Colón",
+      lastName: "Colón Conecta",
       password: hashedPassword,
       role: "admin",
       emailVerifiedAt: new Date(),

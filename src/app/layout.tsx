@@ -31,20 +31,20 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Mi Colón - Servicios y Profesionales",
-    template: "%s | Mi Colón"
+    default: "Colón Conecta - Servicios y Profesionales",
+    template: "%s | Colón Conecta"
   },
   description: "Plataforma de servicios y profesionales de Colón, Entre Ríos. Encuentra personas verificadas para todas tus necesidades.",
-  keywords: ["servicios", "profesionales", "Colón", "Entre Ríos", "plomería", "electricidad", "construcción", "Argentina", "Mi Colón"],
-  authors: [{ name: "Mi Colón" }],
-  creator: "Mi Colón",
-  publisher: "Mi Colón",
+  keywords: ["servicios", "profesionales", "Colón", "Entre Ríos", "plomería", "electricidad", "construcción", "Argentina", "Colón Conecta"],
+  authors: [{ name: "Colón Conecta" }],
+  creator: "Colón Conecta",
+  publisher: "Colón Conecta",
   metadataBase: new URL(baseUrl),
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Mi Colón",
+    title: "Colón Conecta",
   },
   alternates: {
     canonical: baseUrl,
@@ -55,10 +55,10 @@ export const metadata: Metadata = {
     apple: "/icons/icon-192.png",
   },
   openGraph: {
-    title: "Mi Colón - Plataforma de Servicios",
+    title: "Colón Conecta - Plataforma de Servicios",
     description: "Encuentra profesionales en Colón, Entre Ríos. Plataforma de servicios locales.",
     url: baseUrl,
-    siteName: "Mi Colón",
+    siteName: "Colón Conecta",
     locale: "es_AR",
     type: "website",
     images: [
@@ -66,13 +66,13 @@ export const metadata: Metadata = {
         url: `${baseUrl}/logo_colon.png`,
         width: 400,
         height: 400,
-        alt: "Mi Colón - Logo",
+        alt: "Colón Conecta - Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mi Colón - Servicios y Profesionales",
+    title: "Colón Conecta - Servicios y Profesionales",
     description: "Encuentra profesionales en Colón, Entre Ríos",
     images: [`${baseUrl}/logo_colon.png`],
   },

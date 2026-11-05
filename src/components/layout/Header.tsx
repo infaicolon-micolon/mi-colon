@@ -51,10 +51,10 @@ export function Header() {
           {/* Logo y marca */}
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-3">
-              <NextImage src="/logo_colon.png" alt="Logo Mi Colón" className="h-12 w-auto flex-shrink-0 object-contain" width={120} height={50} priority />
+              <NextImage src="/logo_colon.png" alt="Logo Colón Conecta" className="h-12 w-auto flex-shrink-0 object-contain" width={120} height={50} priority />
               <div className="leading-tight">
                 <h1 className="text-base font-bold text-gray-900 dark:text-white tracking-wide">
-                  Mi Colón
+                  Colón Conecta
                 </h1>
                 <p className="hidden md:block text-xs text-gray-500 dark:text-gray-400">
                   Colón, Entre Ríos

@@ -81,8 +81,8 @@ export default function InstalarPage() {
   const handleShare = async () => {
     if (navigator.share) {
       await navigator.share({
-        title: "Mi Colón - Instalar App",
-        text: "Instalá Mi Colón en tu celular gratis, sin pasar por la tienda.",
+        title: "Colón Conecta - Instalar App",
+        text: "Instalá Colón Conecta en tu celular gratis, sin pasar por la tienda.",
         url: shareUrl,
       });
     } else {
@@ -97,14 +97,14 @@ export default function InstalarPage() {
       <div className="flex flex-col items-center gap-3 mb-8">
         <NextImage
           src="/logo_colon.png"
-          alt="Logo Mi Colón"
+          alt="Logo Colón Conecta"
           width={160}
           height={70}
           className="object-contain"
           priority
         />
         <h1 className="text-2xl font-bold text-foreground text-center">
-          Instalá Mi Colón en tu celular
+          Instalá Colón Conecta en tu celular
         </h1>
         <p className="text-sm text-muted-foreground text-center max-w-sm">
           Funciona en Android e iOS, gratis y en segundos.
@@ -119,7 +119,7 @@ export default function InstalarPage() {
             <div className="text-5xl">🎉</div>
             <h2 className="text-lg font-bold text-emerald-400">¡Ya tenés la app instalada!</h2>
             <p className="text-sm text-gray-300">
-              Mi Colón ya está en tu pantalla de inicio y puedes abrirla ahora haciendo clic en ella.
+              Colón Conecta ya está en tu pantalla de inicio y puedes abrirla ahora haciendo clic en ella.
             </p>
           </div>
         )}
@@ -135,14 +135,14 @@ export default function InstalarPage() {
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Tocá el botón para agregar <strong>Mi Colón</strong> directamente a tu pantalla de inicio.
+              Tocá el botón para agregar <strong>Colón Conecta</strong> directamente a tu pantalla de inicio.
             </p>
             <button
               onClick={handleInstall}
               disabled={installing}
               className="w-full bg-amber-600 hover:bg-amber-700 disabled:opacity-60 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 text-base"
             >
-              {installing ? "Instalando..." : "⬇️ Instalar Mi Colón ahora"}
+              {installing ? "Instalando..." : "⬇️ Instalar Colón Conecta ahora"}
             </button>
           </div>
         )}
@@ -220,7 +220,7 @@ export default function InstalarPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={QR_URL}
-              alt="Código QR para instalar Mi Colón"
+              alt="Código QR para instalar Colón Conecta"
               width={200}
               height={200}
               className="mx-auto rounded-xl border border-border"

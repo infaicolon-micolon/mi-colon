@@ -177,8 +177,8 @@ export function generateOrganizationStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Mi Colón",
-    "alternateName": "Mi Colón - Plataforma de Servicios",
+    "name": "Colón Conecta",
+    "alternateName": "Colón Conecta - Plataforma de Servicios",
     "url": baseUrl,
     "logo": `${baseUrl}/logo_colon.png`,
     "description": "Plataforma de servicios y profesionales de Colón, Entre Ríos",

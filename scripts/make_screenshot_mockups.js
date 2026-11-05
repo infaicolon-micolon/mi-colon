@@ -13,7 +13,7 @@ const H = 1920;
 const screenshotsData = [
   {
     filename: 'screenshot_1.png',
-    title: 'Mi Colón',
+    title: 'Colón Conecta',
     tagline: 'Servicios y Profesionales en Colón, Entre Ríos',
     cardTitle: '¿Qué servicio estás buscando?',
     pills: ['⚡ Electricistas', '🔧 Plomeros', '🪴 Jardinería', '❄️ Climatización', '🏥 Enfermería'],
@@ -45,7 +45,7 @@ const screenshotsData = [
     filename: 'screenshot_4.png',
     title: 'Ofrece tus Servicios',
     tagline: 'Regístrate gratis y llega a miles de vecinos',
-    cardTitle: 'Únete a Mi Colón',
+    cardTitle: 'Únete a Colón Conecta',
     pills: ['📝 Registro Rápido', '📸 Galería de Trabajos', '💼 Publicación Gratuita', '📈 Más Clientes'],
     bgColor: '#831843',
     cardBg: '#9d174d',

@@ -1668,7 +1668,7 @@ export default function RegistroPage() {
                 Registrate como Profesional
               </h1>
               <p className="text-white/80 text-lg max-w-2xl mx-auto">
-                Completá tu perfil y comenzá a ofrecer tus servicios en la plataforma oficial de Mi Colón
+                Completá tu perfil y comenzá a ofrecer tus servicios en la plataforma oficial de Colón Conecta
               </p>
             </div>
           </div>

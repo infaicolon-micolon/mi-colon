@@ -167,7 +167,7 @@ export default function ResetPasswordPage() {
           )}
         </div>
         <p className="mt-4 text-center text-xs text-gray-400">
-          © {new Date().getFullYear()} Mi Colón
+          © {new Date().getFullYear()} Colón Conecta
         </p>
       </div>
     </div>
