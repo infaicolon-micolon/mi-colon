@@ -9,7 +9,7 @@ La plataforma y aplicación móvil **Colón Conecta** (en adelante, "la Aplicaci
 ## 1. Responsable del Tratamiento
 * **Nombre de la Aplicación:** Colón Conecta
 * **Ubicación:** Ciudad de Colón, Entre Ríos, República Argentina
-* **Contacto:** soporte@mi-colon.gob.ar / https://mi-colon.vercel.app/contacto
+* **Contacto:** soporte@mi-colon.gob.ar / https://colon-conecta.vercel.app/contacto
 
 ---
 
@@ -52,7 +52,7 @@ Conforme al Artículo 16 de la Ley 25.326 de Protección de Datos Personales, el
 
 Para solicitar la eliminación de tu cuenta y todos tus datos asociados:
 * Accede a la sección de configuración de tu cuenta en la app/web.
-* O envía una solicitud especificando tu correo registrado a través de nuestro formulario de contacto en: [https://mi-colon.vercel.app/contacto](https://mi-colon.vercel.app/contacto) o vía correo electrónico a **soporte@mi-colon.gob.ar**. Tu solicitud será procesada en un plazo máximo de 48 horas hábiles.
+* O envía una solicitud especificando tu correo registrado a través de nuestro formulario de contacto en: [https://colon-conecta.vercel.app/contacto](https://colon-conecta.vercel.app/contacto) o vía correo electrónico a **soporte@mi-colon.gob.ar**. Tu solicitud será procesada en un plazo máximo de 48 horas hábiles.
 
 ---
 

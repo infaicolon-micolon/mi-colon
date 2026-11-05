@@ -1,5 +1,5 @@
 // Custom PWA Service Worker with Offline Support for Colón Conecta
-const CACHE_NAME = 'colon-conecta-pwa-v3';
+const CACHE_NAME = 'colon-conecta-pwa-v4';
 const OFFLINE_URL = '/offline.html';
 const ASSETS_TO_CACHE = [
   OFFLINE_URL,
